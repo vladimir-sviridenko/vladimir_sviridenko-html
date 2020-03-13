@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+  <link href="./style.css" rel="stylesheet">
+  <link href="./fonts/fonts.css" rel="stylesheet">
+</head>
+<body>
+  <form class="form" action="https://www.w3schools.com/action_page.php" method="POST" target="blank">
+    <span class="form__close-form"></span>
+    <span class="form__name">Form action</span><span class="form__action-tag">_mc4wp_action</span>
+    <p class="form__description">This field will allow your visitors to choose whether they would like to subscribe or unsubscribe</p>
+    <label for="field-label">Field label</label>
+    <input name="field-label" type="text" value="Form Action" id="field-label" required>
+    <label for="choice-type">Choice type</label>
+    <div class="choice-type-container">
+      <select name="choice-type" id="choice-type">
+        <option selected>Radio Buttons</option>
+        <option>Smth else</option>
+      </select>
+    </div>
+    <label class="form__subscription-label">Choices</label>
+    <div class="form__radio-buttons">
+      <div class="form__radio-button">
+        <input type="radio" name="subscription" value="true" id="subscribe-radio">
+        <label for="subscribe-radio"><span class="form__radio-text">Subscribe</span></label>
+        <span class="clear-radio" data-for="subscribe-radio"></span>
+      </div>
+      <div class="form__radio-button">
+        <input type="radio" name="subscription" value="false" id="unsubscribe-radio">
+        <label for="unsubscribe-radio"><span class="form__radio-text">Unsubscribe</span></label>
+        <span class="clear-radio" data-for="unsubscribe-radio"></span>
+      </div>
+    </div>
+    <input type="checkbox" name="wrap" id="wrap" value="true">
+    <label for="wrap"><span>Wrap in paragraph tags?</span></label>
+    <input type="submit" value="Add to form">
+  </form>
+  <script src="clear-radio.js"></script>
+</body>
+</html>

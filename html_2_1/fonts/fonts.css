@@ -1,0 +1,38 @@
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: "Open Sans";
+
+  src: url("OpenSans-Regular.eot");
+  src: url("OpenSans-Regular.eot?#iefix") format("embedded-opentype"),
+  url("OpenSans-Regular.woff2") format("woff2"),
+  url("OpenSans-Regular.woff") format("woff"),
+  url("OpenSans-Regular.ttf") format("truetype"),
+  url("OpenSans-Regular.svg#OpenSans-Regular") format("svg");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: bold;
+  font-family: "Open Sans";
+
+  src: url("OpenSans-Bold.eot");
+  src: url("OpenSans-Bold.eot?#iefix") format("embedded-opentype"),
+  url("OpenSans-Bold.woff2") format("woff2"),
+  url("OpenSans-Bold.woff") format("woff"),
+  url("OpenSans-Bold.ttf") format("truetype"),
+  url("OpenSans-Bold.svg#OpenSans-Bold") format("svg");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 500;
+  font-family: "Sana Sans";
+
+  src: url("SanaSansAltW00-Medium.eot");
+  src: url("SanaSansAltW00-Medium.eot?#iefix") format("embedded-opentype"),
+  url("SanaSansAltW00-Medium.woff2") format("woff2"),
+  url("SanaSansAltW00-Medium.woff") format("woff"),
+  url("SanaSansAltW00-Medium.ttf") format("truetype"),
+  url("SanaSansAltW00-Medium.svg#SanaSansAltW00-Medium") format("svg");
+}
