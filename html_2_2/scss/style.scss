@@ -1,2 +1,12 @@
-@import "./layout/_layout.scss";
+@import "./layout/_header.scss";
 @import "./components/_icons.scss";
+@import "./layout/_button-areas.scss";
+@import "./components/_buttons.scss";
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+}

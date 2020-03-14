@@ -1,0 +1,26 @@
+.buttons-area {
+  margin: 1.3rem 1.7rem;
+  padding: 2.96rem 5rem;
+
+  background-color: #ffffff;
+  border: 0.2rem solid #efefef;
+
+  user-select: none;
+
+  &_dark {
+    margin-top: 1.7rem;
+
+    background-color: #333333;
+    border: 1px solid #929292;
+
+    & .buttons-row {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+  }
+}
+
+.buttons-row {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
