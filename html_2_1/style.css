@@ -6,11 +6,6 @@ body {
   font-size: 1.6rem;
 }
 
-input {
-  font-family: "Open Sans", sans-serif;
-  letter-spacing: 0.03em;
-}
-
 .form {
   position: relative;
 
@@ -69,38 +64,45 @@ input {
   word-spacing: 0.04em;
 }
 
-label[for="field-label"],
-label[for="choice-type"],
-.form__subscription-label {
+.form__label {
+  display: block;
   margin-top: 2rem;
   padding-bottom: 0.4rem;
 
   font-weight: bold;
   font-size: 0.8em;
+  font-family: "Open Sans", sans-serif;
   text-transform: capitalize;
+  letter-spacing: 0.03em;
+
+  cursor: pointer;
+
+  user-select: none;
 }
 
-label[for="field-label"] {
+.form__label_field-label {
   margin-top: 2rem;
   padding-bottom: 0.4rem;
 }
 
-input[type="text"] {
+.form__input {
   box-sizing: border-box;
   width: 100%;
   height: 2.7rem;
   padding: 0.2rem 0.5rem 0.4rem 0.5rem;
 
+  font-family: "Open Sans", sans-serif;
+
   border: 1px solid #dddddd;
   box-shadow: inset 0 0.5px 2px #dddddd;
 }
 
-label[for="choice-type"] {
+.form__label_choice-type {
   margin-top: 2.6rem;
   padding-bottom: 0.6rem;
 }
 
-select {
+.form__select {
   width: 12.6rem;
   height: 2.8rem;
   margin-top: -1px;
@@ -151,27 +153,28 @@ select {
   border: 0.1rem solid #eeeeee;
 }
 
-.form__radio-button {
+.radio-button {
   position: relative;
 
   display: flex;
   flex-wrap: nowrap;
 }
 
-.form__radio-buttons .form__radio-text {
+.radio-button__text {
   display: inline-block;
   width: 33.6rem;
   margin-bottom: 0.8rem;
   margin-left: 2.2rem;
   padding: 0.3rem 0.5rem;
 
+  text-transform: capitalize;
   letter-spacing: -0.01em;
 
   border: 0.1rem solid #dddddd;
   box-shadow: inset 0 0.5px 2px #dddddd;
 }
 
-.clear-radio::after {
+.radio-button__clear-button::after {
   content: "✖";
   position: absolute;
   right: 0;
@@ -185,21 +188,21 @@ select {
   opacity: 0.6;
 }
 
-input[type="radio"] + label {
+.radio-button__label {
   position: relative;
 
   flex-grow: 1;
   width: 100%;
 }
 
-input[type="radio"] {
+.radio-button__input {
   position: absolute;
   z-index: -1;
 
   opacity: 0;
 }
 
-input[type="radio"] + label::before {
+.radio-button__label::before {
   content: "";
   position: absolute;
   top: 0.4rem;
@@ -213,7 +216,7 @@ input[type="radio"] + label::before {
   border-radius: 50%;
 }
 
-input[type="radio"]:checked + label::after {
+.radio-button__input:checked + .radio-button__label::after {
   content: "";
   position: absolute;
   top: 0.9rem;
@@ -227,26 +230,27 @@ input[type="radio"]:checked + label::after {
   border-radius: 50%;
 }
 
-input[type="checkbox"] + label {
+.checkbox-label {
   position: relative;
 }
 
-input[type="checkbox"] + label span {
+.checkbox-label__text {
   margin-left: 2.2rem;
 
   font-size: 0.8em;
+  text-transform: capitalize;
   text-transform: none;
   letter-spacing: 0.01em;
 }
 
-input[type="checkbox"] {
+.form__checkbox {
   position: absolute;
   z-index: -1;
 
   opacity: 0;
 }
 
-input[type="checkbox"] + label::before {
+.form__checkbox + .checkbox-label::before {
   content: "";
   position: absolute;
   top: 0.1rem;
@@ -259,7 +263,7 @@ input[type="checkbox"] + label::before {
   border: 1px solid #b5b8bd;
 }
 
-input[type="checkbox"]:checked + label::after {
+.form__checkbox:checked + .checkbox-label::after {
   content: "✔";
   position: absolute;
   top: -0.1rem;
@@ -270,7 +274,7 @@ input[type="checkbox"]:checked + label::after {
   color: #1e8cbf;
 }
 
-input[type="submit"] {
+.form__submit {
   display: block;
   width: 9.5rem;
   height: 2.9rem;
@@ -279,22 +283,10 @@ input[type="submit"] {
   text-align: center;
   color: white;
   letter-spacing: -0.03em;
-  text-shadow: 0 0 1px #0170a5;
+  text-shadow: 0 0 2px #003953;
 
   background-color: #0084bc;
   border: 1px solid #0073aa;
   border-bottom: 2px solid #0073aa;
   border-radius: 0.4rem;
-}
-
-label {
-  display: block;
-
-  cursor: pointer;
-
-  user-select: none;
-}
-
-label > span {
-  text-transform: capitalize;
 }

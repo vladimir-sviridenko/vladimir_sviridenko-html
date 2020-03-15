@@ -1,4 +1,4 @@
-const ClearRadioButton = document.querySelectorAll(".clear-radio");
+const ClearRadioButton = document.querySelectorAll(".radio-button__clear-button");
 
 ClearRadioButton.forEach((button) => {
   button.onclick = (event) => {
