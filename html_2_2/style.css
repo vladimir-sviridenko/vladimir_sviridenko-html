@@ -1,8 +1,11 @@
 .header {
   position: relative;
+
   height: 40rem;
   overflow: hidden;
+
   background-color: #f7f7f7;
+
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -13,12 +16,14 @@
   position: absolute;
   top: 51%;
   left: 50%;
+
   display: inline-block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 59.4rem;
   height: 14.9rem;
   padding: 0.8rem;
+
   background-color: white;
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
@@ -30,20 +35,22 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 100%;
   margin: 0;
   padding-top: 1rem;
+
   font-size: 6rem;
   font-family: "PencilPete", serif;
   color: #808080;
   text-transform: capitalize;
+
   border: 0.4rem solid black;
   -webkit-box-shadow: inset 0 0 2px black, 0 0 2px black;
           box-shadow: inset 0 0 2px black, 0 0 2px black;
@@ -51,6 +58,7 @@
 
 .header__background {
   white-space: nowrap;
+
   -webkit-transform: rotate(-5deg) translateX(-134rem) translateY(-37rem);
           transform: rotate(-5deg) translateX(-134rem) translateY(-37rem);
 }
@@ -69,11 +77,84 @@
           transform: translateX(-1rem) translateY(13.8rem);
 }
 
-.icon, .icon-1-1, .icon-1-2, .icon-1-3, .icon-1-4, .icon-1-5, .icon-1-6, .icon-1-7, .icon-1-8, .icon-1-9, .icon-1-10, .icon-1-11, .icon-1-12, .icon-1-13, .icon-1-14, .icon-1-15, .icon-1-16, .icon-1-17, .icon-1-18, .icon-2-1, .icon-2-2, .icon-2-3, .icon-2-4, .icon-2-5, .icon-2-6, .icon-2-7, .icon-2-8, .icon-2-9, .icon-2-10, .icon-2-11, .icon-2-12, .icon-2-13, .icon-2-14, .icon-2-15, .icon-2-16, .icon-2-17, .icon-2-18, .icon-3-1, .icon-3-2, .icon-3-3, .icon-3-4, .icon-3-5, .icon-3-6, .icon-3-7, .icon-3-8, .icon-3-9, .icon-3-10, .icon-3-11, .icon-3-12, .icon-3-13, .icon-3-14, .icon-3-15, .icon-3-16, .icon-3-17, .icon-3-18, .icon-4-1, .icon-4-2, .icon-4-3, .icon-4-4, .icon-4-5, .icon-4-6, .icon-4-7, .icon-4-8, .icon-4-9, .icon-4-10, .icon-4-11, .icon-4-12, .icon-4-13, .icon-4-14, .icon-4-15, .icon-4-16, .icon-4-17, .icon-4-18 {
+.icon,
+.icon-1-1,
+.icon-1-2,
+.icon-1-3,
+.icon-1-4,
+.icon-1-5,
+.icon-1-6,
+.icon-1-7,
+.icon-1-8,
+.icon-1-9,
+.icon-1-10,
+.icon-1-11,
+.icon-1-12,
+.icon-1-13,
+.icon-1-14,
+.icon-1-15,
+.icon-1-16,
+.icon-1-17,
+.icon-1-18,
+.icon-2-1,
+.icon-2-2,
+.icon-2-3,
+.icon-2-4,
+.icon-2-5,
+.icon-2-6,
+.icon-2-7,
+.icon-2-8,
+.icon-2-9,
+.icon-2-10,
+.icon-2-11,
+.icon-2-12,
+.icon-2-13,
+.icon-2-14,
+.icon-2-15,
+.icon-2-16,
+.icon-2-17,
+.icon-2-18,
+.icon-3-1,
+.icon-3-2,
+.icon-3-3,
+.icon-3-4,
+.icon-3-5,
+.icon-3-6,
+.icon-3-7,
+.icon-3-8,
+.icon-3-9,
+.icon-3-10,
+.icon-3-11,
+.icon-3-12,
+.icon-3-13,
+.icon-3-14,
+.icon-3-15,
+.icon-3-16,
+.icon-3-17,
+.icon-3-18,
+.icon-4-1,
+.icon-4-2,
+.icon-4-3,
+.icon-4-4,
+.icon-4-5,
+.icon-4-6,
+.icon-4-7,
+.icon-4-8,
+.icon-4-9,
+.icon-4-10,
+.icon-4-11,
+.icon-4-12,
+.icon-4-13,
+.icon-4-14,
+.icon-4-15,
+.icon-4-16,
+.icon-4-17,
+.icon-4-18 {
   display: inline-block;
   width: 48px;
   height: 48px;
   margin: 1.56rem;
+
   background-image: url("./assets/img/icons.png");
   border: 2px solid white;
   border-radius: 1.2rem;
@@ -370,8 +451,10 @@
 .buttons-area {
   margin: 1.3rem 1.7rem;
   padding: 2.96rem 5rem;
+
   background-color: #ffffff;
   border: 0.2rem solid #efefef;
+
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -380,6 +463,7 @@
 
 .buttons-area_dark {
   margin-top: 1.7rem;
+
   background-color: #333333;
   border: 1px solid #929292;
 }
@@ -398,11 +482,13 @@
   display: inline-block;
   margin: 0.1rem;
   padding: 0.7rem 1.38rem;
+
   font-family: "Roboto", sans-serif;
   color: white;
   text-transform: capitalize;
   letter-spacing: 0.03em;
   text-shadow: -1px -1px 3px rgba(0, 0, 0, 0.3);
+
   border: none;
   border-radius: 5px;
 }
@@ -413,8 +499,10 @@
 
 .button_pink {
   padding: 0.5rem 1.3rem;
+
   font-weight: 500;
   font-size: 3.5rem;
+
   background: -webkit-gradient(linear, left top, left bottom, from(#e952a9), to(#e62295));
   background: linear-gradient(to bottom, #e952a9, #e62295);
   -webkit-box-shadow: inset 0 -1px 2px #b33d82, 0 2px 2px rgba(0, 0, 0, 0.5);
@@ -423,7 +511,9 @@
 
 .button_green {
   margin-left: -0.1rem;
+
   font-size: 1.5rem;
+
   background: -webkit-gradient(linear, left top, left bottom, from(#abcc46), to(#9fcb1a));
   background: linear-gradient(to bottom, #abcc46, #9fcb1a);
   -webkit-box-shadow: inset 0 -1px 2px #89aa23, 1px 2px 2px rgba(0, 0, 0, 0.5);
@@ -432,6 +522,7 @@
 
 .button_blue {
   font-size: 1.5rem;
+
   background: -webkit-gradient(linear, left top, right bottom, from(#569ae9), to(#3c8de7));
   background: linear-gradient(to bottom right, #569ae9, #3c8de7);
   -webkit-box-shadow: inset 0 -1px 2px #2479d9, 1px 2px 2px rgba(0, 0, 0, 0.5);
@@ -440,11 +531,13 @@
 
 .button_blue.button_dark {
   padding: 0.48rem 1.3rem;
+
   font-size: 1.2rem;
 }
 
 .button_red {
   font-size: 1.5rem;
+
   background: -webkit-gradient(linear, left top, left bottom, from(#eb5656), to(#ec4040));
   background: linear-gradient(to bottom, #eb5656, #ec4040);
   -webkit-box-shadow: inset 0 -1px 2px #dc2121, 1px 2px 2px rgba(0, 0, 0, 0.5);
@@ -454,11 +547,13 @@
 .button_red.button_dark {
   padding-right: 1.5rem;
   padding-left: 1.5rem;
+
   font-size: 1.4rem;
 }
 
 .button_orange {
   font-size: 1.5rem;
+
   background: -webkit-gradient(linear, left top, left bottom, from(#ff813c), to(#ff6f1e));
   background: linear-gradient(to bottom, #ff813c, #ff6f1e);
   -webkit-box-shadow: inset 0 -1px 2px #eb5300, 1px 2px 2px rgba(0, 0, 0, 0.5);
@@ -467,11 +562,13 @@
 
 .button_orange.button_dark {
   padding: 0.6rem 1.2rem;
+
   font-size: 1.1rem;
 }
 
 .button_yellow {
   font-size: 1.5rem;
+
   background: -webkit-gradient(linear, left top, left bottom, from(#ffc54c), to(#ffbe33));
   background: linear-gradient(to bottom, #ffc54c, #ffbe33);
   -webkit-box-shadow: inset 0 -1px 2px #eba611, 1px 2px 2px rgba(0, 0, 0, 0.5);
@@ -480,6 +577,7 @@
 
 .button_yellow.button_dark {
   padding: 0.6rem 0.7em;
+
   font-size: 1.3rem;
 }
 
