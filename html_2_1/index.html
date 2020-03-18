@@ -27,18 +27,22 @@
     <label class="form__label">Choices</label>
     <div class="form__radio-buttons">
       <div class="radio-button">
-        <input class="radio-button__input" type="radio" name="subscription" value="true" id="subscribe-radio">
-        <label class="radio-button__label" for="subscribe-radio">
+        <input class="radio-button__input" type="radio" name="subscription" value="true" id="subscribe">
+        <label class="radio-button__label" for="subscribe">
           <span class="radio-button__text">Subscribe</span>
         </label>
-        <span class="radio-button__clear-button" data-for="subscribe-radio"></span>
+        <label class="radio-button__clear-label">
+          <input type="radio" class="radio-button__clear-button" value="undefined" name="subscription">
+        </label>
       </div>
       <div class="radio-button">
-        <input class="radio-button__input" type="radio" name="subscription" value="false" id="unsubscribe-radio">
-        <label class="radio-button__label" for="unsubscribe-radio">
+        <input class="radio-button__input" type="radio" name="subscription" value="false" id="unsubscribe">
+        <label class="radio-button__label" for="unsubscribe">
           <span class="radio-button__text">Unsubscribe</span>
         </label>
-        <span class="radio-button__clear-button" data-for="unsubscribe-radio"></span>
+        <label class="radio-button__clear-label">
+          <input type="radio" class="radio-button__clear-button" value="undefined" name="subscription">
+        </label>
       </div>
     </div>
 
