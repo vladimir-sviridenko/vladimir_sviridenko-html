@@ -1,16 +1,17 @@
 .button {
-
   display: inline-block;
-  text-transform: uppercase;
-  padding: 2rem 3.6rem 1.6rem 3.6rem;
   box-sizing: border-box;
+  padding: 1.7rem 3.6rem 1.3rem 3.6rem;
+
+  font-weight: bold;
+  font-size: $font-size-button;
+  line-height: $font-size-button;
+  color: lighten($text-color-default, $title-lighten);
+  text-transform: uppercase;
+  text-decoration: none;
+
   border: 3px solid lighten($text-color-default, $title-lighten);
   border-radius: 40rem;
-  font-size: $font-size-button;
-  text-decoration: none;
-  line-height: $font-size-button;
-  font-weight: bold;
-  color: lighten($text-color-default, $title-lighten);
 
   &_send {
   }

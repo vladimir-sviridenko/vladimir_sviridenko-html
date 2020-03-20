@@ -18,7 +18,19 @@
         url('BwSurco-Medium.woff') format('woff'),
         url('BwSurco-Medium.ttf') format('truetype'),
         url('BwSurco-Medium.svg#BwSurco-Medium') format('svg');
-    font-weight: bold;
+    font-weight: 500;
     font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bw Surco';
+  src: url('BwSurco-Bold.eot');
+  src: url('BwSurco-Bold.eot?#iefix') format('embedded-opentype'),
+      url('BwSurco-Bold.woff2') format('woff2'),
+      url('BwSurco-Bold.woff') format('woff'),
+      url('BwSurco-Bold.ttf') format('truetype'),
+      url('BwSurco-Bold.svg#BwSurco-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
 }
 

@@ -13,33 +13,38 @@
 <body>
   <header class="header">
     <div class="header__wrapper">
-      <h1 class="header__logo">Stimulus</h1>
-      <div class="header__image"></div>
-      <div class="menu header__menu">
-        <input class="menu__burger-switcher" id="burger-switcher" type="checkbox">
-        <label class="menu__burger-label menu__burger-label_open header__burger-label" for="burger-switcher"></label>
-        <nav class="menu__navigation">
-          <label class="menu__burger-label menu__burger-label_close header__burger-label" for="burger-switcher"></label>
-          <div class="menu__links">
-            <a class="menu__link" href="#">Home</a>
-            <a class="menu__link" href="#about">About me</a>
-            <a class="menu__link" href="#experiences">Experiences</a>
-            <a class="menu__link" href="#testimonial">Testimonial</a>
-            <a class="menu__link" href="#contact">Contact</a>
-          </div>
-        </nav>
+      <div class="header__image-container">
+        <h1 class="header__logo">Stimulus</h1>
+        <img class="header__image" src="./images/home-img.jpg" alt="Home">
       </div>
-      <section class="header__preview">
-        <h3 class="header__sup-title">Welcome to my website</h3>
-        <h1 class="header__title">
-          Hello, I am <strong>Stimulus</strong> currently based in New York city.
-        </h1>
-        <p class="header__text">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla
-          urna,
-          eget mattis magna vestibulum ut. Praesent nec dolor at mauris maximus rhoncus.
-        </p>
-        <a class="button button_get-started header__button" href="#get-started">Get Started</a>
-      </section>
+      <div class="header__main">
+        <div class="menu header__menu">
+          <input class="menu__burger-switcher" id="burger-switcher" type="checkbox">
+          <label class="menu__burger-label menu__burger-label_open header__burger-label" for="burger-switcher"></label>
+          <div class="menu__navigation">
+            <label class="menu__burger-label menu__burger-label_close header__burger-label" for="burger-switcher"></label>
+            <nav class="menu__links">
+              <a class="menu__link" href="#">Home</a>
+              <a class="menu__link" href="#about">About me</a>
+              <a class="menu__link" href="#experiences">Experiences</a>
+              <a class="menu__link" href="#testimonial">Testimonial</a>
+              <a class="menu__link" href="#contact">Contact</a>
+            </nav>
+          </div>
+        </div>
+        <section class="header__preview">
+          <h3 class="header__sup-title">Welcome to my website</h3>
+          <h1 class="header__title">
+            Hello, I am
+            <strong class="header__title-logo">Stimulus</strong>
+            currently based in New York city.
+          </h1>
+          <p class="header__text">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla urna,
+            eget mattis magna vestibulum ut. Praesent nec dolor at mauris maximus rhoncus. Sed laoreet posuere accumsan.
+          </p>
+          <a class="button button_get-started header__button" href="#get-started">Get Started</a>
+        </section>
+      </div>
     </div>
   </header>
 

@@ -1,7 +1,7 @@
 /*Colors*/
 $text-color-default: black;
 $title-lighten: 14%;
-$text-lighten: 40%;
+$text-lighten: 60%;
 $text-color-primary: white;
 $text-color-alt: #e4ae58;
 $bg-color-header: #f0e2d7;
@@ -12,15 +12,16 @@ $bg-color-secondary: #e9714c;
 $bg-color-tertiary: black;
 /*Breakpoints*/
 $breakpoints: (
-  small: 576px,
-  mobile: 740px,
-  tablet: 11010px,
-  desktop: 1480px
+  tablet: 740px,
+  desktop: 1010px,
+  large-desktop: 1480px
 );
 /*Font*/
 $font-family-primary: "Bw Surco", sans-serif;
-$font-size-sup-title: 12px;
+$font-size-sup-title: 11px;
 $font-size-button: 12px;
-$font-size-navigation: 14px;
+$font-size-navigation: 12px;
 $font-size-text: 16px;
 $font-size-title: 32px;
+$line-height-title: $font-size-title + 10px;
+$line-height-text: $font-size-text + 14px;

@@ -1,20 +1,29 @@
 @import "./base/normalize";
 @import "./abstract/variables";
-/*  components  */
+/*Components*/
 @import "./components/header";
 @import "./components/menu";
 @import "./components/button";
 
 html {
-  scroll-behavior: smooth;
   font-size: 5px;
+
+  scroll-behavior: smooth;
+
+  @media screen and (min-width: map-get($breakpoints, tablet)) {
+    font-size: 10px;
+  }
 }
 
 body {
   margin: 0;
 
-  font-family: $font-family-primary;
   font-size: 3.2rem;
+  font-family: $font-family-primary;
 
   background-color: $bg-color-default;
+
+  @media screen and (min-width: map-get($breakpoints, tablet)) {
+    font-size: 1.6rem;
+  }
 }
