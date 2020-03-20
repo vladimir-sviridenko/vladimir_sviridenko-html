@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Bw Surco';
+    src: url('BwSurco-Book.eot');
+    src: url('BwSurco-Book.eot?#iefix') format('embedded-opentype'),
+        url('BwSurco-Book.woff2') format('woff2'),
+        url('BwSurco-Book.woff') format('woff'),
+        url('BwSurco-Book.ttf') format('truetype'),
+        url('BwSurco-Book.svg#BwSurco-Book') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bw Surco';
+    src: url('BwSurco-Medium.eot');
+    src: url('BwSurco-Medium.eot?#iefix') format('embedded-opentype'),
+        url('BwSurco-Medium.woff2') format('woff2'),
+        url('BwSurco-Medium.woff') format('woff'),
+        url('BwSurco-Medium.ttf') format('truetype'),
+        url('BwSurco-Medium.svg#BwSurco-Medium') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+

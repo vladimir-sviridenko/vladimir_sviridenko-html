@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stimulus</title>
+  <script src="https://kit.fontawesome.com/972d4f67e7.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./fonts/fonts.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__wrapper">
+      <h1 class="header__logo">Stimulus</h1>
+      <div class="header__image"></div>
+      <div class="menu header__menu">
+        <input class="menu__burger-switcher" id="burger-switcher" type="checkbox">
+        <label class="menu__burger-label menu__burger-label_open header__burger-label" for="burger-switcher"></label>
+        <nav class="menu__navigation">
+          <label class="menu__burger-label menu__burger-label_close header__burger-label" for="burger-switcher"></label>
+          <div class="menu__links">
+            <a class="menu__link" href="#">Home</a>
+            <a class="menu__link" href="#about">About me</a>
+            <a class="menu__link" href="#experiences">Experiences</a>
+            <a class="menu__link" href="#testimonial">Testimonial</a>
+            <a class="menu__link" href="#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
+      <section class="header__preview">
+        <h3 class="header__sup-title">Welcome to my website</h3>
+        <h1 class="header__title">
+          Hello, I am <strong>Stimulus</strong> currently based in New York city.
+        </h1>
+        <p class="header__text">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla
+          urna,
+          eget mattis magna vestibulum ut. Praesent nec dolor at mauris maximus rhoncus.
+        </p>
+        <a class="button button_get-started header__button" href="#get-started">Get Started</a>
+      </section>
+    </div>
+  </header>
+
+  <main class="main" id="get-started">
+
+    <section class="about" id="about">
+      <section class="about__header">
+        <h2 class="about__title">Donec abuctor</h2>
+        <p class="about__text about__text_color_alt">Sed vulputte vitae dim quis bidendum</p>
+        <p class="about__text">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla urna,
+          eget mattis magna vestibulum ut. Praesent nec dolor at mauris maximus rhoncus.
+        </p>
+        <p class="about__text">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla urna,
+          eget mattis magna vestibulum ut. Praesent nec dolor at mauris maximus rhoncus.
+        </p>
+      </section>
+      <div class="skills about__skills">
+        <div class="skills__image"></div>
+        <section class="skills__header skills__header_primary">
+          <h2 class="skills__title">My Skills</h2>
+          <p class="skills__text">Photoshop . HTML CSS JS . Web design
+          </p>
+          <div class="skills__progress">
+            <div class="progress-bar skills__progress-bar">
+              <div class="progress-bar__title">Fronend design</div>
+              <div class="progress-bar__percents">90%</div>
+            </div>
+            <div class="progress-bar skills__progress-bar">
+              <div class="progress-bar__title">Backend processing</div>
+              <div class="progress-bar__percents">70%</div>
+            </div>
+            <div class="progress-bar skills__progress-bar">
+              <div class="progress-bar__title">HTML & CSS3</div>
+              <div class="progress-bar__percents"></div>
+            </div>
+          </div>
+        </section>
+        <div class="skills__boxes">
+          <section class="skill-box skill-box_color_primary">
+            <div class="skill-box__icon"></div>
+            <h2 class="skill-box__title">Interface design</h2>
+            <p class="skill-box__text">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
+          </section>
+          <section class="skill-box skill-box_color_secondary">
+            <div class="skill-box__icon"></div>
+            <h2 class="skill-box__title">Media strategy</h2>
+            <p class="skill-box__text">Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.</p>
+          </section>
+          <section class="skill-box skill-box_color_tertiary">
+            <div class="skill-box__icon"></div>
+            <h2 class="skill-box__title">Mobile app</h2>
+            <p class="skill-box__text">Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros.</p>
+          </section>
+          <section class="skill-box">
+            <div class="skill-box__icon"></div>
+            <h2 class="skill-box__title">Coding</h2>
+            <p class="skill-box__text">Cras elementum et massa dapibus vulputate. Donec quis facilisis elit.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-list features-list_experiences features-list_color_secondary" id="experiences">
+      <div class="features-list__image"></div>
+      <section class="features-list__header">
+        <h2 class="features-list__title">My experiences</h2>
+        <p class="features-list__text">Previous companies and my tasks</p>
+        <ul class="features-list__features">
+          <li class="features-list__item">
+            <div class="features-list__item-icon"></div>
+            <h3 class="features-list__item-title">
+              Graphic Designer
+              <span class="features-list__item-time features-list__item-time_color_secondary">
+                2014 Jul - 2015 Sep
+              </span>
+            </h3>
+            <p class="features-list__item-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </li>
+          <li class="features-list__item">
+            <div class="features-list__item-icon"></div>
+            <h3 class="features-list__item-title">
+              Web Designer
+              <span class="features-list__item-time features-list__item-time_color_secondary">
+                2015 Oct - 2017 Jan
+              </span>
+            </h3>
+            <p class="features-list__item-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="features-list features-list_education features-list_color_primary" id="eduction">
+      <div class="features-list__image"></div>
+      <section class="features-list__header">
+        <h2 class="features-list__title">My education</h2>
+        <p class="features-list__text">In cursus orci non ipsum gravida dignissim</p>
+        <ul class="features-list__features">
+          <li class="features-list__item">
+            <div class="features-list__item-icon"></div>
+            <h3 class="features-list__item-title">
+              Master in Design
+              <span class="features-list__item-time features-list__item-time_color_primary">
+                2012 Jan - 2014 May
+              </span>
+            </h3>
+            <p class="features-list__item-text">Etiam semper, ante malesuada maximus suscipit,
+              lorem nunc consectetur elit, ut ultrices lectus neque eget nulla.
+              Vestibulum varius vel elit eu semper.
+            </p>
+          </li>
+          <li class="features-list__item">
+            <div class="features-list__item-icon"></div>
+            <h3 class="features-list__item-title">Graphic designer
+              <span class="features-list__item-time features-list__item-time_color_primary">
+                2008 May - 2011 Dec
+              </span>
+            </h3>
+            <p class="features-list__item-text">Etiam semper, ante malesuada maximus suscipit,
+              lorem nunc consectetur elit, ut ultrices lectus neque eget nulla.
+              Vestibulum varius vel elit eu semper.
+            </p>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="slogan">
+      <div class="slogan__icon"></div>
+      <h2 class="slogan__title">Etiam semper, ante malesuada maximus suscipit, lorem nunc consectetur elit,
+        ut ultrices lectus neque eget nulla. Vestibulum varius vel elit eu semper. Sed vitae erat erat.
+      </h2>
+      <p class="slogan__text">Etiam semper, ante malesuada maximus suscipit,
+        lorem nunc consectetur elit, ut ultrices lectus neque eget nulla.
+      </p>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact__say-hello">
+        <section class="say-hello say-hello_color_secondory">
+          <h2 class="say-hello__title">Say hello...</h2>
+          <p class="say-hello__text">
+            Etiam semper, ante malesuada maximus suscipit, lorem nunc consectetur elit.
+          </p>
+          <form class="say-hello__form">
+            <input class="say-hello__input" type="text" name="name" placeholder="Your name" required>
+            <input class="say-hello__input" type="email" name="email" placeholder="Your email" required>
+            <textarea class="say-hello__textarea" name="message" placeholder="Write your message..."
+              required></textarea>
+            <button class="button button_send say-hello__button">Send</button>
+          </form>
+        </section>
+      </div>
+      <div class="contact__image"></div>
+      <div class="contact__visit-office">
+        <section class="visit-office">
+          <h2 class="visit-office__title">Visit my office</h2>
+          <p class="visit-office__address"></p>
+          <ul class="contact-list visit-office__contact-list">
+            <li class="contact-list__item">
+              <span class="contact-list__phone-icon"></span>
+              <span class="contact-list__text">01-0110-0220</span>
+            </li>
+            <li class="contact-list__item">
+              <span class="contact-list__email-icon"></span>
+              <span class="contact-list__text contact-list__text_color_alt">hello@company.co</span>
+            </li>
+            <li class="contact-list__item">
+              <span class="contact-list__website-icon"></span>
+              <span class="contact-list__text contact-list__text_color_alt">company.co</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">Copyright © 2016 your company | design:
+      <span class="footer__text_alt">
+        templatemo
+      </span>
+    </p>
+    <div class="socials footer__socials">
+      <a class="socials__social-link" href="https://facebook.com">
+        <span class="socials__facebook-icon"></span>
+      </a>
+      <a class="socials__social-link" href="https://twitter.com.com">
+        <span class="socials__twitter-icon"></span>
+      </a>
+      <a class="socials__social-link" href="https://plus.google.com/">
+        <span class="socials__google-icon"></span>
+      </a>
+      <a class="socials__social-link" href="https://dribbble.com/">
+        <span class="socials__dribble-icon"></span>
+      </a>
+      <a class="socials__social-link" href="https://www.linkedin.com/">
+        <span class="socials__linkedin-icon"></span>
+      </a>
+    </div>
+  </footer>
+</body>
+
+</html>

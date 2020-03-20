@@ -1,0 +1,61 @@
+.header {
+  background-color: rgba($bg-color-header, 0.6);
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  &__logo {
+    display: none;
+  }
+
+  &__image {
+    position: absolute;
+    background-position: center center;
+    background-image: url("../../images/home-img.jpg");
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: 2;
+  }
+
+  &__burger-label {
+    top: 10px;
+    right: 10px;
+  }
+
+  &__preview {
+    align-self: center;
+    padding: 4.8rem;
+  }
+
+  &__sup-title {
+    font-size: $font-size-sup-title;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    color: lighten($text-color-default, $text-lighten);
+  }
+
+  &__title {
+    margin-top: 3.3rem;
+    font-size: $font-size-title;
+    color: lighten($text-color-default, $title-lighten);
+    font-weight: 400;
+  }
+
+  &__text {
+    margin-bottom: 6rem;
+    font-size: $font-size-text;
+    color: lighten($text-color-default, $text-lighten);
+  }
+
+  &__button {
+  }
+}

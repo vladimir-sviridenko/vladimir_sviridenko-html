@@ -1,0 +1,20 @@
+@import "./base/normalize";
+@import "./abstract/variables";
+/*  components  */
+@import "./components/header";
+@import "./components/menu";
+@import "./components/button";
+
+html {
+  scroll-behavior: smooth;
+  font-size: 5px;
+}
+
+body {
+  margin: 0;
+
+  font-family: $font-family-primary;
+  font-size: 3.2rem;
+
+  background-color: $bg-color-default;
+}
