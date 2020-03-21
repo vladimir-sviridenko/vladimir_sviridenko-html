@@ -15,24 +15,18 @@
 
   &__logo {
     display: none;
-    @media screen and (min-width: map-get($breakpoints, desktop)) {
-
-    }
   }
 
   &__image-container {
     position: absolute;
     z-index: -1;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
     height: 100%;
+    width: 100%;
     overflow: hidden;
 
     @media screen and (min-width: map-get($breakpoints, desktop)) {
-      position: static;
+      position: relative;
       z-index: 2;
 
       flex: 1 0 35%;
@@ -44,8 +38,8 @@
   }
 
   &__image {
-    display: block;
-    min-height: 100%;
+    @include -ie-object-fit;
+    @include -object-fit;
   }
 
   &__main {
@@ -81,21 +75,18 @@
 
   &__sup-title {
     margin-bottom: 2.9rem;
-    letter-spacing: 0.08em;
-    word-spacing: 0.1em;
 
     font-size: $font-size-sup-title;
     color: lighten($text-color-default, $text-lighten);
     text-transform: uppercase;
+    letter-spacing: 0.08em;
+    word-spacing: 0.1em;
   }
 
   &__title {
     margin-top: 0;
 
-    font-weight: 400;
-    font-size: $font-size-title;
-    line-height: $line-height-title;
-    color: lighten($text-color-default, $title-lighten);
+    @include title-typography ;
   }
 
   &__title-logo {
@@ -105,9 +96,10 @@
   &__text {
     margin-bottom: 6rem;
 
-    font-weight: 400;
-    font-size: $font-size-text;
-    line-height: $line-height-text;
-    color: lighten($text-color-default, $text-lighten);
+    @include text-typography;
+
+    @media screen and (max-width: map-get($breakpoints, desktop)) {
+      color: lighten($text-color-default, 30%);
+    }
   }
 }

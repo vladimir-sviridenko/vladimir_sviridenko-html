@@ -1,8 +1,11 @@
 @import "./base/normalize";
+/*Abstract*/
 @import "./abstract/variables";
+@import "./abstract/mixins";
 /*Components*/
 @import "./components/header";
-@import "./components/menu";
+@import "./components/menu/menu";
+@import "./components/about/about";
 @import "./components/button";
 
 html {

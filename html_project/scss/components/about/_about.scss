@@ -1,0 +1,27 @@
+@import "components/skill-box";
+@import "components/skills";
+@import "components/progress-bar";
+
+.about {
+
+  &__header {
+    padding: 3.2rem;
+  }
+
+  &__title {
+    @include title-typography;
+
+    margin-top: 0;
+  }
+
+  &__text {
+    @include text-typography;
+
+    &_alt {
+      color: $text-color-alt;
+    }
+  }
+
+  &__skills {
+  }
+}

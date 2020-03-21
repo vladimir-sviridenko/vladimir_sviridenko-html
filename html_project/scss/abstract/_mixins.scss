@@ -1,0 +1,38 @@
+/*Typography*/
+@mixin title-typography {
+  font-family: $font-family-primary;
+  font-size: $font-size-title;
+  font-weight: 400;
+  color: lighten($text-color-default, $title-lighten);
+  line-height: $line-height-title;
+}
+
+@mixin text-typography {
+  font-family: $font-family-primary;
+  font-size: $font-size-text;
+  font-weight: 400;
+  color: lighten($text-color-default, $text-lighten);
+  line-height: $line-height-text;
+}
+
+/*object-fit for ie*/
+@mixin -ie-object-fit {
+  @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+@mixin -object-fit {
+  @supports not (-ms-object-fit: none) {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+}
