@@ -367,6 +367,18 @@ template {
   display: none;
 }
 
+@media screen and (min-width: 1010px) {
+  .header__logo {
+    position: absolute;
+    left: 20%;
+    top: 20px;
+    text-shadow: 0.5px 0.5px 0 white;
+    font-size: 18px;
+    display: block;
+    color: #242424;
+  }
+}
+
 .header__image-container {
   position: absolute;
   z-index: -1;
