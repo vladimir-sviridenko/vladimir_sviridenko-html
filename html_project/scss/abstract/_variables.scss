@@ -13,16 +13,19 @@ $bg-color-tertiary: black;
 /*Breakpoints*/
 $breakpoints: (
   tablet: 740px,
-  desktop: 1010px,
-  large-desktop: 1480px
+  desktop: 1110px,
+  large-desktop: 1480px,
+  extra-large-desktop: 2100px
 );
 /*Font*/
 $font-family-primary: "Bw Surco", sans-serif;
-$font-size-sup-title: 11px;
-$font-size-button: 12px;
-$font-size-navigation: 12px;
-$font-size-logo: 18px;
-$font-size-text: 16px;
-$font-size-title: 32px;
-$line-height-title: $font-size-title + 10px;
-$line-height-text: $font-size-text + 14px;
+$font-family-icons: "FontAwesome";
+$font-size-sup-title: 1.1em;
+$font-size-button: 1.2em;
+$font-size-navigation: 1.2em;
+$font-size-progress-bar: 1.2em;
+$font-size-logo: 1.8em;
+$font-size-text: 1.6em;
+$font-size-title: 3.2em;
+$line-height-title: calc(1em + 6px);
+$line-height-text: calc(1em + 15px);

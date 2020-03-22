@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stimulus</title>
-  <script src="https://kit.fontawesome.com/972d4f67e7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./fonts/fonts.css">
 </head>
@@ -22,7 +21,8 @@
           <input class="menu__burger-switcher" id="burger-switcher" type="checkbox">
           <label class="menu__burger-label menu__burger-label_open header__burger-label" for="burger-switcher"></label>
           <div class="menu__navigation">
-            <label class="menu__burger-label menu__burger-label_close header__burger-label" for="burger-switcher"></label>
+            <label class="menu__burger-label menu__burger-label_close header__burger-label"
+              for="burger-switcher"></label>
             <nav class="menu__links">
               <a class="menu__link" href="#">Home</a>
               <a class="menu__link" href="#about">About me</a>
@@ -39,7 +39,8 @@
             <strong class="header__title-logo">Stimulus</strong>
             currently based in New York city.
           </h1>
-          <p class="header__text">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla urna,
+          <p class="header__text">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla
+            urna,
             eget mattis magna vestibulum ut. Praesent nec dolor at mauris maximus rhoncus. Sed laoreet posuere accumsan.
           </p>
           <a class="button button_get-started header__button" href="#get-started">Get Started</a>
@@ -51,64 +52,82 @@
   <main class="main" id="get-started">
 
     <section class="about" id="about">
-      <section class="about__header">
-        <h2 class="about__title">Donec abuctor</h2>
+      <section class="about__box about__box_header">
+        <h2 class="about__title about__title_dark">Donec abuctor</h2>
         <p class="about__text about__text_alt">Sed vulputte vitae dim quis bidendum</p>
-        <p class="about__text">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla urna,
+        <p class="about__text about__text_dark">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla urna,
           eget mattis magna vestibulum ut. Praesent nec dolor at mauris maximus rhoncus.
         </p>
-        <p class="about__text">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla urna,
+        <p class="about__text about__text_dark">Donec cursus gravida massa, vel aliquet urna porttitor sed. Donec condimentum nulla urna,
           eget mattis magna vestibulum ut. Praesent nec dolor at mauris maximus rhoncus.
         </p>
       </section>
-      <div class="skills about__skills">
-        <div class="skills__image"></div>
-        <section class="skills__header skills__header_primary">
-          <h2 class="skills__title">My Skills</h2>
-          <p class="skills__text">Photoshop . HTML CSS JS . Web design
-          </p>
-          <div class="skills__progress">
-            <div class="progress-bar skills__progress-bar">
-              <div class="progress-bar__title">Fronend design</div>
-              <div class="progress-bar__percents">90%</div>
-            </div>
-            <div class="progress-bar skills__progress-bar">
-              <div class="progress-bar__title">Backend processing</div>
-              <div class="progress-bar__percents">70%</div>
-            </div>
-            <div class="progress-bar skills__progress-bar">
-              <div class="progress-bar__title">HTML & CSS3</div>
-              <div class="progress-bar__percents"></div>
-            </div>
+      <section class="about__box about__box_image-container">
+        <img class="about__image" src="./images/about-img.jpg" alt="Skills">
+      </section>
+      <section class="about__box about__box_skills about__box_color_primary">
+        <h2 class="about__title">My Skills</h2>
+        <p class="about__text">Photoshop . HTML CSS JS . Web design
+        </p>
+        <div class="about__progress">
+          <div class="progress-bar about__progress-bar">
+            <div class="progress-bar__title progress-bar__title_frontend">Fronend design</div>
+            <div class="progress-bar__percents">90%</div>
+          </div>
+          <div class="progress-bar about__progress-bar">
+            <div class="progress-bar__title progress-bar__title_backend">Backend processing</div>
+            <div class="progress-bar__percents">70%</div>
+          </div>
+          <div class="progress-bar about__progress-bar">
+            <div class="progress-bar__title progress-bar__title_html">HTML & CSS3</div>
+            <div class="progress-bar__percents">80%</div>
+          </div>
+        </div>
+      </section>
+      <div class="about__skill-boxes">
+        <section class="about__box about__box_centered about__box_color_primary">
+          <div class="about__box-wrapper">
+            <div class="about__icon about__icon_desktop"></div>
+            <h2 class="about__skill-title">Interface design</h2>
+            <p class="about__skill-text">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
+              Vestibulum varius vel elit eu semper. Sed vitae erat erat.
+            </p>
           </div>
         </section>
-        <div class="skills__boxes">
-          <section class="skill-box skill-box_primary">
-            <div class="skill-box__icon"></div>
-            <h2 class="skill-box__title">Interface design</h2>
-            <p class="skill-box__text">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
-          </section>
-          <section class="skill-box skill-box_secondary">
-            <div class="skill-box__icon"></div>
-            <h2 class="skill-box__title">Media strategy</h2>
-            <p class="skill-box__text">Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.</p>
-          </section>
-          <section class="skill-box skill-box_tertiary">
-            <div class="skill-box__icon"></div>
-            <h2 class="skill-box__title">Mobile app</h2>
-            <p class="skill-box__text">Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros.</p>
-          </section>
-          <section class="skill-box">
-            <div class="skill-box__icon"></div>
-            <h2 class="skill-box__title">Coding</h2>
-            <p class="skill-box__text">Cras elementum et massa dapibus vulputate. Donec quis facilisis elit.</p>
-          </section>
-        </div>
+        <section class="about__box about__box_centered about__box_color_secondary">
+          <div class="about__box-wrapper">
+            <div class="about__icon about__icon_plane"></div>
+            <h2 class="about__skill-title">Media strategy</h2>
+            <p class="about__skill-text">Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Vestibulum varius vel elit eu semper.
+              Sed vitae erat erat.
+            </p>
+          </div>
+        </section>
+        <section class="about__box about__box_centered about__box_color_tertiary">
+          <div class="about__box-wrapper">
+            <div class="about__icon about__icon_tablet"></div>
+            <h2 class="about__skill-title">Mobile app</h2>
+            <p class="about__skill-text">Aenean ut eros et nisl sagittis vestibulum. Vestibulum varius vel elit eu semper.
+              Sed vitae erat erat. Nullam nulla eros.
+            </p>
+          </div>
+        </section>
+        <section class="about__box about__box_centered">
+          <div class="about__box-wrapper">
+            <div class="about__icon about__icon_html5 about__icon_dark"></div>
+            <h2 class="about__skill-title about__skill-title_dark">Coding</h2>
+            <p class="about__skill-text about__skill-text_dark">
+              Cras elementum et massa dapibus vulputate. Vestibulum varius vel elit eu semper. Donec quis facilisis elit.
+            </p>
+          </div>
+        </section>
       </div>
     </section>
 
     <section class="features-list features-list_experiences features-list_color_secondary" id="experiences">
-      <div class="features-list__image"></div>
+      <div class="features-list__image-container">
+        <img class="features-list__image" src="./images/experience-img.jpg" alt="Big experience photo">
+      </div>
       <section class="features-list__header">
         <h2 class="features-list__title">My experiences</h2>
         <p class="features-list__text">Previous companies and my tasks</p>

@@ -5,7 +5,9 @@
 /*Components*/
 @import "./components/header";
 @import "./components/menu/menu";
-@import "./components/about/about";
+@import "./components/progress-bar";
+@import "./components/about";
+@import "./components/features-list";
 @import "./components/button";
 
 html {
@@ -21,12 +23,6 @@ html {
 body {
   margin: 0;
 
-  font-size: 3.2rem;
+  font-size: 10px;
   font-family: $font-family-primary;
-
-  background-color: $bg-color-default;
-
-  @media screen and (min-width: map-get($breakpoints, tablet)) {
-    font-size: 1.6rem;
-  }
 }

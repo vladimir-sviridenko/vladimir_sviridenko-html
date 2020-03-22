@@ -1,0 +1,219 @@
+.about {
+  display: flex;
+  flex-flow: row wrap;
+
+  &__box {
+    flex-grow: 1;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 4.4rem 3.2rem;
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      width: 25%;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, large-desktop)) {
+      min-height: 50vh;
+    }
+
+    &_header {
+      @media screen and (min-width: map-get($breakpoints, tablet)) {
+        width: 100%;
+      }
+
+      @media screen and (min-width: map-get($breakpoints, desktop)) {
+        width: 50%;
+      }
+    }
+
+    &_image-container {
+      position: relative;
+
+      padding: 0;
+      overflow: hidden;
+
+      @media screen and (min-width: map-get($breakpoints, desktop)) {
+        width: 25%;
+      }
+    }
+
+    &_skills {
+      padding: 44px 3.2rem;
+
+      @media screen and (min-width: map-get($breakpoints, desktop)) {
+        width: 25%;
+      }
+    }
+
+    &_centered {
+      padding: 5vh 8vw;
+
+      text-align: center;
+
+      &:nth-of-type(2) {
+        order: 1;
+      }
+
+      @media screen and (orientation: landscape) {
+        padding: 10vh 10vw;
+      }
+
+      @media screen and (min-width: map-get($breakpoints, tablet)) {
+        padding: 6vh 4vw;
+      }
+
+      @media screen and (min-width: map-get($breakpoints, desktop)) {
+        font-size: 0.8em;
+        padding: 4vh 20px;
+
+        &:nth-of-type(2) {
+          order: 0;
+        }
+      }
+
+      @media screen and (min-width: map-get($breakpoints, large-desktop)) {
+        font-size: 1em;
+        min-height: 50vh;
+        padding: 8vh 2vw;
+      }
+    }
+
+    &_color {
+      &_primary {
+        color: $text-color-primary;
+
+        background-color: $bg-color-primary;
+      }
+
+      &_secondary {
+        color: $text-color-primary;
+
+        background-color: $bg-color-secondary;
+      }
+
+      &_tertiary {
+        color: $text-color-primary;
+
+        background-color: $bg-color-tertiary;
+      }
+    }
+  }
+
+  &__skill-boxes {
+    display: flex;
+    flex-flow: column-reverse wrap;
+    width: 100%;
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      flex-flow: row wrap-reverse;
+    }
+  }
+
+  &__image {
+    @include object-fit(80%, 50%);
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      @include object-fit(65%, 50%);
+    }
+
+    @media screen and (min-width: map-get($breakpoints, large-desktop)) {
+      @include object-fit(70%, 50%);
+    }
+
+    @media screen and (min-width: map-get($breakpoints, extra-large-desktop)) {
+      @include object-fit(50%, 50%);
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    color: inherit;
+
+    @include title-typography;
+
+    &_dark {
+      color: lighten($text-color-default, $title-lighten);
+    }
+  }
+
+  &__skill-title {
+    margin-top: 3.8rem;
+
+    font-weight: 400;
+    font-size: $font-size-title - 0.1em;
+
+    &_dark {
+      color: lighten($text-color-default, $title-lighten);
+    }
+  }
+
+  &__text {
+    margin-top: 2rem;
+    margin-bottom: 1.6rem;
+
+    color: inherit;
+
+    @include text-typography;
+
+    &_alt {
+      margin-top: 1.6rem;
+      margin-bottom: 3rem;
+
+      color: $text-color-alt;
+    }
+
+    &_dark {
+      color: lighten($text-color-default, $text-lighten);
+    }
+  }
+
+  &__skill-text {
+    @include text-typography;
+    margin-bottom: 0;
+
+    &_dark {
+      color: lighten($text-color-default, $text-lighten);
+    }
+  }
+
+  &__progress {
+    margin-top: 4rem;
+    margin-bottom: 10px;
+  }
+
+  &__progress-bar {
+    margin-top: 2.4rem;
+  }
+
+  &__icon {
+    font-size: 40px;
+    font-family: $font-family-icons;
+
+
+    &_desktop::before {
+      content: "\f108";
+    }
+
+    &_plane::before {
+      content: "\f1d8";
+    }
+
+    &_tablet::before {
+      content: "\f0ce";
+    }
+
+    &_html5::before {
+      content: "\f13b";
+    }
+
+    &_dark {
+      color: lighten($text-color-default, $title-lighten);
+    }
+  }
+}

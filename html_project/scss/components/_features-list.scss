@@ -1,0 +1,77 @@
+.features-list {
+  display: flex;
+  flex-flow: row wrap;
+
+  &_experiences {
+
+  }
+
+  &_color {
+    &_primary {
+      color: $text-color-primary;
+
+      background-color: $bg-color-primary;
+    }
+
+    &_secondary {
+      color: $text-color-primary;
+
+      background-color: $bg-color-secondary;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__image {
+    @include object-fit;
+  }
+
+  &__header {
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4.4rem 3.2rem;
+  }
+
+  &__title {
+    @include title-typography;
+    color: inherit;
+  }
+
+  &__text {
+    @include text-typography;
+    color: inherit;
+  }
+
+  &__features {
+
+  }
+
+  &__item {
+  }
+
+  &__item-icon {
+    :before {
+      content: "\f109";
+    }
+  }
+
+  &__item-title {
+  }
+
+  &__item-time {
+
+    &_color {
+    }
+  }
+
+  &__item-text {
+  }
+}

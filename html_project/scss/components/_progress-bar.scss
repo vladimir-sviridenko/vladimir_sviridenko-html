@@ -1,0 +1,50 @@
+.progress-bar {
+  display: flex;
+
+  font-size: $font-size-progress-bar;
+
+  &__title {
+    font-weight: 700;
+    color: lighten($text-color-default, $title-lighten);
+    text-transform: capitalize;
+
+    &_frontend {
+      flex-basis: 90%;
+    }
+
+    &_backend {
+      flex-basis: 70%;
+    }
+
+    &_html {
+      flex-basis: 80%;
+    }
+
+    &::after {
+      content: "";
+
+      display: block;
+      height: 2px;
+      margin-top: 12px;
+
+      background-color: lighten($text-color-default, $title-lighten);
+    }
+  }
+
+  &__percents {
+    flex-grow: 1;
+
+    text-align: right;
+    color: $text-color-primary;
+
+    &::after {
+      content: "";
+
+      display: block;
+      height: 2px;
+      margin-top: 12px;
+
+      background-color: $text-color-primary;
+    }
+  }
+}
