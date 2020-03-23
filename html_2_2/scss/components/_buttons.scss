@@ -1,0 +1,90 @@
+.button {
+  display: inline-block;
+  margin: 0.1rem;
+  padding: 0.7rem 1.38rem;
+
+  font-family: "Roboto", sans-serif;
+  color: white;
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
+  text-shadow: -1px -1px 3px rgba(black, 0.3);
+
+  border: none;
+  border-radius: 5px;
+
+  &_dark {
+    border: 0.1rem solid black;
+  }
+
+  &_pink {
+    padding: 0.5rem 1.3rem;
+
+    font-weight: 500;
+    font-size: 3.5rem;
+
+    background: linear-gradient(to bottom, #e952a9, #e62295);
+    box-shadow: inset 0 -1px 2px #b33d82, 0 2px 2px rgba(black, 0.5);
+  }
+
+  &_green {
+    margin-left: -0.1rem;
+
+    font-size: 1.5rem;
+
+    background: linear-gradient(to bottom, #abcc46, #9fcb1a);
+    box-shadow: inset 0 -1px 2px #89aa23, 1px 2px 2px rgba(black, 0.5);
+  }
+
+  &_blue {
+    font-size: 1.5rem;
+
+    background: linear-gradient(to bottom right, #569ae9, #3c8de7);
+    box-shadow: inset 0 -1px 2px #2479d9, 1px 2px 2px rgba(black, 0.5);
+
+    &.button_dark {
+      padding: 0.48rem 1.3rem;
+
+      font-size: 1.2rem;
+    }
+  }
+
+  &_red {
+    font-size: 1.5rem;
+
+    background: linear-gradient(to bottom, #eb5656, #ec4040);
+    box-shadow: inset 0 -1px 2px #dc2121, 1px 2px 2px rgba(black, 0.5);
+
+    &.button_dark {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+
+      font-size: 1.4rem;
+    }
+  }
+
+  &_orange {
+    font-size: 1.5rem;
+
+    background: linear-gradient(to bottom, #ff813c, #ff6f1e);
+    box-shadow: inset 0 -1px 2px #eb5300, 1px 2px 2px rgba(black, 0.5);
+
+    &.button_dark {
+      padding: 0.6rem 1.2rem;
+
+      font-size: 1.1rem;
+    }
+  }
+
+  &_yellow {
+    font-size: 1.5rem;
+
+    background: linear-gradient(to bottom, #ffc54c, #ffbe33);
+    box-shadow: inset 0 -1px 2px #eba611, 1px 2px 2px rgba(black, 0.5);
+
+    &.button_dark {
+      padding: 0.6rem 0.7em;
+
+      font-size: 1.3rem;
+    }
+  }
+}
