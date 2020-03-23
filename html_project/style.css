@@ -352,6 +352,7 @@ template {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  max-height: 2160px;
   height: 100vh;
   background-color: rgba(240, 226, 215, 0.8);
 }
@@ -410,8 +411,8 @@ template {
   left: 50%;
   min-width: 100%;
   min-height: 100%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1);
+          transform: translateX(-50%) translateY(-50%) scale(1);
 }
 
 .header__main {
@@ -467,7 +468,7 @@ template {
   color: #242424;
   font-weight: 400;
   font-size: 3.2em;
-  line-height: calc(1em + 6px);
+  line-height: 1.2em;
   font-family: "Bw Surco", sans-serif;
 }
 
@@ -480,7 +481,7 @@ template {
   color: #999999;
   font-weight: 400;
   font-size: 1.6em;
-  line-height: calc(1em + 15px);
+  line-height: 2em;
   font-family: "Bw Surco", sans-serif;
 }
 
@@ -638,6 +639,7 @@ template {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  max-height: 2160px;
 }
 
 .about__box {
@@ -650,6 +652,7 @@ template {
           box-sizing: border-box;
   width: 100%;
   padding: 4.4rem 3.2rem;
+  max-height: 864px;
 }
 
 @media screen and (min-width: 740px) {
@@ -666,7 +669,7 @@ template {
 
 @media screen and (min-width: 1480px) {
   .about__box {
-    min-height: 50vh;
+    height: 50vh;
   }
 }
 
@@ -686,6 +689,12 @@ template {
   position: relative;
   padding: 0;
   overflow: hidden;
+}
+
+@media screen and (orientation: landscape) and (max-width: 739px) {
+  .about__box_image-container {
+    min-height: 350px;
+  }
 }
 
 @media screen and (min-width: 1110px) {
@@ -729,8 +738,8 @@ template {
 
 @media screen and (min-width: 1110px) {
   .about__box_centered {
-    font-size: 0.8em;
     padding: 4vh 20px;
+    font-size: 0.8em;
   }
   .about__box_centered:nth-of-type(2) {
     -webkit-box-ordinal-group: 1;
@@ -741,9 +750,8 @@ template {
 
 @media screen and (min-width: 1480px) {
   .about__box_centered {
-    font-size: 1em;
-    min-height: 50vh;
     padding: 8vh 2vw;
+    font-size: 1em;
   }
 }
 
@@ -784,47 +792,35 @@ template {
 
 .about__image {
   position: absolute;
-  top: 80%;
+  top: 25%;
   left: 50%;
   min-width: 100%;
   min-height: 100%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-25%) scale(1);
+          transform: translateX(-50%) translateY(-25%) scale(1);
 }
 
 @media screen and (min-width: 1110px) {
   .about__image {
     position: absolute;
-    top: 65%;
+    top: 30%;
     left: 50%;
     min-width: 100%;
     min-height: 100%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-30%) scale(1);
+            transform: translateX(-50%) translateY(-30%) scale(1);
   }
 }
 
 @media screen and (min-width: 1480px) {
   .about__image {
     position: absolute;
-    top: 70%;
+    top: 20%;
     left: 50%;
     min-width: 100%;
     min-height: 100%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
-  }
-}
-
-@media screen and (min-width: 2100px) {
-  .about__image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-20%) scale(1.1);
+            transform: translateX(-50%) translateY(-20%) scale(1.1);
   }
 }
 
@@ -833,7 +829,7 @@ template {
   color: inherit;
   font-weight: 400;
   font-size: 3.2em;
-  line-height: calc(1em + 6px);
+  line-height: 1.2em;
   font-family: "Bw Surco", sans-serif;
 }
 
@@ -844,7 +840,8 @@ template {
 .about__skill-title {
   margin-top: 3.8rem;
   font-weight: 400;
-  font-size: 3.1em;
+  font-size: 2.3em;
+  text-transform: capitalize;
 }
 
 .about__skill-title_dark {
@@ -857,7 +854,7 @@ template {
   color: inherit;
   font-weight: 400;
   font-size: 1.6em;
-  line-height: calc(1em + 15px);
+  line-height: 2em;
   font-family: "Bw Surco", sans-serif;
 }
 
@@ -872,11 +869,11 @@ template {
 }
 
 .about__skill-text {
+  margin-bottom: 0;
   font-weight: 400;
   font-size: 1.6em;
-  line-height: calc(1em + 15px);
+  line-height: 2em;
   font-family: "Bw Surco", sans-serif;
-  margin-bottom: 0;
 }
 
 .about__skill-text_dark {
@@ -927,6 +924,13 @@ template {
           flex-flow: row wrap;
 }
 
+.features-list_education {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
 .features-list_color_primary {
   color: white;
   background-color: #e4ae58;
@@ -939,55 +943,222 @@ template {
 
 .features-list__image-container {
   position: relative;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
   width: 100%;
+  min-height: 230px;
   overflow: hidden;
 }
 
+@media screen and (min-width: 740px) {
+  .features-list__image-container {
+    width: 50%;
+  }
+}
+
 .features-list__image {
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transform: translateX(-45%) translateY(-35%) scale(0.6);
+          transform: translateX(-45%) translateY(-35%) scale(0.6);
+}
+
+@media screen and (min-width: 1480px) {
+  .features-list__image {
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translateX(-40%) translateY(-30%) scale(0.8);
+            transform: translateX(-40%) translateY(-30%) scale(0.8);
+  }
+}
+
+@media screen and (min-width: 2100px) {
+  .features-list__image {
+    position: absolute;
+    top: 20%;
+    left: 45%;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translateX(-45%) translateY(-20%) scale(1);
+            transform: translateX(-45%) translateY(-20%) scale(1);
+  }
+}
+
+.features-list__image_education {
   position: absolute;
   top: 50%;
   left: 50%;
   min-width: 100%;
   min-height: 100%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(0.6);
+          transform: translateX(-50%) translateY(-50%) scale(0.6);
+}
+
+@media screen and (min-width: 1480px) {
+  .features-list__image_education {
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translateX(-30%) translateY(-40%) scale(1);
+            transform: translateX(-30%) translateY(-40%) scale(1);
+  }
 }
 
 .features-list__header {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 4.4rem 3.2rem;
+  padding: 4.4rem 3.2rem 2.8rem 3.2rem;
+}
+
+@media screen and (min-width: 740px) {
+  .features-list__header {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1480px) {
+  .features-list__header {
+    padding: 4.4rem 10vw 2.8rem 4.5rem;
+  }
 }
 
 .features-list__title {
+  margin: 0;
+  color: inherit;
+  text-transform: capitalize;
   font-weight: 400;
   font-size: 3.2em;
-  line-height: calc(1em + 6px);
+  line-height: 1.2em;
   font-family: "Bw Surco", sans-serif;
-  color: inherit;
 }
 
 .features-list__text {
+  margin-top: 1rem;
+  margin-bottom: 1.8rem;
+  color: inherit;
   font-weight: 400;
   font-size: 1.6em;
-  line-height: calc(1em + 15px);
+  line-height: 2em;
   font-family: "Bw Surco", sans-serif;
-  color: inherit;
 }
 
-.features-list__item-icon :before {
+.features-list__features {
+  padding-left: 0;
+  list-style: none;
+  margin-top: 3.2rem;
+}
+
+.features-list__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  font-size: 0.9em;
+}
+
+.features-list__item-icon {
+  width: 1em;
+  margin-right: 4vw;
+  font-size: 3em;
+  font-family: "FontAwesome";
+  text-align: left;
+  -webkit-transform: translateY(-0.12em);
+          transform: translateY(-0.12em);
+}
+
+.features-list__item-icon::before {
   content: "\f109";
+}
+
+@media screen and (min-width: 740px) {
+  .features-list__item-icon {
+    margin-right: 0.9em;
+  }
+}
+
+.features-list__item-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 2em;
+  line-height: 1.2em;
+  font-family: "Bw Surco", sans-serif;
+  text-transform: capitalize;
+}
+
+.features-list__item-text {
+  margin-top: 1rem;
+  font-weight: 400;
+  font-size: 1.5em;
+  line-height: 2em;
+  font-family: "Bw Surco", sans-serif;
+}
+
+.features-list__item-time {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 0.75em;
+  line-height: 1.4em;
+}
+
+.features-list__item-time_color_primary {
+  color: #604110;
+}
+
+.features-list__item-time_color_secondary {
+  color: #74260e;
+}
+
+.quotes {
+  color: white;
+}
+
+.quotes__wrapper {
+  position: relative;
+}
+
+.quotes__image-container {
+  position: absolute;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.quotes__image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1);
+          transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+.quotes__icon_star::before {
+  content: "";
+}
+
+.quotes__title {
+  font-weight: 400;
+  font-size: 3.2em;
+  line-height: 1.2em;
+  font-family: "Bw Surco", sans-serif;
+}
+
+.quotes__text {
+  font-weight: 400;
+  font-size: 1.6em;
+  line-height: 2em;
+  font-family: "Bw Surco", sans-serif;
+  color: #999999;
 }
 
 .button {
@@ -1017,7 +1188,8 @@ html {
 }
 
 body {
-  margin: 0;
+  max-width: 3840px;
+  margin: 0 auto;
   font-size: 10px;
   font-family: "Bw Surco", sans-serif;
 }

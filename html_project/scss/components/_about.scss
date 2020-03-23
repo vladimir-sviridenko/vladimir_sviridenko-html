@@ -1,6 +1,7 @@
 .about {
   display: flex;
   flex-flow: row wrap;
+  max-height: $block-max-height;
 
   &__box {
     flex-grow: 1;
@@ -8,6 +9,7 @@
     box-sizing: border-box;
     width: 100%;
     padding: 4.4rem 3.2rem;
+    max-height: $block-max-height / 2.5;
 
     @media screen and (min-width: map-get($breakpoints, tablet)) {
       width: 50%;
@@ -18,7 +20,7 @@
     }
 
     @media screen and (min-width: map-get($breakpoints, large-desktop)) {
-      min-height: 50vh;
+      height: 50vh;
     }
 
     &_header {
@@ -37,6 +39,10 @@
       padding: 0;
       overflow: hidden;
 
+      @media screen and (orientation: landscape) and (max-width: map-get($breakpoints, tablet) - 1) {
+        min-height: 350px;
+      }
+
       @media screen and (min-width: map-get($breakpoints, desktop)) {
         width: 25%;
       }
@@ -52,7 +58,6 @@
 
     &_centered {
       padding: 5vh 8vw;
-
       text-align: center;
 
       &:nth-of-type(2) {
@@ -68,8 +73,9 @@
       }
 
       @media screen and (min-width: map-get($breakpoints, desktop)) {
-        font-size: 0.8em;
         padding: 4vh 20px;
+
+        font-size: 0.8em;
 
         &:nth-of-type(2) {
           order: 0;
@@ -77,9 +83,9 @@
       }
 
       @media screen and (min-width: map-get($breakpoints, large-desktop)) {
-        font-size: 1em;
-        min-height: 50vh;
         padding: 8vh 2vw;
+
+        font-size: 1em;
       }
     }
 
@@ -115,18 +121,14 @@
   }
 
   &__image {
-    @include object-fit(80%, 50%);
+    @include object-fit(25%, 50%);
 
     @media screen and (min-width: map-get($breakpoints, desktop)) {
-      @include object-fit(65%, 50%);
+      @include object-fit(30%, 50%);
     }
 
     @media screen and (min-width: map-get($breakpoints, large-desktop)) {
-      @include object-fit(70%, 50%);
-    }
-
-    @media screen and (min-width: map-get($breakpoints, extra-large-desktop)) {
-      @include object-fit(50%, 50%);
+      @include object-fit(20%, 50%, 1.1);
     }
   }
 
@@ -146,7 +148,8 @@
     margin-top: 3.8rem;
 
     font-weight: 400;
-    font-size: $font-size-title - 0.1em;
+    font-size: $font-size-title - 0.9em;
+    text-transform: capitalize;
 
     &_dark {
       color: lighten($text-color-default, $title-lighten);
@@ -174,8 +177,9 @@
   }
 
   &__skill-text {
-    @include text-typography;
     margin-bottom: 0;
+
+    @include text-typography;
 
     &_dark {
       color: lighten($text-color-default, $text-lighten);

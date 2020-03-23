@@ -17,6 +17,8 @@ $breakpoints: (
   large-desktop: 1480px,
   extra-large-desktop: 2100px
 );
+$block-max-width: 3840px;
+$block-max-height: $block-max-width * 9 / 16;
 /*Font*/
 $font-family-primary: "Bw Surco", sans-serif;
 $font-family-icons: "FontAwesome";
@@ -27,5 +29,5 @@ $font-size-progress-bar: 1.2em;
 $font-size-logo: 1.8em;
 $font-size-text: 1.6em;
 $font-size-title: 3.2em;
-$line-height-title: calc(1em + 6px);
-$line-height-text: calc(1em + 15px);
+$line-height-title: 1.2em;
+$line-height-text: 2em;

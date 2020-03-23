@@ -3,6 +3,8 @@
     position: relative;
 
     display: flex;
+    max-height: $block-max-height;
+
     height: 100vh;
 
     background-color: rgba($bg-color-header, 0.8);

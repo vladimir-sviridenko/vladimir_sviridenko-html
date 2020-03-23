@@ -2,8 +2,8 @@
   display: flex;
   flex-flow: row wrap;
 
-  &_experiences {
-
+  &_education {
+    flex-direction: row-reverse;
   }
 
   &_color {
@@ -22,56 +22,134 @@
 
   &__image-container {
     position: relative;
-    flex-grow: 1;
-    flex-shrink: 0;
+
     width: 100%;
+    min-height: 230px;
     overflow: hidden;
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      width: 50%;
+    }
   }
 
   &__image {
-    @include object-fit;
+    @include object-fit(35%, 45%, 0.6);
+
+    @media screen and (min-width: map-get($breakpoints, large-desktop)) {
+      @include object-fit(30%, 40%, 0.8);
+    }
+
+    @media screen and (min-width: map-get($breakpoints, extra-large-desktop)) {
+      @include object-fit(20%, 45%, 1);
+    }
+
+    &_education {
+      @include object-fit(50%, 50%, 0.6);
+
+      @media screen and (min-width: map-get($breakpoints, large-desktop)) {
+        @include object-fit(40%, 30%, 1);
+      }
+    }
   }
 
   &__header {
-    flex-grow: 1;
-    flex-shrink: 0;
-    width: 100%;
     box-sizing: border-box;
-    padding: 4.4rem 3.2rem;
+    padding: 4.4rem 3.2rem 2.8rem 3.2rem;
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, large-desktop)) {
+      padding: 4.4rem 10vw 2.8rem 4.5rem;
+    }
   }
 
   &__title {
-    @include title-typography;
+    margin: 0;
+
     color: inherit;
+    text-transform: capitalize;
+
+    @include title-typography;
   }
 
   &__text {
-    @include text-typography;
+    margin-top: 1rem;
+    margin-bottom: 1.8rem;
+
     color: inherit;
+
+    @include text-typography;
   }
 
   &__features {
+    padding-left: 0;
 
+    list-style: none;
+    margin-top: 3.2rem;
   }
 
   &__item {
+    display: flex;
+    flex-flow: row nowrap;
+
+    font-size: 0.9em;
   }
 
   &__item-icon {
-    :before {
+    width: 1em;
+    margin-right: 4vw;
+
+    font-size: 3em;
+    font-family: $font-family-icons;
+    text-align: left;
+
+    transform: translateY(-0.12em);
+
+    &::before {
       content: "\f109";
+    }
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      margin-right: 0.9em;
     }
   }
 
   &__item-title {
-  }
+    margin: 0;
 
-  &__item-time {
-
-    &_color {
-    }
+    font-weight: 400;
+    font-size: $font-size-title - 1.2em;
+    line-height: $line-height-title;
+    font-family: $font-family-primary;
+    text-transform: capitalize;
   }
 
   &__item-text {
+    margin-top: 1rem;
+
+    font-weight: 400;
+    font-size: $font-size-text - 0.1em;
+    line-height: $line-height-text;
+    font-family: $font-family-primary;
+  }
+
+  &__item-time {
+    display: inline-block;
+
+    font-weight: 500;
+    font-size: 0.75em;
+    line-height: 1.4em;
+
+    &_color {
+      &_primary {
+        color: darken($bg-color-primary, 40%);
+      }
+
+      &_secondary {
+        color: darken($bg-color-secondary, 35%);
+      }
+    }
   }
 }
