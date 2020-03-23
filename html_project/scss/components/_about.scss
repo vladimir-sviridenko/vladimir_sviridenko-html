@@ -57,7 +57,7 @@
     }
 
     &_centered {
-      padding: 5vh 8vw;
+      padding: 6vh 8vw;
       text-align: center;
 
       &:nth-of-type(2) {
@@ -69,12 +69,11 @@
       }
 
       @media screen and (min-width: map-get($breakpoints, tablet)) {
-        padding: 6vh 4vw;
+        padding: 7vh 4vw;
       }
 
       @media screen and (min-width: map-get($breakpoints, desktop)) {
         padding: 4vh 20px;
-
         font-size: 0.8em;
 
         &:nth-of-type(2) {
@@ -83,7 +82,13 @@
       }
 
       @media screen and (min-width: map-get($breakpoints, large-desktop)) {
-        padding: 8vh 2vw;
+        padding: 11vh 2vw;
+
+        font-size: 1em;
+      }
+
+      @media screen and (min-width: map-get($breakpoints, extra-large-desktop)) {
+        padding: 15vh 4vw;
 
         font-size: 1em;
       }
@@ -196,7 +201,7 @@
   }
 
   &__icon {
-    font-size: 40px;
+    font-size: 4em;
     font-family: $font-family-icons;
 
 

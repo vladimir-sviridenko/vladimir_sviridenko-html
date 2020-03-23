@@ -1,0 +1,109 @@
+.quotes {
+  color: $text-color-primary;
+
+  @media screen and (max-width: map-get($breakpoints, tablet) - 1) {
+    font-size: 0.85em;
+  }
+
+  &__wrapper {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    max-height: $block-max-height / 2.5;
+
+    background-color: rgba(lighten(black, 15%), 0.8);
+
+    @media screen and (orientation: landscape) {
+      min-height: 80vh;
+    }
+
+    @media screen and (orientation: portrait) {
+      min-height: 40vh;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      min-height: 300px;
+      height: 42vh;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) and (orientation: portrait) {
+      min-height: 300px;
+      height: 28vh;
+    }
+  }
+
+  &__image-container {
+    position: absolute;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__main {
+    z-index: 1;
+
+    box-sizing: border-box;
+    width: 95%;
+    max-height: 420px;
+    padding: 4.8rem 0;
+    overflow: hidden;
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      width: 78%;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      width: 56%;
+    }
+  }
+
+  &__image {
+    @include object-fit(50%, 50%, 0.6);
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      @include object-fit(50%, 50%, 1);
+    }
+  }
+
+  &__icon {
+    font-size: 3em;
+    font-family: $font-family-icons;
+
+    &_star::before {
+      content: "\f005";
+    }
+  }
+
+  &__title {
+    @include title-typography; // should be first
+
+    margin-top: 2.8rem;
+    margin-bottom: 4rem;
+
+    font-size: $font-size-title - 1.2em;
+    line-height: $line-height-title + 0.3em;
+
+  }
+
+  &__text {
+    @include text-typography; // should be first
+
+    display: inline-block;
+    max-width: 95%;
+    margin: 0;
+
+    line-height: $line-height-text - 0.7em;
+    color: lighten($text-color-default, $text-lighten);
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      max-width: 85%;
+    }
+  }
+}
