@@ -1,0 +1,64 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10rem 4rem;
+
+  @include text-typography;
+  text-transform: capitalize;
+
+  @media screen and (min-width: map-get($breakpoints, mobile)) {
+    padding: 13rem;
+  }
+
+  &__copyright {
+    text-align: center;
+    margin: 0;
+
+    &_alt {
+      color: $text-color-alt;
+    }
+  }
+
+  &__socials {
+    margin-top: 5.4rem;
+  }
+
+  &__social-link {
+    font-size: 1.1em;
+    color: lighten($text-color-default, $text-lighten);
+    text-decoration: none;
+    margin-left: 2rem;
+    margin-right: 2rem,;
+
+    &:hover {
+      color: $text-color-alt;
+    }
+  }
+
+  &__icon {
+    font-family: $font-family-icons;
+
+    &_facebook::before {
+      content: "\f09a";
+    }
+
+    &_twitter::before {
+      content: "\f099";
+    }
+
+    &_google::before {
+      content: "\f0d5";
+    }
+
+    &_dribble::before {
+      content: "\f17d";
+    }
+
+    &_linkedin::before {
+      content: "\f0e1";
+    }
+  }
+}

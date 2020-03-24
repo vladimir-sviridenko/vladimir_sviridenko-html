@@ -52,15 +52,16 @@
     font-family: $font-family-icons;
     margin-right: 10px;
 
-    &_phone:before {
+    &_phone::before {
       content: "\f095";
     }
 
-    &_envelop:before {
+    &_envelop::before {
       content: "\f0e0";
+      margin-right: -2px;
     }
 
-    &_globe:before {
+    &_globe::before {
       content: "\f0ac";
     }
   }
