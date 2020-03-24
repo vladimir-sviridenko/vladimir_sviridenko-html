@@ -9,6 +9,10 @@
 @import "./components/about";
 @import "./components/features-list";
 @import "./components/quotes";
+@import "./components/contact";
+@import "./components/say-hello";
+@import "./components/visit-office";
+@import "./components/footer";
 @import "./components/button";
 
 html {
@@ -17,12 +21,21 @@ html {
   scroll-behavior: smooth;
 
   @media screen and (min-width: map-get($breakpoints, tablet)) and (min-height: 420px) {
+    font-size: 7px;
+  }
+
+  @media screen and (min-width: map-get($breakpoints, desktop)) and (min-height: 420px) {
+    font-size: 8px;
+  }
+
+
+  @media screen and (min-width: map-get($breakpoints, large-desktop)) {
     font-size: 10px;
   }
 }
 
 body {
-  max-width: $block-max-width;
+  max-width: map-get($breakpoints, 4k-desktop);
   margin: 0 auto;
 
   font-size: 10px;

@@ -33,21 +33,21 @@
   }
 
   &__image {
-    @include object-fit(35%, 45%, 0.6);
+    @include object-fit(35%, 50%, 0.6);
 
     @media screen and (min-width: map-get($breakpoints, large-desktop)) {
-      @include object-fit(30%, 40%, 0.8);
+      @include object-fit(30%, 50%, 0.8);
     }
 
-    @media screen and (min-width: map-get($breakpoints, extra-large-desktop)) {
-      @include object-fit(20%, 45%, 1);
+    @media screen and (min-width: map-get($breakpoints, full-hd-desktop)) {
+      @include object-fit(20%, 50%, 1);
     }
 
     &_education {
       @include object-fit(50%, 50%, 0.6);
 
       @media screen and (min-width: map-get($breakpoints, large-desktop)) {
-        @include object-fit(40%, 30%, 1);
+        @include object-fit(40%, 50%, 1);
       }
     }
   }

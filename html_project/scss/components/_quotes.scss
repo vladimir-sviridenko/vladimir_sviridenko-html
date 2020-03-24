@@ -11,29 +11,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-height: 360px;
 
     text-align: center;
-
-    max-height: $block-max-height / 2.5;
 
     background-color: rgba(lighten(black, 15%), 0.8);
 
     @media screen and (orientation: landscape) {
-      min-height: 80vh;
+      height: 70vh;
     }
 
     @media screen and (orientation: portrait) {
-      min-height: 40vh;
+      height: 40vh;
     }
 
     @media screen and (min-width: map-get($breakpoints, tablet)) {
+      height: 45vh;
       min-height: 300px;
-      height: 42vh;
     }
 
     @media screen and (min-width: map-get($breakpoints, tablet)) and (orientation: portrait) {
-      min-height: 300px;
       height: 28vh;
+      min-height: 300px;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      max-height: 400px;
     }
   }
 
@@ -65,42 +68,44 @@
   }
 
   &__image {
-    @include object-fit(50%, 50%, 0.6);
+    @include object-fit(35%, 50%, 0.6);
 
     @media screen and (min-width: map-get($breakpoints, tablet)) {
-      @include object-fit(50%, 50%, 1);
+      @include object-fit(30%, 50%, 1);
     }
   }
 
   &__icon {
+    width: 1em;
+    margin: 0 auto;
+
     font-size: 3em;
     font-family: $font-family-icons;
 
     &_star::before {
       content: "\f005";
     }
+
+    &:hover {
+      color: $bg-color-primary;
+    }
   }
 
   &__title {
-    @include title-typography; // should be first
-
     margin-top: 2.8rem;
     margin-bottom: 4rem;
 
-    font-size: $font-size-title - 1.2em;
-    line-height: $line-height-title + 0.3em;
-
+    @include title-typography($font-size-title - 1.2em, $line-height-title + 0.3em);
   }
 
   &__text {
-    @include text-typography; // should be first
-
     display: inline-block;
     max-width: 95%;
     margin: 0;
 
-    line-height: $line-height-text - 0.7em;
     color: lighten($text-color-default, $text-lighten);
+
+    @include text-typography($font-size-text, $line-height-text - 0.7em);
 
     @media screen and (min-width: map-get($breakpoints, tablet)) {
       max-width: 85%;

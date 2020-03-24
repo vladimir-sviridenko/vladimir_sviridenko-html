@@ -1,21 +1,33 @@
 .button {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   box-sizing: border-box;
-  padding: 1.7rem 3.6rem 1.3rem 3.6rem;
+  padding-top: 1.4rem;
+  padding-bottom: 1.3rem;
 
-  font-weight: bold;
-  font-size: $font-size-button;
-  line-height: $font-size-button;
+  text-align: center;
   color: lighten($text-color-default, $title-lighten);
-  text-transform: uppercase;
   text-decoration: none;
 
-  border: 3px solid lighten($text-color-default, $title-lighten);
   border-radius: 40rem;
 
   &_send {
+    font-weight: 500;
+    font-size: 1.4em;
+    text-transform: capitalize;
+
+    background-color: $bg-color-default;
+    border: none;
   }
 
   &_get-started {
+    padding-top: 1.5rem;
+
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    text-transform: uppercase;
+
+    border: 3px solid lighten($text-color-default, $title-lighten);
   }
 }

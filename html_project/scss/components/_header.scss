@@ -3,7 +3,7 @@
     position: relative;
 
     display: flex;
-    max-height: $block-max-height;
+    max-height: map-get($breakpoints, 4k-desktop) * 9 / 16;
 
     height: 100vh;
 
@@ -119,5 +119,10 @@
     @media screen and (max-width: map-get($breakpoints, desktop)) {
       color: lighten($text-color-default, 30%);
     }
+  }
+
+  &__button {
+    width: 24rem;
+    max-width: 172px;
   }
 }

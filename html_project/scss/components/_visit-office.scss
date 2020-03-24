@@ -1,0 +1,78 @@
+.visit-office {
+  box-sizing: border-box;
+  padding: 4.6rem 3.2rem;
+
+  color: $text-color-primary;
+
+  background-color: $bg-color-tertiary;
+
+  &__wrapper {
+    max-height: 42rem;
+    overflow: hidden;
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) and (max-width: map-get($breakpoints, desktop) - 1px) {
+      max-height: 180px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    @include title-typography($font-size-title - 1em);
+  }
+
+  &__list-title {
+    margin-top: 4rem;
+    margin-bottom: 1.6rem;
+
+    @include title-typography($font-size-title - 1em);
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) and (max-width: map-get($breakpoints, desktop) - 1px) {
+      margin-top: 2.6rem;
+      margin-bottom: 0.6rem;
+    }
+  }
+
+  &__address {
+    color: lighten($text-color-default, $text-lighten);
+
+    @include text-typography($font-size-text - 0.2em, $line-height-text - 0.6em);
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    @include text-typography($font-size-text - 0.2em);
+  }
+
+  &__icon {
+    font-family: $font-family-icons;
+    margin-right: 10px;
+
+    &_phone:before {
+      content: "\f095";
+    }
+
+    &_envelop:before {
+      content: "\f0e0";
+    }
+
+    &_globe:before {
+      content: "\f0ac";
+    }
+  }
+
+  &__link {
+    color: lighten($text-color-default, $text-lighten);
+    text-decoration: none;
+
+    cursor: pointer;
+
+    &:hover {
+      color: $text-color-alt;
+    }
+  }
+}
