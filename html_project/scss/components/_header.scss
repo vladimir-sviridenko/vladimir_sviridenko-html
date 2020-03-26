@@ -4,10 +4,14 @@
 
     display: flex;
     height: 100vh;
-    max-height: map-get($breakpoints, 4k-desktop) * 0.58;
+    max-height: 0.58 *  map-get($breakpoints, 4k-desktop);
     overflow: hidden;
 
     background-color: rgba($bg-color-header, 0.8);
+
+    @media screen and (orientation: portrait) and (min-width: map-get($breakpoints, desktop)) {
+      max-height: 0.58 *  100vh;
+    }
 
     @media screen and (min-width: map-get($breakpoints, desktop)) {
       background-color: $bg-color-header;
