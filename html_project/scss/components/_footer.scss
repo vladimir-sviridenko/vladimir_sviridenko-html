@@ -7,7 +7,7 @@
 
   text-transform: capitalize;
 
-@include text-typography;
+  @include text-typography;
 
   @media screen and (min-width: map-get($breakpoints, mobile)) {
     padding: 14rem;
@@ -19,10 +19,16 @@
     font-size: 1.02em;
     text-align: center;
     color: lighten($text-color-default, $text-lighten);
+  }
 
-    &_alt {
-      color: $text-color-alt;
-      text-transform: capitalize;
+  &__link {
+    color: $text-color-alt;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    &:hover {
+      font-weight: map-get($font-weight, medium);
     }
   }
 

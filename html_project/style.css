@@ -1764,9 +1764,14 @@ template {
   color: #999999;
 }
 
-.footer__copyright_alt {
+.footer__link {
   color: #e4ae58;
-  text-transform: capitalize;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer__link:hover {
+  font-weight: 400;
 }
 
 .footer__socials {
