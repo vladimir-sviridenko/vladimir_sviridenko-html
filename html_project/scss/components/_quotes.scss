@@ -14,14 +14,6 @@
 
     background-color: rgba(black, 0.56);
 
-    @media screen and (orientation: portrait) {
-      height: 40vmax;
-    }
-
-    @media screen and (orientation: landscape) {
-      height: 50vmin;
-    }
-
     @media screen and (min-width: map-get($breakpoints, mobile)) {
       height: auto;
     }
@@ -49,7 +41,6 @@
 
     display: flex;
     justify-content: center;
-    align-items: center;
 
     box-sizing: border-box;
     width: 95%;
