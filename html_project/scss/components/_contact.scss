@@ -51,8 +51,9 @@
       @include object-fit(50%, 50%, 0.7);
     }
 
+
     @media screen and (min-width: map-get($breakpoints, large-desktop)) {
-      @include object-fit(50%, 50%, 1);
+      @include object-fit(50%, 50%, 1.04);
     }
   }
 

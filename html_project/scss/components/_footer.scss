@@ -7,7 +7,7 @@
 
   text-transform: capitalize;
 
-  @include text-typography;
+@include text-typography;
 
   @media screen and (min-width: map-get($breakpoints, mobile)) {
     padding: 14rem;

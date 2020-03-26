@@ -755,8 +755,8 @@ template {
 @media screen and (min-width: 1110px) {
   .about__box_centered {
     display: block;
-    font-size: 0.8em;
     min-height: auto;
+    font-size: 0.8em;
   }
   .about__box_centered:nth-of-type(2) {
     -webkit-box-ordinal-group: 1;
@@ -1408,8 +1408,8 @@ template {
     left: 50%;
     min-width: 100%;
     min-height: 100%;
-    -webkit-transform: translateY(-50%) translateX(-50%) scale(1);
-            transform: translateY(-50%) translateX(-50%) scale(1);
+    -webkit-transform: translateY(-50%) translateX(-50%) scale(1.04);
+            transform: translateY(-50%) translateX(-50%) scale(1.04);
   }
 }
 
@@ -1516,8 +1516,6 @@ template {
 }
 
 .say-hello__input {
-  -webkit-transition: border-color 0.3s;
-  transition: border-color 0.3s;
   display: block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -1529,6 +1527,8 @@ template {
   border: none;
   border-bottom: 1px solid #e4ae58;
   outline: none;
+  -webkit-transition: border-color 0.3s;
+  transition: border-color 0.3s;
   font-weight: 300;
   font-size: 1.554em;
   line-height: 1.59986em;
@@ -1566,13 +1566,13 @@ template {
 }
 
 .say-hello__input_textarea {
-  min-height: 30vh;
+  min-height: 28rem;
   max-height: 60vh;
   line-height: 1.2em;
   resize: vertical;
 }
 
-@media screen and (min-width: 1480px) {
+@media screen and (min-width: 1110px) {
   .say-hello__input_textarea {
     min-height: 15.6rem;
     max-height: 28rem;
@@ -1808,10 +1808,10 @@ template {
           box-sizing: border-box;
   padding-top: 1.3rem;
   padding-bottom: 1.3rem;
-  border: 0.2rem solid #242424;
   text-align: center;
   color: #242424;
   text-decoration: none;
+  border: 0.2rem solid #242424;
   border-radius: 80rem;
 }
 

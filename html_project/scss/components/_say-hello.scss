@@ -31,7 +31,6 @@
   }
 
   &__input {
-    transition: border-color 0.3s;
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -44,6 +43,8 @@
     border: none;
     border-bottom: 1px solid $text-color-alt;
     outline: none;
+
+    transition: border-color 0.3s;
 
     @include text-typography($font-size-text + 0.15em, $line-height-text - 0.2em);
 
@@ -61,14 +62,14 @@
     }
 
     &_textarea {
-      min-height: 30vh;
+      min-height: 28rem;
       max-height: 60vh;
 
       line-height: 1.2em;
 
       resize: vertical;
 
-      @media screen and (min-width: map-get($breakpoints, large-desktop)) {
+      @media screen and (min-width: map-get($breakpoints, desktop)) {
         min-height: 15.6rem;
         max-height: 28rem;
       }

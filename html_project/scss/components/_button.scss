@@ -4,12 +4,11 @@
   padding-top: 1.3rem;
   padding-bottom: 1.3rem;
 
-
-  border: 0.2rem solid lighten($text-color-default, $title-lighten);
   text-align: center;
   color: lighten($text-color-default, $title-lighten);
   text-decoration: none;
 
+  border: 0.2rem solid lighten($text-color-default, $title-lighten);
   border-radius: 80rem;
 
   &_send {
@@ -40,6 +39,7 @@
     line-height: 1.2em;
     text-transform: uppercase;
     letter-spacing: 0.09em;
+
     transition: color 0.3s, border-color 0.3s;
 
     &:hover {
