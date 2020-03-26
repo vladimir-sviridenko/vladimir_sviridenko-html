@@ -4,14 +4,14 @@
 
     display: flex;
     height: 100vh;
-    min-height: 320px;
+    min-height: 321px;
     max-height: 0.58 *  map-get($breakpoints, 4k-desktop);
     overflow: hidden;
 
     background-color: rgba($bg-color-header, 0.8);
 
     @media screen and (orientation: portrait) and (min-width: map-get($breakpoints, desktop)) {
-      max-height: 0.58 *  100vh;
+      max-height: 0.58 *  100vmin;
     }
 
     @media screen and (min-width: map-get($breakpoints, desktop)) {
@@ -59,6 +59,10 @@
 
     @media screen and (min-height: map-get($breakpoints, mobile)) {
       @include object-fit(50%, 50%, 1.1);
+    }
+
+    @media screen and (orientation: portrait) and (min-width: map-get($breakpoints, desktop)) {
+      @include object-fit(30%, 50%, 1);
     }
   }
 

@@ -354,7 +354,7 @@ template {
   display: -ms-flexbox;
   display: flex;
   height: 100vh;
-  min-height: 320px;
+  min-height: 321px;
   max-height: 2146px;
   overflow: hidden;
   background-color: rgba(240, 226, 215, 0.8);
@@ -362,7 +362,7 @@ template {
 
 @media screen and (orientation: portrait) and (min-width: 992px) {
   .header__wrapper {
-    max-height: 58vh;
+    max-height: 58vmin;
   }
 }
 
@@ -428,6 +428,18 @@ template {
     min-height: 100%;
     -webkit-transform: translateY(-50%) translateX(-50%) scale(1.1);
             transform: translateY(-50%) translateX(-50%) scale(1.1);
+  }
+}
+
+@media screen and (orientation: portrait) and (min-width: 992px) {
+  .header__image {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translateY(-30%) translateX(-50%) scale(1);
+            transform: translateY(-30%) translateX(-50%) scale(1);
   }
 }
 
