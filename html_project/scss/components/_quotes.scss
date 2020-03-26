@@ -5,6 +5,8 @@
   &__wrapper {
     position: relative;
 
+    display: flex;
+    justify-content: center;
     min-height: 300px;
     overflow: hidden;
 
@@ -48,6 +50,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     box-sizing: border-box;
     width: 95%;
     margin-top: 12.8rem;

@@ -1173,6 +1173,12 @@ template {
 
 .quotes__wrapper {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   min-height: 300px;
   overflow: hidden;
   text-align: center;
