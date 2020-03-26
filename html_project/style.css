@@ -1549,6 +1549,11 @@ template {
   }
 }
 
+.say-hello__input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #e9714c !important;
+  -webkit-text-fill-color: white;
+}
+
 .say-hello__input::-webkit-input-placeholder {
   color: inherit;
   text-transform: capitalize;
