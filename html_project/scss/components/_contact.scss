@@ -45,9 +45,13 @@
   }
 
   &__image {
-    @include object-fit(40%, 50%, 0.6);
+    @include object-fit(40%, 50%, 0.7);
 
     @media screen and (min-width: map-get($breakpoints, desktop)) {
+      @include object-fit(50%, 50%, 0.8);
+    }
+
+    @media screen and (min-width: map-get($breakpoints, full-hd-desktop)) {
       @include object-fit(50%, 50%, 1.04);
     }
   }
