@@ -1162,15 +1162,6 @@ template {
 
 .quotes__wrapper {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   min-height: 300px;
   overflow: hidden;
   text-align: center;
@@ -1203,8 +1194,39 @@ template {
   overflow: hidden;
 }
 
-.quotes__main {
+.quotes__image {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transform: translateY(-35%) translateX(-50%) scale(0.7);
+          transform: translateY(-35%) translateX(-50%) scale(0.7);
+}
+
+@media screen and (min-width: 740px) {
+  .quotes__image {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translateY(-5%) translateX(-50%) scale(1);
+            transform: translateY(-5%) translateX(-50%) scale(1);
+  }
+}
+
+.quotes__main-container {
   z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 95%;
@@ -1227,28 +1249,6 @@ template {
 
 .quotes__main:hover .quotes__icon {
   color: #e4ae58;
-}
-
-.quotes__image {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  -webkit-transform: translateY(-35%) translateX(-50%) scale(0.7);
-          transform: translateY(-35%) translateX(-50%) scale(0.7);
-}
-
-@media screen and (min-width: 740px) {
-  .quotes__image {
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    -webkit-transform: translateY(-5%) translateX(-50%) scale(1);
-            transform: translateY(-5%) translateX(-50%) scale(1);
-  }
 }
 
 .quotes__icon {

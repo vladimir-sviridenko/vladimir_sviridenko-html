@@ -5,9 +5,6 @@
   &__wrapper {
     position: relative;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 300px;
     overflow: hidden;
 
@@ -37,15 +34,28 @@
     overflow: hidden;
   }
 
-  &__main {
+  &__image {
+    @include object-fit(35%, 50%, 0.7);
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      @include object-fit(5%, 50%, 1);
+    }
+  }
+
+  &__main-container {
     z-index: 1;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     width: 95%;
     margin-top: 12.8rem;
     margin-bottom: 11rem;
     overflow: hidden;
+  }
 
+  &__main {
     @media screen and (min-width: map-get($breakpoints, tablet)) {
       width: 78%;
     }
@@ -54,19 +64,10 @@
       width: 60%;
     }
 
-
     &:hover {
       .quotes__icon {
         color: $bg-color-primary;
       }
-    }
-  }
-
-  &__image {
-    @include object-fit(35%, 50%, 0.7);
-
-    @media screen and (min-width: map-get($breakpoints, tablet)) {
-      @include object-fit(5%, 50%, 1);
     }
   }
 
