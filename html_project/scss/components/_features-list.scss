@@ -58,8 +58,8 @@
 
   &__main {
     box-sizing: border-box;
+    width: 100%;
     padding: 4.09rem 3.2rem 2.5rem 5.6rem;
-
 
     @media screen and (min-width: map-get($breakpoints, tablet)) {
       width: 50%;
@@ -77,7 +77,7 @@
     color: inherit;
     text-transform: capitalize;
 
-@include title-typography;
+    @include title-typography;
   }
 
   &__text {
@@ -85,7 +85,7 @@
 
     color: inherit;
 
-@include text-typography;
+    @include text-typography;
   }
 
   &__features {
@@ -128,13 +128,13 @@
     font-family: $font-family-primary;
     letter-spacing: 0.02em;
 
-@include title-typography($font-size-title - 1em);
+    @include title-typography($font-size-title - 1em);
   }
 
   &__item-text {
     margin-top: 0.8rem;
 
-@include text-typography;
+    @include text-typography;
   }
 
   &__item-time {

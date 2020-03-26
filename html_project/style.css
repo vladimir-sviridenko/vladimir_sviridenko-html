@@ -1048,6 +1048,7 @@ template {
 .features-list__main {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  width: 100%;
   padding: 4.09rem 3.2rem 2.5rem 5.6rem;
 }
 
@@ -1475,9 +1476,18 @@ template {
   }
 }
 
+@media screen and (min-width: 740px) {
+  .contact__visit-office {
+    height: 50%;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+  }
+}
+
 @media screen and (min-width: 1110px) {
   .contact__visit-office {
     width: 50%;
+    height: auto;
   }
 }
 
@@ -1627,10 +1637,6 @@ template {
   .visit-office {
     padding: 4.8rem 3.2rem 4.6rem 4.5rem;
   }
-}
-
-.visit-office__wrapper {
-  overflow: hidden;
 }
 
 @media screen and (min-width: 740px) and (max-width: 1109px) {
