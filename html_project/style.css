@@ -354,6 +354,7 @@ template {
   display: -ms-flexbox;
   display: flex;
   height: 100vh;
+  min-height: 320px;
   max-height: 2146px;
   overflow: hidden;
   background-color: rgba(240, 226, 215, 0.8);
