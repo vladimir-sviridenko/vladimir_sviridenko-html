@@ -1,5 +1,6 @@
 @import "./base/normalize";
 /*Abstract*/
+@import "./abstract/functions";
 @import "./abstract/variables";
 @import "./abstract/mixins";
 /*Components*/
@@ -16,28 +17,30 @@
 @import "./components/button";
 
 html {
-  font-size: 5px;
+  font-size: calcResponsiveFontSize(5px, 7px, $min-width, map-get($breakpoints, tablet));
 
-  scroll-behavior: smooth;
-
-  @media screen and (min-width: map-get($breakpoints, tablet)) and (min-height: 420px) {
-    font-size: 7px;
+  @media screen and (min-width: map-get($breakpoints, full-hd-desktop)) {
+    font-size: calcResponsiveFontSize(13px, 27px,  map-get($breakpoints, full-hd-desktop), $max-width);
   }
 
-  @media screen and (min-width: map-get($breakpoints, desktop)) and (min-height: 420px) {
-    font-size: 8px;
-  }
-
-
-  @media screen and (min-width: map-get($breakpoints, large-desktop)) {
-    font-size: 10px;
+  @media screen and (min-width: $max-width) {
+    font-size: 27px;
   }
 }
 
 body {
-  max-width: map-get($breakpoints, 4k-desktop);
+  max-width: $max-width;
   margin: 0 auto;
 
   font-size: 10px;
   font-family: $font-family-primary;
+
+
+  @media screen and (min-width: map-get($breakpoints, large-desktop)) {
+    font-size: calcResponsiveFontSize(10px, 30px,  map-get($breakpoints, large-desktop), $max-width);
+  }
+
+  @media screen and (min-width: $max-width) {
+    font-size: 30px;
+  }
 }

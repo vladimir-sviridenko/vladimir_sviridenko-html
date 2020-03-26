@@ -22,16 +22,17 @@
   }
 
   &__image-container {
+    position: relative;
+
     flex-grow: 1;
     flex-shrink: 0;
     width: 100%;
-    position: relative;
     height: 340px;
     overflow: hidden;
 
     @media screen and (min-width: map-get($breakpoints, mobile)) {
-      height: auto;
       flex-basis: 30%;
+      height: auto;
     }
 
     @media screen and (min-width: map-get($breakpoints, tablet)) {
@@ -47,11 +48,11 @@
     @include object-fit(40%, 50%, 0.6);
 
     @media screen and (min-width: map-get($breakpoints, desktop)) {
-      @include object-fit(53%, 50%, 0.62);
+      @include object-fit(50%, 50%, 0.7);
     }
 
     @media screen and (min-width: map-get($breakpoints, large-desktop)) {
-      @include object-fit(53%, 50%, 0.7);
+      @include object-fit(50%, 50%, 1);
     }
   }
 

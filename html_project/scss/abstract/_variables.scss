@@ -16,17 +16,27 @@ $breakpoints: (
   tablet: 740px,
   desktop: 1110px,
   large-desktop: 1480px,
-  full-hd-desktop: 1980px,
-  4k-desktop: 3840px,
+  full-hd-desktop: 1800px,
+  4k-desktop: 3700px,
 );
+$min-width: 320px;
+$max-width: 3840px;
 /*Font*/
-$font-family-primary: "Bw Surco", sans-serif;
+$font-family-primary: "Source Sans Pro", sans-serif;
 $font-family-icons: "FontAwesome";
 $font-size-sup-title: 1.1em;
-$font-size-navigation: 1.2em;
-$font-size-progress-bar: 1.2em;
-$font-size-logo: 1.8em;
-$font-size-text: 1.6em;
-$font-size-title: 3.2em;
-$line-height-title: 1.2em;
-$line-height-text: 1.9em;
+$font-size-navigation: 1.3em;
+$font-size-progress-bar: 1.25em;
+$font-size-logo: 2em;
+$font-size-text: 1.404em;
+$line-height-text: 2.527*(1em*1em) / $font-size-text;
+$font-size-title: 3.4em;
+$line-height-title: 4.08*(1em*1em) / $font-size-title;
+$font-weight: (
+  regular: 300,
+  medium: 400,
+  bold: 600,
+  black: 900
+);
+/*animation time*/
+$default-animation-time: 0.5s;

@@ -3,10 +3,10 @@
 
 .menu {
   &__link {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    padding-right: 1.45rem;
+    padding-left: 1.45rem;
 
-    font-weight: 700;
+    font-weight: map-get($font-weight, bold);
     font-size: $font-size-navigation;
     color: lighten($text-color-default, 30%);
     text-transform: uppercase;

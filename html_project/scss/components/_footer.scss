@@ -1,37 +1,42 @@
 .footer {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
   padding: 10rem 4rem;
 
-  @include text-typography;
   text-transform: capitalize;
 
+  @include text-typography;
+
   @media screen and (min-width: map-get($breakpoints, mobile)) {
-    padding: 13rem;
+    padding: 14rem;
   }
 
   &__copyright {
-    text-align: center;
     margin: 0;
+
+    font-size: 1.02em;
+    text-align: center;
+    color: lighten($text-color-default, $text-lighten);
 
     &_alt {
       color: $text-color-alt;
+      text-transform: capitalize;
     }
   }
 
   &__socials {
-    margin-top: 5.4rem;
+    margin-top: 4.3rem;
   }
 
   &__social-link {
-    font-size: 1.1em;
+    margin-right: 2rem,;
+    margin-left: 2rem;
+
+    font-size: 1em;
     color: lighten($text-color-default, $text-lighten);
     text-decoration: none;
-    margin-left: 2rem;
-    margin-right: 2rem,;
 
     &:hover {
       color: $text-color-alt;

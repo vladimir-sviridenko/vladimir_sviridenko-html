@@ -4,28 +4,33 @@
   font-size: $font-size-progress-bar;
 
   &__title {
-    font-weight: 700;
+    font-weight: map-get($font-weight, black);
     color: lighten($text-color-default, $title-lighten);
-    text-transform: capitalize;
 
     &_frontend {
       flex-basis: 90%;
+
+      text-transform: capitalize;
     }
 
     &_backend {
       flex-basis: 70%;
+
+      text-transform: none;
     }
 
     &_html {
       flex-basis: 80%;
+
+      text-transform: uppercase;
     }
 
     &::after {
       content: "";
 
       display: block;
-      height: 2px;
-      margin-top: 12px;
+      height: 0.21rem;
+      margin-top: 1.1rem;
 
       background-color: lighten($text-color-default, $title-lighten);
     }
@@ -41,8 +46,8 @@
       content: "";
 
       display: block;
-      height: 2px;
-      margin-top: 12px;
+      height: 0.18rem;
+      margin-top: 1.1rem;
 
       background-color: $text-color-primary;
     }
