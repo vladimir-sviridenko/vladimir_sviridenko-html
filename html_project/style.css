@@ -1185,12 +1185,6 @@ template {
   background-color: rgba(0, 0, 0, 0.56);
 }
 
-@media screen and (min-width: 576px) {
-  .quotes__wrapper {
-    height: auto;
-  }
-}
-
 .quotes__image-container {
   position: absolute;
   z-index: -1;

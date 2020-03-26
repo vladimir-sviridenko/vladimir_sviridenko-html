@@ -13,10 +13,6 @@
     text-align: center;
 
     background-color: rgba(black, 0.56);
-
-    @media screen and (min-width: map-get($breakpoints, mobile)) {
-      height: auto;
-    }
   }
 
   &__image-container {
