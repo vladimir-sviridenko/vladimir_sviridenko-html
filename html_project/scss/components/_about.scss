@@ -103,7 +103,7 @@
     flex-flow: column-reverse wrap;
     width: 100%;
 
-    @media screen and (min-width: map-get($breakpoints, tablet)) {
+    @media screen and (min-width: map-get($breakpoints, mobile)) {
       flex-flow: row wrap-reverse;
     }
   }
@@ -113,7 +113,7 @@
       order: 1;
     }
 
-    @media screen and (min-width: map-get($breakpoints, tablet)) {
+    @media screen and (min-width: map-get($breakpoints, mobile)) {
       width: 50%;
     }
 

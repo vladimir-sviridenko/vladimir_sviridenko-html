@@ -928,7 +928,7 @@ template {
   width: 100%;
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 576px) {
   .about__skill-boxes {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -943,7 +943,7 @@ template {
           order: 1;
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 576px) {
   .about__skill-box {
     width: 50%;
   }
