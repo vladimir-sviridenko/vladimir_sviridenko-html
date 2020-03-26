@@ -110,7 +110,7 @@
 
     color: lighten($text-color-default, $title-lighten);
 
-@include title-typography;
+    @include title-typography;
   }
 
   &__title-logo {
@@ -122,7 +122,7 @@
 
     color: lighten($text-color-default, $text-lighten);
 
-@include text-typography;
+    @include text-typography;
 
     @media screen and (max-width: map-get($breakpoints, desktop)) {
       color: lighten($text-color-default, 30%);

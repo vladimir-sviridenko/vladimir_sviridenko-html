@@ -2,6 +2,7 @@
   color: $text-color-primary;
 
   cursor: default;
+
   &__wrapper {
     position: relative;
 
@@ -37,7 +38,6 @@
 
     display: flex;
     justify-content: center;
-
     box-sizing: border-box;
     width: 95%;
     margin-top: 12.8rem;

@@ -90,8 +90,8 @@
     }
 
     @media screen and (min-width: map-get($breakpoints, tablet)) {
-      height: 50%;
       flex-basis: auto;
+      height: 50%;
     }
 
     @media screen and (min-width: map-get($breakpoints, desktop)) {

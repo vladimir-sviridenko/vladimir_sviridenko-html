@@ -1474,9 +1474,9 @@ template {
 
 @media screen and (min-width: 740px) {
   .contact__visit-office {
-    height: 50%;
     -ms-flex-preferred-size: auto;
         flex-basis: auto;
+    height: 50%;
   }
 }
 
