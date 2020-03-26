@@ -5,6 +5,9 @@
   &__wrapper {
     position: relative;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 300px;
     overflow: hidden;
 
@@ -45,9 +48,6 @@
   &__main-container {
     z-index: 1;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
     width: 95%;
     margin-top: 12.8rem;
