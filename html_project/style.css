@@ -1905,7 +1905,13 @@ body {
 
 @media screen and (min-width: 992px) {
   body {
-    font-size: calc( 0.00737 * 100vw + 1.68539px);
+    font-size: calc( 0.00527 * 100vw + 3.77528px);
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  body {
+    font-size: calc( 0.00833 * 100vw + -2px);
   }
 }
 

@@ -38,7 +38,11 @@ body {
   font-family: $font-family-primary;
 
   @media screen and (min-width: map-get($breakpoints, desktop)) {
-    font-size: calcResponsiveFontSize(9px, 30px,  map-get($breakpoints, desktop), $max-width);
+    font-size: calcResponsiveFontSize(9px, 24px,  map-get($breakpoints, desktop), $max-width);
+  }
+
+  @media screen and (min-width: map-get($breakpoints, full-hd-desktop)) {
+    font-size: calcResponsiveFontSize(13px, 30px,  map-get($breakpoints, full-hd-desktop), $max-width);
   }
 
   @media screen and (min-width: $max-width) {
