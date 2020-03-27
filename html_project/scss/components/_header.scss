@@ -55,15 +55,7 @@
   }
 
   &__image {
-    @include object-fit(30%, 50%, 0.9);
-
-    @media screen and (min-height: map-get($breakpoints, mobile)) {
-      @include object-fit(50%, 50%, 1.1);
-    }
-
-    @media screen and (orientation: portrait) and (min-width: map-get($breakpoints, desktop)) {
-      @include object-fit(30%, 50%, 1);
-    }
+    @include object-fit(30%, 50%, 1);
   }
 
   &__main {
