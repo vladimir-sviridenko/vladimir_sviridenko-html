@@ -10,12 +10,20 @@
 
     background-color: rgba($bg-color-header, 0.8);
 
-    @media screen and (orientation: portrait) and (min-width: map-get($breakpoints, desktop)) {
-      max-height: 0.58 *  100vmin;
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      min-height: 0.46 * 100vw;
     }
 
     @media screen and (min-width: map-get($breakpoints, desktop)) {
       background-color: $bg-color-header;
+    }
+
+    @media screen and (orientation: portrait) and (min-width: map-get($breakpoints, desktop)) {
+      max-height: 0.58 *  100vmin;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, 4k-desktop)) {
+      min-height: 0.4 * map-get($breakpoints, 4k-desktop);
     }
   }
 

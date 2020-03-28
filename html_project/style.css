@@ -360,15 +360,27 @@ template {
   background-color: rgba(240, 226, 215, 0.8);
 }
 
-@media screen and (orientation: portrait) and (min-width: 992px) {
+@media screen and (min-width: 740px) {
   .header__wrapper {
-    max-height: 58vmin;
+    min-height: 46vw;
   }
 }
 
 @media screen and (min-width: 992px) {
   .header__wrapper {
     background-color: #f0e2d7;
+  }
+}
+
+@media screen and (orientation: portrait) and (min-width: 992px) {
+  .header__wrapper {
+    max-height: 58vmin;
+  }
+}
+
+@media screen and (min-width: 3700px) {
+  .header__wrapper {
+    min-height: 1480px;
   }
 }
 
