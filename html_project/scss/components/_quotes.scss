@@ -68,7 +68,7 @@
     font-size: 3.35em;
     font-family: $font-family-icons;
 
-    transition: color $default-animation-time;
+    transition: color 0.5s;
 
     &_star::before {
       content: "\f005";
