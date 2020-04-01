@@ -53,12 +53,6 @@
     @media screen and (min-width: map-get($breakpoints, desktop)) {
       width: 60%;
     }
-
-    &:hover {
-      .quotes__icon {
-        color: $bg-color-primary;
-      }
-    }
   }
 
   &__icon {
@@ -70,8 +64,14 @@
 
     transition: color 0.5s;
 
-    &_star::before {
-      content: "\f005";
+    &_star {
+      &::before {
+        content: "\f005";
+      }
+
+      &:hover {
+        color: $bg-color-primary;
+      }
     }
   }
 

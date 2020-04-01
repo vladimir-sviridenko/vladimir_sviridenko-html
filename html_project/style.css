@@ -1242,10 +1242,6 @@ template {
   }
 }
 
-.quotes__main:hover .quotes__icon {
-  color: #e4ae58;
-}
-
 .quotes__icon {
   width: 1em;
   margin: 0 auto;
@@ -1257,6 +1253,10 @@ template {
 
 .quotes__icon_star::before {
   content: "\f005";
+}
+
+.quotes__icon_star:hover {
+  color: #e4ae58;
 }
 
 .quotes__title {
