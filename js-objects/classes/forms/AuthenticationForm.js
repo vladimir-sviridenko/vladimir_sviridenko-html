@@ -29,9 +29,8 @@ class AuthenticationForm extends Form {
       } else {
         this._showSignUpForm();
       }
+      this._domWorker.update();
     }
-    
-    this._domWorker.update();
   }
 
   _showSignInForm() {
