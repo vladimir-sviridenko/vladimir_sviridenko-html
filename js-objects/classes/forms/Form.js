@@ -2,7 +2,7 @@ import FormComponent from "../formComponents/FormComponent.js";
 
 class Form {
   constructor(title) {
-    if(this.constructor == Form) {
+    if(this.constructor === Form) {
       throw new Error("Cannot create an instance of abstract class");
     }
 
