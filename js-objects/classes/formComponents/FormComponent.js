@@ -1,7 +1,7 @@
 import Form from "../forms/Form.js";
 
 function FormComponent(form) {
-  if(this.constructor === FormComponent) {
+  if (this.constructor === FormComponent) {
     throw new Error("Cannot create an instance of abstract class");
   }
   if (form instanceof Form) {
