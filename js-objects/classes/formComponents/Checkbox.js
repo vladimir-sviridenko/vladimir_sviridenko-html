@@ -20,21 +20,21 @@ function Checkbox(form, name, checked = false, description = "") {
   } else {
     throw new TypeError("description must be string");
   }
-  
+
   Object.defineProperty(this, "name", {
-    get: function() {
-        return this._name;
+    get: function () {
+      return this._name;
     }
   });
 
   Object.defineProperty(this, "checked", {
-    get: function() {
+    get: function () {
       return this._checked;
     }
   });
 
   Object.defineProperty(this, "description", {
-    get: function() {
+    get: function () {
       return this._description;
     }
   });
@@ -42,7 +42,7 @@ function Checkbox(form, name, checked = false, description = "") {
 
 Checkbox.prototype = Object.create(FormComponent.prototype);
 
-Checkbox.prototype.check = function() {
+Checkbox.prototype.check = function () {
   if (this.form) {
     this.form.notify(this, "check");
     this._checked = !this._checked;

@@ -28,7 +28,7 @@ function FormComponent(form) {
   });
 };
 
-FormComponent.prototype.click = function() {
+FormComponent.prototype.click = function () {
   if (this.form) {
     this.form.notify(this, "click");
   } else {

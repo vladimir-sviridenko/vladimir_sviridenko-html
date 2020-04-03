@@ -5,7 +5,7 @@ import Button from "./formComponents/Button.js";
 
 class AuthenticationFormDomWorker {
   constructor(form) {
-    if(form instanceof AuthenticationForm) {
+    if (form instanceof AuthenticationForm) {
       this._form = form;
     } else {
       throw new TypeError("the dom worker only for AuthenticationForm");
@@ -36,16 +36,16 @@ class AuthenticationFormDomWorker {
 
     this._form.shownComponents.forEach((component) => {
 
-      if(component instanceof Input) {
+      if (component instanceof Input) {
         const inputElement = document.createElement("input");
         inputElement.name = component.name;
         inputElement.placeholder = component.name;
         inputElement.classList.add("form__input");
-        switch(component.name) {
-          case "password": 
+        switch (component.name) {
+          case "password":
             inputElement.type = "password";
             break;
-          case "password-verification": 
+          case "password-verification":
             inputElement.type = "password";
             break;
           case "email":
@@ -57,14 +57,14 @@ class AuthenticationFormDomWorker {
         }
         this._formElement.append(inputElement);
       }
-      
-      if(component instanceof Checkbox) {
+
+      if (component instanceof Checkbox) {
         const checkboxElement = document.createElement("input");
         checkboxElement.type = "checkbox";
         checkboxElement.name = component.name;
         checkboxElement.checked = component.checked;
         checkboxElement.classList.add("form__checkbox");
-        checkboxElement.onclick = function() {
+        checkboxElement.onclick = function () {
           component.check();
         };
         const label = document.createElement("label");
@@ -74,7 +74,7 @@ class AuthenticationFormDomWorker {
         this._formElement.append(label);
       }
 
-      if(component instanceof Button) {
+      if (component instanceof Button) {
         const buttonElement = document.createElement("button");
         buttonElement.type = "submit";
         buttonElement.innerHTML = component.value;

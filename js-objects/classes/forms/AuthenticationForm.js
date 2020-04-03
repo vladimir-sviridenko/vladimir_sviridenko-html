@@ -18,13 +18,13 @@ class AuthenticationForm extends Form {
     this._subscribeNewsCheckbox = new Checkbox(this, "subscribeNews", true, "Subscribe interesting news");
     this._signInButton = new Button(this, "Sign In");
     this._signUpButton = new Button(this, "Sign Up");
-    
+
     this._showSignInForm();
   }
 
   notify(sender, event) {
-    if(sender === this._haveAccountCheckbox && event === "check") {
-      if(this._haveAccountCheckbox.checked) {
+    if (sender === this._haveAccountCheckbox && event === "check") {
+      if (this._haveAccountCheckbox.checked) {
         this._showSignInForm();
       } else {
         this._showSignUpForm();
@@ -42,7 +42,7 @@ class AuthenticationForm extends Form {
     this._passwordVerify.hidden = true;
     this._subscribeNewsCheckbox.hidden = true;
     this._signUpButton.hidden = true;
-    
+
     this._title = "Sign In";
   }
 
@@ -55,7 +55,7 @@ class AuthenticationForm extends Form {
     this._signUpButton.hidden = false;
 
     this._signInButton.hidden = true;
-    
+
     this._title = "Sign Up";
   }
 
@@ -66,7 +66,7 @@ class AuthenticationForm extends Form {
   get shownComponents() {
     const shownComponents = [];
     Object.getOwnPropertyNames(this).forEach((prop) => {
-      if(this[prop] instanceof FormComponent && this[prop].hidden === false) {
+      if (this[prop] instanceof FormComponent && this[prop].hidden === false) {
         shownComponents.push(this[prop]);
       }
     });
