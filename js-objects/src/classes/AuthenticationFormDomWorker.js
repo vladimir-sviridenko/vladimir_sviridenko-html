@@ -2,7 +2,7 @@ import AuthenticationForm from "./forms/AuthenticationForm.js";
 import Input from "./formComponents/Input.js";
 import Checkbox from "./formComponents/Checkbox.js";
 import Button from "./formComponents/Button.js";
-import ComponentType from "./enums/ComponentType.js";
+import ComponentType from "../enums/ComponentType.js";
 
 class AuthenticationFormDomWorker {
   constructor(form) {

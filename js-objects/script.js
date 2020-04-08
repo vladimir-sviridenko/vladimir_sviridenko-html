@@ -1,4 +1,4 @@
-import AuthenticationForm from "./classes/forms/AuthenticationForm.js";
+import AuthenticationForm from "./src/classes/forms/AuthenticationForm.js";
 
 const form = new AuthenticationForm();
 const formElement = form.domWorker.create();
