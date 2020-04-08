@@ -45,8 +45,8 @@ Checkbox.prototype = Object.create(FormComponent.prototype);
 
 Checkbox.prototype.check = function () {
   if (this.form) {
-    this.form.notify(this, "check");
     this._checked = !this._checked;
+    this.form.notify(this, "check");
   } else {
     throw new Error("be sure that component have form to interact");
   }
