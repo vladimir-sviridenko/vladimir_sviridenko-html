@@ -40,7 +40,7 @@ FormComponent.prototype.click = function () {
 }
 
 FormComponent.prototype.createElement = function () {
-  throw new Error("Cannot create abstract element");
+  throw new Error("createElement is not implemented");
 }
 
 export default FormComponent;
