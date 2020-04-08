@@ -19,21 +19,21 @@ class AuthenticationForm extends Form {
     this._signInButton = new Button(this, "Sign In");
     this._signUpButton = new Button(this, "Sign Up");
 
-    this._showSignInForm();
+    this.showSignInForm();
   }
 
   notify(sender, event) {
     if (sender === this._haveAccountCheckbox && event === "check") {
       if (this._haveAccountCheckbox.checked) {
-        this._showSignInForm();
+        this.showSignInForm();
       } else {
-        this._showSignUpForm();
+        this.showSignUpForm();
       }
       this._domWorker.update();
     }
   }
 
-  _showSignInForm() {
+  showSignInForm() {
     this._loginField.hidden = false;
     this._passwordField.hidden = false;
     this._signInButton.hidden = false;
@@ -46,7 +46,7 @@ class AuthenticationForm extends Form {
     this._title = "Sign In";
   }
 
-  _showSignUpForm() {
+  showSignUpForm() {
     this._loginField.hidden = false;
     this._emailField.hidden = false;
     this._passwordField.hidden = false;

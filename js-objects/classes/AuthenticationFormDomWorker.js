@@ -17,17 +17,17 @@ class AuthenticationFormDomWorker {
     this._formElement.method = "POST";
     this._formElement.action = "https://www.w3schools.com/action_page.php";
     this._formElement.classList.add("form");
-    this._appendFormComponents();
+    this.appendFormComponents();
 
     return this._formElement;
   }
 
   update() {
     this._formElement.innerHTML = "";
-    this._appendFormComponents();
+    this.appendFormComponents();
   }
 
-  _appendFormComponents() {
+  appendFormComponents() {
     const titleElement = document.createElement("label");
     titleElement.classList.add("form__label");
     titleElement.classList.add("form__label_title");
