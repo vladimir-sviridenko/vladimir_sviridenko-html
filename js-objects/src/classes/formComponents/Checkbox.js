@@ -1,4 +1,5 @@
 import FormComponent from "../formComponents/FormComponent.js";
+import ComponentType from "../../enums/ComponentType.js";
 
 function Checkbox(form, name, checked = false, description = "") {
   FormComponent.call(this, form);
@@ -49,6 +50,20 @@ Checkbox.prototype.check = function () {
   } else {
     throw new Error("be sure that component have form to interact");
   }
+}
+
+Checkbox.prototype.createElement = function () {
+  const checkboxElement = document.createElement("input");
+  checkboxElement.type = ComponentType.CHECKBOX;
+  checkboxElement.name = this.name;
+  checkboxElement.checked = this.checked;
+  checkboxElement.classList.add("form__checkbox");
+  checkboxElement.onclick = () => this.check();
+  const checkboxWrapper = document.createElement("label");
+  checkboxWrapper.innerHTML = this.description;
+  checkboxWrapper.classList.add("form__label");
+  checkboxWrapper.prepend(checkboxElement);
+  return checkboxWrapper;
 }
 
 Checkbox.prototype.constructor = Checkbox;

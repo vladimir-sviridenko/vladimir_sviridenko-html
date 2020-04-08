@@ -1,7 +1,8 @@
-var ComponentType = {
+let ComponentType = {
   TEXT: "text",
   EMAIL: "email",
   PASSWORD: "password",
+  CHECKBOX: "checkbox",
   SUBMIT: "submit"
 };
 

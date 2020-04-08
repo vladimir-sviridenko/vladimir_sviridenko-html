@@ -1,4 +1,5 @@
 import FormComponent from "../formComponents/FormComponent.js";
+import ComponentType from "../../enums/ComponentType.js";
 
 function Input(form, name) {
   FormComponent.call(this, form);
@@ -24,6 +25,28 @@ Input.prototype.change = function () {
   } else {
     throw new Error("be sure that component have form to interact");
   }
+}
+
+Input.prototype.createElement = function () {
+  const inputElement = document.createElement("input");
+  inputElement.name = this.name;
+  inputElement.placeholder = this.name;
+  inputElement.classList.add("form__input");
+  switch (this.name) {
+    case "password":
+      inputElement.type = ComponentType.PASSWORD;
+      break;
+    case "password-verification":
+      inputElement.type = ComponentType.PASSWORD;
+      break;
+    case "email":
+      inputElement.type = ComponentType.EMAIL;
+      break;
+    default:
+      inputElement.type = ComponentType.TEXT;
+      break;
+  }
+  return inputElement;
 }
 
 Input.prototype.constructor = Input;

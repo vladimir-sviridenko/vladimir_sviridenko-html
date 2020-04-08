@@ -10,7 +10,7 @@ class AuthenticationForm extends Form {
     super("Authentication");
     this._domWorker = new AuthenticationFormDomWorker(this);
 
-    this._haveAccountCheckbox = new Checkbox(this, "haveAccount", false, "I already have an account");
+    this._haveAccountCheckbox = new Checkbox(this, "haveAccount", true, "I already have an account");
     this._loginField = new Input(this, "login");
     this._emailField = new Input(this, "email");
     this._passwordField = new Input(this, "password");

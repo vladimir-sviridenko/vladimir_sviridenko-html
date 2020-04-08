@@ -1,4 +1,5 @@
 import FormComponent from "../formComponents/FormComponent.js";
+import ComponentType from "../../enums/ComponentType.js";
 
 function Button(form, value) {
   FormComponent.call(this, form);
@@ -17,6 +18,15 @@ function Button(form, value) {
 }
 
 Button.prototype = Object.create(FormComponent.prototype);
+
+Button.prototype.createElement = function () {
+  const buttonElement = document.createElement("button");
+  buttonElement.type = ComponentType.SUBMIT;
+  buttonElement.innerHTML = this.value;
+  buttonElement.classList.add("form__button");
+  return buttonElement;
+}
+
 Button.prototype.constructor = Button;
 
 export default Button;

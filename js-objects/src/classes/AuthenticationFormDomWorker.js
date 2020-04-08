@@ -1,8 +1,4 @@
 import AuthenticationForm from "./forms/AuthenticationForm.js";
-import Input from "./formComponents/Input.js";
-import Checkbox from "./formComponents/Checkbox.js";
-import Button from "./formComponents/Button.js";
-import ComponentType from "../enums/ComponentType.js";
 
 class AuthenticationFormDomWorker {
   constructor(form) {
@@ -36,52 +32,7 @@ class AuthenticationFormDomWorker {
     this._formElement.append(titleElement);
 
     this._form.shownComponents.forEach((component) => {
-
-      if (component instanceof Input) {
-        const inputElement = document.createElement("input");
-        inputElement.name = component.name;
-        inputElement.placeholder = component.name;
-        inputElement.classList.add("form__input");
-        switch (component.name) {
-          case "password":
-            inputElement.type = ComponentType.PASSWORD;
-            break;
-          case "password-verification":
-            inputElement.type = ComponentType.PASSWORD;
-            break;
-          case "email":
-            inputElement.type = ComponentType.EMAIL;
-            break;
-          default:
-            inputElement.type = ComponentType.TEXT;
-            break;
-        }
-        this._formElement.append(inputElement);
-      }
-
-      if (component instanceof Checkbox) {
-        const checkboxElement = document.createElement("input");
-        checkboxElement.type = "checkbox";
-        checkboxElement.name = component.name;
-        checkboxElement.checked = component.checked;
-        checkboxElement.classList.add("form__checkbox");
-        checkboxElement.onclick = function () {
-          component.check();
-        };
-        const label = document.createElement("label");
-        label.innerHTML = component.description;
-        label.classList.add("form__label");
-        label.prepend(checkboxElement);
-        this._formElement.append(label);
-      }
-
-      if (component instanceof Button) {
-        const buttonElement = document.createElement("button");
-        buttonElement.type = ComponentType.SUBMIT;
-        buttonElement.innerHTML = component.value;
-        buttonElement.classList.add("form__button");
-        this._formElement.append(buttonElement);
-      }
+      this._formElement.append(component.createElement());
     });
   }
 }
