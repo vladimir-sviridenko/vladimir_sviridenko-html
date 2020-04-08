@@ -1,0 +1,153 @@
+.features-list {
+  display: flex;
+  flex-flow: row wrap;
+
+  &_education {
+    flex-direction: row-reverse;
+  }
+
+  &_color {
+    &_primary {
+      color: $text-color-primary;
+
+      background-color: $bg-color-primary;
+    }
+
+    &_secondary {
+      color: $text-color-primary;
+
+      background-color: $bg-color-secondary;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+
+    width: 100%;
+    min-height: 230px;
+    overflow: hidden;
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      width: 50%;
+    }
+  }
+
+  &__image {
+    @include object-fit(35%, 50%, 0.6);
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      @include object-fit(10%, 50%, 1);
+    }
+
+    @media screen and (min-width: map-get($breakpoints, full-hd-desktop)) {
+      @include object-fit(0%, 49%, 1.3);
+    }
+
+    &_education {
+      @include object-fit(50%, 50%, 0.6);
+
+      @media screen and (min-width: map-get($breakpoints, tablet)) {
+        @include object-fit(50%, 50%, 1);
+      }
+    }
+  }
+
+  &__main {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 4.09rem 3.2rem 2.5rem 5.6rem;
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      width: 50%;
+    }
+
+    &_education {
+      padding-top: 3.9rem;
+      padding-left: 3.9rem;
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    color: inherit;
+    text-transform: capitalize;
+
+    @include title-typography;
+  }
+
+  &__text {
+    margin-top: 1.26rem;
+
+    color: inherit;
+
+    @include text-typography;
+  }
+
+  &__features {
+    margin-top: 4.65rem;
+    padding-left: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 1.35rem;
+
+    font-size: 0.9em;
+  }
+
+  &__item-icon {
+    margin-right: 5rem;
+
+    font-size: 4em;
+    font-family: $font-family-icons;
+    text-align: left;
+
+    transform: translateY(-0.12em);
+
+    &::before {
+      content: "\f109";
+    }
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      margin-right: 2.4rem;
+    }
+  }
+
+  &__item-title {
+    margin: 0;
+
+    font-weight: map-get($font-weight, regular);
+    font-family: $font-family-primary;
+    letter-spacing: 0.02em;
+
+    @include title-typography($font-size-title - 1em);
+  }
+
+  &__item-text {
+    margin-top: 0.8rem;
+
+    @include text-typography;
+  }
+
+  &__item-time {
+    display: inline-block;
+
+    font-weight: map-get($font-weight, black);
+    font-size: 0.625em;
+    line-height: 1.5em;
+
+    &_color {
+      &_primary {
+        color: darken($bg-color-primary, 29%);
+      }
+
+      &_secondary {
+        color: darken($bg-color-secondary, 35%);
+      }
+    }
+  }
+}

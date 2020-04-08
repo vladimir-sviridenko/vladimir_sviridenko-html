@@ -1,0 +1,39 @@
+/*Colors*/
+$text-color-default: black;
+$title-lighten: 14%;
+$text-lighten: 60%;
+$text-color-primary: white;
+$text-color-alt: #e4ae58;
+$bg-color-header: #f0e2d7;
+$bg-color-menu: #f0e2d7;
+$bg-color-default: #ffffff;
+$bg-color-primary: #e4ae58;
+$bg-color-secondary: #e9714c;
+$bg-color-tertiary: black;
+/*Breakpoints*/
+$breakpoints: (
+  mobile: 576px,
+  tablet: 740px,
+  desktop: 992px,
+  full-hd-desktop: 1800px,
+  4k-desktop: 3700px,
+);
+$min-width: 320px;
+$max-width: 3840px;
+/*Font*/
+$font-family-primary: "Source Sans Pro", sans-serif;
+$font-family-icons: "FontAwesome";
+$font-size-sup-title: 1.1em;
+$font-size-navigation: 1.3em;
+$font-size-progress-bar: 1.25em;
+$font-size-logo: 2em;
+$font-size-text: 1.404em;
+$line-height-text: 2.527*(1em*1em) / $font-size-text;
+$font-size-title: 3.4em;
+$line-height-title: 4.08*(1em*1em) / $font-size-title;
+$font-weight: (
+  regular: 300,
+  medium: 400,
+  bold: 600,
+  black: 900
+);

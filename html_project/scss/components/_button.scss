@@ -1,0 +1,56 @@
+.button {
+  display: inline-block;
+  box-sizing: border-box;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+
+  text-align: center;
+  color: lighten($text-color-default, $title-lighten);
+  text-decoration: none;
+
+  border: 0.2rem solid lighten($text-color-default, $title-lighten);
+  border-radius: 80rem;
+
+  &_send {
+    padding-top: 1.1rem;
+    padding-bottom: 1.3rem;
+
+    font-weight: map-get($font-weight, medium);
+    font-size: 1.52em;
+    text-transform: capitalize;
+
+    background-color: $bg-color-default;
+    border-color: $bg-color-default;
+    cursor: pointer;
+
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $text-color-alt;
+    }
+  }
+
+  &_get-started {
+    padding-right: 3.18rem;
+    padding-left: 3.18rem;
+
+    font-weight: map-get($font-weight, black);
+    font-size: 1.2em;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+
+    transition: color 0.3s, border-color 0.3s;
+
+    &:hover {
+      color: darken($text-color-alt, 12%);
+
+      border-color: darken($text-color-alt, 12%);
+    }
+
+    @media screen and (max-width: map-get($breakpoints, desktop) - 1px) {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+}

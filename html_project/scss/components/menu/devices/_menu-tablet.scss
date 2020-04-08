@@ -1,0 +1,11 @@
+@media screen and (min-width: map-get($breakpoints, tablet)) {
+  .menu {
+    &__burger-switcher {
+      display: none;
+    }
+
+    &__menu__burger-label {
+      display: none;
+    }
+  }
+}

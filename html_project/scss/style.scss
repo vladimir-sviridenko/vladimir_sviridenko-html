@@ -1,0 +1,51 @@
+@import "./base/normalize";
+/*Abstract*/
+@import "./abstract/functions";
+@import "./abstract/variables";
+@import "./abstract/mixins";
+/*Components*/
+@import "./components/header";
+@import "./components/menu/menu";
+@import "./components/progress-bar";
+@import "./components/skills";
+@import "./components/skill-box";
+@import "./components/about";
+@import "./components/features-list";
+@import "./components/quotes";
+@import "./components/contact";
+@import "./components/say-hello";
+@import "./components/visit-office";
+@import "./components/footer";
+@import "./components/button";
+
+html {
+  font-size: calcResponsiveFontSize(5px, 7px, $min-width, map-get($breakpoints, tablet));
+
+  @media screen and (min-width: map-get($breakpoints, full-hd-desktop)) {
+    font-size: calcResponsiveFontSize(13px, 27px,  map-get($breakpoints, full-hd-desktop), $max-width);
+  }
+
+  @media screen and (min-width: $max-width) {
+    font-size: 27px;
+  }
+}
+
+body {
+  max-width: $max-width;
+  margin: 0 auto;
+
+  font-size: 10px;
+  font-family: $font-family-primary;
+
+  @media screen and (min-width: map-get($breakpoints, desktop)) {
+    font-size: calcResponsiveFontSize(9px, 24px,  map-get($breakpoints, desktop), $max-width);
+  }
+
+  @media screen and (min-width: map-get($breakpoints, full-hd-desktop)) {
+    font-size: calcResponsiveFontSize(13px, 30px,  map-get($breakpoints, full-hd-desktop), $max-width);
+  }
+
+  @media screen and (min-width: $max-width) {
+    font-size: 30px;
+  }
+}

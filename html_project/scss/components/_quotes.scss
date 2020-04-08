@@ -1,0 +1,102 @@
+.quotes {
+  color: $text-color-primary;
+
+  cursor: default;
+
+  &__wrapper {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    min-height: 300px;
+    overflow: hidden;
+
+    text-align: center;
+
+    background-color: rgba(black, 0.56);
+  }
+
+  &__image-container {
+    position: absolute;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__image {
+    @include object-fit(35%, 50%, 0.7);
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      @include object-fit(5%, 50%, 1);
+    }
+  }
+
+  &__main-container {
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 95%;
+    margin-top: 12.8rem;
+    margin-bottom: 11rem;
+    overflow: hidden;
+  }
+
+  &__main {
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      width: 78%;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      width: 60%;
+    }
+  }
+
+  &__icon {
+    width: 1em;
+    margin: 0 auto;
+
+    font-size: 3.35em;
+    font-family: $font-family-icons;
+
+    transition: color 0.5s;
+
+    &_star {
+      &::before {
+        content: "\f005";
+      }
+
+      &:hover {
+        color: $bg-color-primary;
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 1.9rem;
+    margin-bottom: 4.4rem;
+
+    @include title-typography($font-size-title - 1.6em, $line-height-title + 0.3em);
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      @include title-typography($font-size-title - 0.05em, $line-height-title + 0.2em);
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    max-width: 95%;
+    margin: 0;
+
+    color: lighten($text-color-default, $text-lighten);
+
+    @include text-typography($font-size-text, $line-height-text - 0.7em);
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      max-width: 85%;
+    }
+  }
+}

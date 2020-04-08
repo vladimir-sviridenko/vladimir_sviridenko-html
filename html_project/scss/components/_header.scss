@@ -1,0 +1,139 @@
+.header {
+  &__wrapper {
+    position: relative;
+
+    display: flex;
+    height: 100vh;
+    min-height: 321px;
+    max-height: 0.58 *  map-get($breakpoints, 4k-desktop);
+    overflow: hidden;
+
+    background-color: rgba($bg-color-header, 0.8);
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      min-height: 0.46 * 100vw;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      background-color: $bg-color-header;
+    }
+
+    @media screen and (orientation: portrait) and (min-width: map-get($breakpoints, desktop)) {
+      max-height: 0.58 *  100vmin;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, 4k-desktop)) {
+      min-height: 0.4 * map-get($breakpoints, 4k-desktop);
+    }
+  }
+
+  &__logo {
+    display: none;
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      position: absolute;
+      top: 1.4rem;
+      left: 23%;
+      z-index: 1;
+
+      display: block;
+
+      font-weight: map-get($font-weight, black);
+      font-size: $font-size-logo;
+      color: lighten($text-color-default, $title-lighten);
+      letter-spacing: 0.06em;
+      text-shadow: 0.03em 0.025em 0 white;
+    }
+  }
+
+  &__image-container {
+    position: absolute;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      position: relative;
+      z-index: 2;
+
+      flex: 1 0 50%;
+    }
+  }
+
+  &__image {
+    @include object-fit(30%, 50%, 1);
+  }
+
+  &__main {
+    position: relative;
+
+    display: flex;
+    height: 100%;
+
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+      flex-basis: 50%;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: 2;
+
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+      top: 3.8rem;
+      left: 8rem;
+    }
+  }
+
+  &__burger-label {
+    top: 2vmin;
+    right: 3vmin;
+  }
+
+  &__preview {
+    align-self: center;
+    padding: 4.8rem;
+    padding-right: 3rem;
+  }
+
+  &__sup-title {
+    margin-bottom: 2rem;
+
+    font-size: $font-size-sup-title;
+    color: lighten($text-color-default, $text-lighten);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    word-spacing: 0.1em;
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+
+    color: lighten($text-color-default, $title-lighten);
+
+    @include title-typography;
+  }
+
+  &__title-logo {
+    font-weight: map-get($font-weight, medium);
+  }
+
+  &__text {
+    margin-bottom: 4.8rem;
+
+    color: lighten($text-color-default, $text-lighten);
+
+    @include text-typography;
+
+    @media screen and (max-width: map-get($breakpoints, desktop)) {
+      color: lighten($text-color-default, 30%);
+    }
+  }
+
+  &__button {
+    margin-bottom: 2.6rem;
+  }
+}

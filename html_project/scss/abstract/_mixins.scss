@@ -1,0 +1,26 @@
+/*Typography*/
+@mixin title-typography($font-size: $font-size-title, $line-height: $line-height-title, $letter-spacing: 0.03em) {
+  font-weight: map-get($font-weight, regular);
+  font-size: $font-size;
+  line-height: $line-height;
+  font-family: $font-family-primary;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin text-typography($font-size: $font-size-text, $line-height: $line-height-text) {
+  font-weight: map-get($font-weight, regular);
+  font-size: $font-size;
+  line-height: $line-height;
+  font-family: $font-family-primary;
+}
+
+@mixin object-fit($to-top: 50%, $to-left: 50%, $scale: 1) {
+  position: absolute;
+  top: $to-top;
+  left: $to-left;
+
+  min-width: 100%;
+  min-height: 100%;
+
+  transform: translateY(-#{$to-top}) translateX(-#{$to-left}) scale(#{$scale});
+}
