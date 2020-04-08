@@ -2,6 +2,7 @@ import AuthenticationForm from "./forms/AuthenticationForm.js";
 import Input from "./formComponents/Input.js";
 import Checkbox from "./formComponents/Checkbox.js";
 import Button from "./formComponents/Button.js";
+import ComponentType from "./enums/ComponentType.js";
 
 class AuthenticationFormDomWorker {
   constructor(form) {
@@ -43,16 +44,16 @@ class AuthenticationFormDomWorker {
         inputElement.classList.add("form__input");
         switch (component.name) {
           case "password":
-            inputElement.type = "password";
+            inputElement.type = ComponentType.PASSWORD;
             break;
           case "password-verification":
-            inputElement.type = "password";
+            inputElement.type = ComponentType.PASSWORD;
             break;
           case "email":
-            inputElement.type = "email";
+            inputElement.type = ComponentType.EMAIL;
             break;
           default:
-            inputElement.type = "text";
+            inputElement.type = ComponentType.TEXT;
             break;
         }
         this._formElement.append(inputElement);
@@ -76,7 +77,7 @@ class AuthenticationFormDomWorker {
 
       if (component instanceof Button) {
         const buttonElement = document.createElement("button");
-        buttonElement.type = "submit";
+        buttonElement.type = ComponentType.SUBMIT;
         buttonElement.innerHTML = component.value;
         buttonElement.classList.add("form__button");
         this._formElement.append(buttonElement);
