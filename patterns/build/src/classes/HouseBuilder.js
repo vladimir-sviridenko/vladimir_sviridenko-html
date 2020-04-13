@@ -1,5 +1,5 @@
 import House from "./House.js";
-import HouseValidator from "./validators/HouseValidator.js";
+import HouseStringConverter from "./HouseStringConverter.js";
 class HouseBuilder {
     constructor() {
         this.reset();
@@ -15,6 +15,10 @@ class HouseBuilder {
         this.house.setRoofType(roofType);
         return this;
     }
+    setWallType(wallType) {
+        this.house.setWallType(wallType);
+        return this;
+    }
     setFloors(floors) {
         this.house.setFloors(floors);
         return this;
@@ -23,18 +27,18 @@ class HouseBuilder {
         this.house.setEntrances(entrances);
         return this;
     }
-    setWindows(type, quantity) {
-        this.house.setWindows(type, quantity);
+    setWindows(windows) {
+        this.house.setWindows(windows);
         return this;
     }
-    setDoors(type, quantity) {
-        this.house.setDoors(type, quantity);
+    setDoors(doors) {
+        this.house.setDoors(doors);
         return this;
     }
     build() {
-        const result = new HouseValidator().validate(this.house);
+        const houseString = new HouseStringConverter(this.house).convert();
         this.reset();
-        return result;
+        return houseString;
     }
 }
 export default HouseBuilder;

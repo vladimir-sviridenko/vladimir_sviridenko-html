@@ -1,21 +1,26 @@
+import HouseComplexPart from "../classes/HouseComplexPart";
+
 interface IHouse {
   getFoundationType(): string;
   setFoundationType(foundationType: string): void;
+
+  getWallType(): string;
+  setWallType(wallType: string): void;
 
   getRoofType(): string;
   setRoofType(roofType: string): void;
 
   getFloors(): number;
-  setFloors(floors: number): void;
+  setFloors(quantity: number): void;
   
   getEntrances(): number;
-  setEntrances(entrances: number): void;
+  setEntrances(quantity: number): void;
 
-  getWindows(): {type: string, quantity: number};
-  setWindows(type: string, quantity: number): void;
+  getWindows(): HouseComplexPart;
+  setWindows(windows: HouseComplexPart): void;
 
-  getDoors(): {type: string, quantity: number};
-  setDoors(type: string, quantity: number): void;
+  getDoors(): HouseComplexPart;
+  setDoors(doors: HouseComplexPart): void;
 }
 
 export default IHouse;

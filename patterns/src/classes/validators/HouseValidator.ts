@@ -5,11 +5,16 @@ import IValidator from "../../interfaces/IValidator.js";
 
 class HouseValidator implements IValidator {
   validate(house: House) {
-    if(house.getFloors() > house.getWindows().quantity) {
-      throw new ValidationError("House should have at least 1 window on each floor");
+    const entrances = house.getEntrances();
+    const doors = house.getDoors().getQuantity();
+    if(entrances > doors) {
+      throw new ValidationError("House should have at least one door on each entrance");
+    } else if(entrances > 1 && doors/entrances > 2) {
+      throw new ValidationError("house with entrances more than 1 can't have more then entrance * 2 doors");
     } else {
       return house;
     }
+
   }
 }
 
