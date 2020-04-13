@@ -38,9 +38,9 @@ class HouseDirector {
             .setRoofType("░")
             .setFoundationType("M")
             .setFloors(4)
-            .setEntrances(5)
-            .setWindows(new HouseComplexPart(HouseComplexTypes.WINDOW, 30))
-            .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, 5))
+            .setEntrances(4)
+            .setWindows(new HouseComplexPart(HouseComplexTypes.WINDOW, 44))
+            .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, 4))
             .build();
         return superHouse;
     }

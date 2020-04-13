@@ -14,37 +14,37 @@ class HouseDirector {
 
   public createBigHouse(): string {
     let superHouse = this.houseBuilder
-    .setRoofType("░")
-    .setFoundationType("▒")
-    .setFloors(5)
-    .setEntrances(5)
-    .setWindows(new HouseComplexPart(HouseComplexTypes.WINDOW, 65))
-    .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, 10))
-    .build();
+      .setRoofType("░")
+      .setFoundationType("▒")
+      .setFloors(5)
+      .setEntrances(5)
+      .setWindows(new HouseComplexPart(HouseComplexTypes.WINDOW, 65))
+      .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, 10))
+      .build();
     return superHouse;
   }
 
   public createSampleHouse(): string {
     let superHouse = this.houseBuilder
-    .setRoofType("░")
-    .setFoundationType("▒")
-    .setFloors(2)
-    .setEntrances(1)
-    .setWindows(new HouseComplexPart(HouseComplexTypes.WINDOW, 3))
-    .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, 1))
-    .build();
+      .setRoofType("░")
+      .setFoundationType("▒")
+      .setFloors(2)
+      .setEntrances(1)
+      .setWindows(new HouseComplexPart(HouseComplexTypes.WINDOW, 3))
+      .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, 1))
+      .build();
     return superHouse;
   }
 
   public createMiddleHouse(): string {
     let superHouse = this.houseBuilder
-    .setRoofType("░")
-    .setFoundationType("M")
-    .setFloors(4)
-    .setEntrances(5)
-    .setWindows(new HouseComplexPart(HouseComplexTypes.WINDOW, 30))
-    .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, 5))
-    .build();
+      .setRoofType("░")
+      .setFoundationType("M")
+      .setFloors(4)
+      .setEntrances(4)
+      .setWindows(new HouseComplexPart(HouseComplexTypes.WINDOW, 44))
+      .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, 4))
+      .build();
     return superHouse;
   }
 
@@ -53,9 +53,9 @@ class HouseDirector {
     let invalidHouse: string;
     try {
       invalidHouse = this.houseBuilder.setFloors(0).build();
-    } catch(error) {
+    } catch (error) {
       this.houseBuilder.reset();
-      if(error instanceof ValidationError) {
+      if (error instanceof ValidationError) {
         console.log("%cError: " + error.message, "color: red");
         console.log("%cBuilder was failed!", "color: red");
         this.houseBuilder.reset();

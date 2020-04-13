@@ -37,6 +37,9 @@ class HouseStringConverter {
                 if (this.matrix[y][x] === "×") {
                     houseString += " ";
                 }
+                else if (this.matrix[y][x] === "+") {
+                    houseString += " ";
+                }
                 else {
                     houseString += this.matrix[y][x];
                 }
@@ -68,7 +71,7 @@ class HouseStringConverter {
     addEntrances() {
         const addEntrance = () => {
             for (let y = 0; y < this.matrix.length - 1; y++) {
-                this.matrix[y][entranceLineX] = this.house.getWallType();
+                this.matrix[y][entranceLineX] = "+";
             }
         };
         let entrances = this.house.getEntrances();
@@ -89,13 +92,17 @@ class HouseStringConverter {
             }
         };
         const door = this.house.getDoors();
-        const doorOnEntrance = Math.floor(door.getQuantity() / this.house.getEntrances());
+        let doorOnEntrance = Math.ceil(door.getQuantity() / this.house.getEntrances());
+        let restDoors = door.getQuantity() - doorOnEntrance * this.house.getEntrances();
         let currentDoorOnEntrance = 0;
         let doorPositionX = 1;
         for (let i = 0; i < door.getQuantity(); i++) {
             addDoor();
             currentDoorOnEntrance++;
-            const newX = this.matrix[0].indexOf(this.house.getWallType(), doorPositionX) + 1;
+            if (i == door.getQuantity() + restDoors) {
+                doorOnEntrance--;
+            }
+            const newX = this.matrix[0].indexOf("+", doorPositionX) + 1;
             if (doorOnEntrance == currentDoorOnEntrance && this.matrix[this.matrix.length - 2][newX] != undefined) {
                 doorPositionX = newX;
                 currentDoorOnEntrance = 0;
@@ -151,28 +158,30 @@ class HouseStringConverter {
         this.reset();
     }
     calculateHouseSize() {
-        let houseWidth = 0;
-        let houseHeight = 0;
-        const doorWidth = this.house.getDoors().getWidth();
-        const windowWidth = this.house.getWindows().getWidth();
-        const houseFloors = this.house.getFloors();
-        let allDoorsWidth = doorWidth * this.house.getDoors().getQuantity();
-        let allWindowsWidth = windowWidth * this.house.getWindows().getQuantity();
-        houseWidth = (allDoorsWidth + allWindowsWidth) / houseFloors;
-        if ((houseWidth ^ 0) !== houseWidth) {
-            houseWidth = Math.ceil(houseWidth) + this.house.getWindows().getWidth();
-        }
-        const doorHeight = this.house.getDoors().getHeight();
-        const windowHeight = this.house.getWindows().getHeight();
-        if (houseFloors === 1) {
-            houseHeight = Math.max(this.house.getWindows().getHeight(), this.house.getDoors().getHeight());
-            houseWidth += this.house.getEntrances();
-        }
-        else {
-            houseHeight = doorHeight + (windowHeight * (houseFloors - 1));
-            houseWidth += this.house.getEntrances() * 4;
-        }
-        return { houseWidth, houseHeight };
+        let entranceWindows = Math.ceil(this.house.getWindows().getQuantity() / this.house.getEntrances());
+        let entranceDoors = Math.ceil(this.house.getDoors().getQuantity() / this.house.getEntrances());
+        const restEntranceWindows = this.house.getWindows().getQuantity() -
+            entranceWindows * (this.house.getEntrances() - 1);
+        const restEntranceDoors = this.house.getDoors().getQuantity() -
+            entranceDoors * (this.house.getEntrances() - 1);
+        const entranceSize = this.calculateEntranceSize(entranceWindows, entranceDoors);
+        const restEntranceSize = this.calculateEntranceSize(restEntranceWindows, restEntranceDoors);
+        return {
+            houseWidth: entranceSize.width * (this.house.getEntrances() - 1) +
+                restEntranceSize.width + this.house.getEntrances(),
+            houseHeight: Math.max(entranceSize.height, restEntranceSize.height),
+        };
+    }
+    calculateEntranceSize(windows, doors) {
+        let windowsPerFloor = Math.ceil(windows / this.house.getFloors());
+        let restWindows = windows - windowsPerFloor * (this.house.getFloors() - 1);
+        let windowsWidth = windowsPerFloor * this.house.getWindows().getWidth();
+        let restWindowsWidth = restWindows * this.house.getWindows().getWidth();
+        let doorsWidth = doors * this.house.getDoors().getWidth();
+        const width = Math.max(windowsWidth, restWindowsWidth + doorsWidth);
+        const height = Math.max(this.house.getDoors().getHeight(), this.house.getWindows().getHeight()) +
+            (this.house.getFloors() - 1) * this.house.getWindows().getHeight();
+        return { width, height };
     }
 }
 export default HouseStringConverter;
