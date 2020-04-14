@@ -1,4 +1,4 @@
-let doorType = [
+const doorType = [
   "       ",
   " ┏━━━┓ ",
   " ┃   ┃ ",
@@ -6,14 +6,14 @@ let doorType = [
   " ┃   ┃ "
 ]
 
-let windowType = [
+const windowType = [
   "       ",
   " ╔═╦═╗ ",
   " ║ ╠═╣ ",
   " ╚═╩═╝ ",
 ]
 
-let HouseComplexTypes =
+const HouseComplexTypes =
 {
   DOOR: doorType,
   WINDOW: windowType

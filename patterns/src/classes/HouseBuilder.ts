@@ -1,4 +1,6 @@
 import House from "./House.js";
+import HouseValidator from "./validators/HouseValidator.js";
+
 import HouseStringConverter from "./HouseStringConverter.js";
 
 import IHouseBuilder from "../interfaces/IHouseBuilder.js";
@@ -43,7 +45,8 @@ class HouseBuilder implements IHouseBuilder {
     return this;
   }
   build(): string {
-    const houseString = new HouseStringConverter(this.house).convert();
+    const validHouse = new HouseValidator().validate(this.house);
+    const houseString = new HouseStringConverter(validHouse).convert();
     this.reset();
     return houseString;
   }

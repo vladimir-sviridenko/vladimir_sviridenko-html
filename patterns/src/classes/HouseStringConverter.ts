@@ -1,7 +1,5 @@
 import House from "./House.js";
 
-import HouseValidator from "./validators/HouseValidator.js";
-
 class HouseStringConverter {
   private house: House;
   private matrix: Array<Array<string>>;
@@ -84,7 +82,6 @@ class HouseStringConverter {
       roofParts = "";
     }
 
-
     return roof;
   }
 
@@ -94,8 +91,8 @@ class HouseStringConverter {
         this.matrix[y][entranceLineX] = "+";
       }
     }
-    let entrances = this.house.getEntrances();
-    let entranceWidth = Math.floor(this.matrix[0].length / entrances);
+    const entrances = this.house.getEntrances();
+    const entranceWidth = Math.floor(this.matrix[0].length / entrances);
     let entranceLineX = entranceWidth;
     for (let i = 1; i < entrances; i++) {
       addEntrance();
@@ -181,13 +178,13 @@ class HouseStringConverter {
   }
 
   private setHouse(house: House) {
-    this.house = new HouseValidator().validate(house);
+    this.house = house;
     this.reset();
   }
 
   private calculateHouseSize(): { houseWidth: number, houseHeight: number } {
-    let entranceWindows = Math.ceil(this.house.getWindows().getQuantity() / this.house.getEntrances());
-    let entranceDoors = Math.ceil(this.house.getDoors().getQuantity() / this.house.getEntrances());
+    const entranceWindows = Math.ceil(this.house.getWindows().getQuantity() / this.house.getEntrances());
+    const entranceDoors = Math.ceil(this.house.getDoors().getQuantity() / this.house.getEntrances());
     const restEntranceWindows = this.house.getWindows().getQuantity() -
       entranceWindows * (this.house.getEntrances() - 1);
     const restEntranceDoors = this.house.getDoors().getQuantity() -
@@ -205,11 +202,11 @@ class HouseStringConverter {
   }
 
   private calculateEntranceSize(windows: number, doors: number): { width: number, height: number } {
-    let windowsPerFloor = Math.ceil(windows / this.house.getFloors());
-    let restWindows = windows - windowsPerFloor * (this.house.getFloors() - 1);
-    let windowsWidth = windowsPerFloor * this.house.getWindows().getWidth();
-    let restWindowsWidth = restWindows * this.house.getWindows().getWidth();
-    let doorsWidth = doors * this.house.getDoors().getWidth();
+    const windowsPerFloor = Math.ceil(windows / this.house.getFloors());
+    const restWindows = windows - windowsPerFloor * (this.house.getFloors() - 1);
+    const windowsWidth = windowsPerFloor * this.house.getWindows().getWidth();
+    const restWindowsWidth = restWindows * this.house.getWindows().getWidth();
+    const doorsWidth = doors * this.house.getDoors().getWidth();
     const width = Math.max(windowsWidth, restWindowsWidth + doorsWidth);
     const height = Math.max(this.house.getDoors().getHeight(), this.house.getWindows().getHeight()) +
       (this.house.getFloors() - 1) * this.house.getWindows().getHeight();

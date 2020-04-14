@@ -13,7 +13,7 @@ class HouseDirector {
   }
 
   public createBigHouse(): string {
-    let superHouse = this.houseBuilder
+    const superHouse = this.houseBuilder
       .setRoofType("░")
       .setFoundationType("▒")
       .setFloors(5)
@@ -25,7 +25,7 @@ class HouseDirector {
   }
 
   public createSampleHouse(): string {
-    let superHouse = this.houseBuilder
+    const superHouse = this.houseBuilder
       .setRoofType("░")
       .setFoundationType("▒")
       .setFloors(2)
@@ -37,7 +37,7 @@ class HouseDirector {
   }
 
   public createMiddleHouse(): string {
-    let superHouse = this.houseBuilder
+    const superHouse = this.houseBuilder
       .setRoofType("░")
       .setFoundationType("▒")
       .setFloors(4)
@@ -50,9 +50,7 @@ class HouseDirector {
 
   public createInvalidHouse(): string {
     console.log("Try to creat house with -10 floors, NaN doors and null wallTypes...");
-    console.log("Create house with default floors...");
-    let invalidHouse: string;
-    invalidHouse = this.houseBuilder
+    const invalidHouse = this.houseBuilder
     .setFloors(-10)
     .setFloors(NaN)
     .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, NaN))
