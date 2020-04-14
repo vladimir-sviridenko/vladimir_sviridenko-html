@@ -1,5 +1,4 @@
 import HouseDirector from "./src/classes/HouseDirector.js";
-import HouseBuilder from "./src/classes/HouseBuilder.js";
 
 let houseDirector = new HouseDirector();
 

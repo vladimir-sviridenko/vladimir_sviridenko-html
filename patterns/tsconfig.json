@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
       "target": "ES6",
-      "module": "es6",
+      "module": "amd",
       "moduleResolution": "classic",
       "noImplicitAny": true,
       "removeComments": true,
       "preserveConstEnums": true,
-      "outDir": "build",
+      "outFile": "main.js",
       "sourceMap": false
   },
   "include": [
