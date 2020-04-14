@@ -8,7 +8,7 @@ class HouseDirector {
   private houseBuilder: HouseBuilder = new HouseBuilder();;
 
   public createDefaultHouse(): string {
-    let defaultHouse = this.houseBuilder.build();
+    const defaultHouse = this.houseBuilder.build();
     return defaultHouse;
   }
 
