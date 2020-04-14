@@ -13,32 +13,32 @@ define("src/interfaces/IValidator", ["require", "exports"], function (require, e
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
 });
-define("src/classes/validators/TypeValidator", ["require", "exports", "src/classes/errors/ValidationError"], function (require, exports, ValidationError_js_1) {
+define("src/classes/validators/TypeValidator", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class TypeValidator {
         validate(string) {
-            let trimed = string.trim();
-            if (trimed !== "" && trimed.length === 1) {
+            let trimed = string ? string.trim() : null;
+            if (trimed !== null && trimed !== "" && trimed.length === 1) {
                 return trimed;
             }
             else {
-                throw new ValidationError_js_1.default("type should be one char");
+                return null;
             }
         }
     }
     exports.default = TypeValidator;
 });
-define("src/classes/validators/QuantityValidator", ["require", "exports", "src/classes/errors/ValidationError"], function (require, exports, ValidationError_js_2) {
+define("src/classes/validators/QuantityValidator", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class QuantityValidator {
         validate(quantity) {
-            if (quantity > 0 && this.isInteger(quantity)) {
+            if (quantity > 0 && this.isInteger(quantity) && quantity != NaN) {
                 return quantity;
             }
             else {
-                throw new ValidationError_js_2.default("quantity should be integer and more than 1");
+                return null;
             }
         }
         isInteger(number) {
@@ -47,30 +47,6 @@ define("src/classes/validators/QuantityValidator", ["require", "exports", "src/c
         ;
     }
     exports.default = QuantityValidator;
-});
-define("src/enums/HouseComplexTypes", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    let doorType = [
-        "       ",
-        " ┏━━━┓ ",
-        " ┃   ┃ ",
-        " ┃•  ┃ ",
-        " ┃   ┃ "
-    ];
-    let windowType = [
-        "       ",
-        " ╔═╦═╗ ",
-        " ║ ╠═╣ ",
-        " ╚═╩═╝ ",
-        "       "
-    ];
-    let HouseComplexTypes = {
-        DOOR: doorType,
-        WINDOW: windowType
-    };
-    Object.freeze(HouseComplexTypes);
-    exports.default = HouseComplexTypes;
 });
 define("src/classes/HouseComplexPart", ["require", "exports", "src/classes/validators/QuantityValidator"], function (require, exports, QuantityValidator_js_1) {
     "use strict";
@@ -97,11 +73,49 @@ define("src/classes/HouseComplexPart", ["require", "exports", "src/classes/valid
     }
     exports.default = HouseComplexPart;
 });
+define("src/classes/validators/ComplexPartValidator", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    class ComplexPartValidator {
+        validate(complexPart) {
+            if (complexPart !== null) {
+                return complexPart;
+            }
+            else {
+                return null;
+            }
+        }
+    }
+    exports.default = ComplexPartValidator;
+});
+define("src/enums/HouseComplexTypes", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    let doorType = [
+        "       ",
+        " ┏━━━┓ ",
+        " ┃   ┃ ",
+        " ┃•  ┃ ",
+        " ┃   ┃ "
+    ];
+    let windowType = [
+        "       ",
+        " ╔═╦═╗ ",
+        " ║ ╠═╣ ",
+        " ╚═╩═╝ ",
+    ];
+    let HouseComplexTypes = {
+        DOOR: doorType,
+        WINDOW: windowType
+    };
+    Object.freeze(HouseComplexTypes);
+    exports.default = HouseComplexTypes;
+});
 define("src/interfaces/IHouse", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
 });
-define("src/classes/House", ["require", "exports", "src/classes/validators/TypeValidator", "src/classes/validators/QuantityValidator", "src/enums/HouseComplexTypes", "src/classes/HouseComplexPart"], function (require, exports, TypeValidator_js_1, QuantityValidator_js_2, HouseComplexTypes_js_1, HouseComplexPart_js_1) {
+define("src/classes/House", ["require", "exports", "src/classes/validators/TypeValidator", "src/classes/validators/QuantityValidator", "src/classes/validators/ComplexPartValidator", "src/enums/HouseComplexTypes", "src/classes/HouseComplexPart"], function (require, exports, TypeValidator_js_1, QuantityValidator_js_2, ComplexPartValidator_js_1, HouseComplexTypes_js_1, HouseComplexPart_js_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class House {
@@ -118,48 +132,55 @@ define("src/classes/House", ["require", "exports", "src/classes/validators/TypeV
             return this.foundationType;
         }
         setFoundationType(foundationType) {
-            this.foundationType = new TypeValidator_js_1.default().validate(foundationType);
+            const newValue = new TypeValidator_js_1.default().validate(foundationType);
+            this.foundationType = newValue ? newValue : this.wallType;
         }
         getWallType() {
             return this.wallType;
         }
         setWallType(wallType) {
-            this.wallType = new TypeValidator_js_1.default().validate((wallType));
+            const newValue = new TypeValidator_js_1.default().validate((wallType));
+            this.wallType = newValue ? newValue : this.wallType;
         }
         getRoofType() {
             return this.roofType;
         }
         setRoofType(roofType) {
-            this.roofType = new TypeValidator_js_1.default().validate(roofType);
+            const newValue = new TypeValidator_js_1.default().validate(roofType);
+            this.roofType = newValue ? newValue : this.roofType;
         }
         getFloors() {
             return this.floors;
         }
         setFloors(floors) {
-            this.floors = new QuantityValidator_js_2.default().validate(floors);
+            const newValue = new QuantityValidator_js_2.default().validate(floors);
+            this.floors = newValue ? newValue : this.floors;
         }
         getEntrances() {
             return this.entrances;
         }
         setEntrances(entrances) {
-            this.entrances = new QuantityValidator_js_2.default().validate(entrances);
+            const newValue = new QuantityValidator_js_2.default().validate(entrances);
+            this.entrances = newValue ? newValue : this.entrances;
         }
         getWindows() {
             return this.windows;
         }
         setWindows(windows) {
-            this.windows = windows;
+            const newValue = new ComplexPartValidator_js_1.default().validate(windows);
+            this.windows = newValue ? newValue : this.windows;
         }
         getDoors() {
             return this.doors;
         }
         setDoors(doors) {
-            this.doors = doors;
+            const newValue = new ComplexPartValidator_js_1.default().validate(doors);
+            this.doors = newValue ? newValue : this.doors;
         }
     }
     exports.default = House;
 });
-define("src/classes/validators/HouseValidator", ["require", "exports", "src/classes/errors/ValidationError"], function (require, exports, ValidationError_js_3) {
+define("src/classes/validators/HouseValidator", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class HouseValidator {
@@ -167,14 +188,9 @@ define("src/classes/validators/HouseValidator", ["require", "exports", "src/clas
             const entrances = house.getEntrances();
             const doors = house.getDoors().getQuantity();
             if (entrances > doors) {
-                throw new ValidationError_js_3.default("House should have at least one door on each entrance");
+                house.setEntrances(doors);
             }
-            else if (entrances > 1 && doors / entrances > 2) {
-                throw new ValidationError_js_3.default("house with entrances more than 1 can't have more then entrance * 2 doors");
-            }
-            else {
-                return house;
-            }
+            return house;
         }
     }
     exports.default = HouseValidator;
@@ -419,7 +435,7 @@ define("src/classes/HouseBuilder", ["require", "exports", "src/classes/House", "
     }
     exports.default = HouseBuilder;
 });
-define("src/classes/HouseDirector", ["require", "exports", "src/classes/HouseBuilder", "src/classes/errors/ValidationError", "src/classes/HouseComplexPart", "src/enums/HouseComplexTypes"], function (require, exports, HouseBuilder_js_1, ValidationError_js_4, HouseComplexPart_js_2, HouseComplexTypes_js_2) {
+define("src/classes/HouseDirector", ["require", "exports", "src/classes/HouseBuilder", "src/classes/HouseComplexPart", "src/enums/HouseComplexTypes"], function (require, exports, HouseBuilder_js_1, HouseComplexPart_js_2, HouseComplexTypes_js_2) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class HouseDirector {
@@ -456,7 +472,7 @@ define("src/classes/HouseDirector", ["require", "exports", "src/classes/HouseBui
         createMiddleHouse() {
             let superHouse = this.houseBuilder
                 .setRoofType("░")
-                .setFoundationType("M")
+                .setFoundationType("▒")
                 .setFloors(4)
                 .setEntrances(4)
                 .setWindows(new HouseComplexPart_js_2.default(HouseComplexTypes_js_2.default.WINDOW, 44))
@@ -465,22 +481,17 @@ define("src/classes/HouseDirector", ["require", "exports", "src/classes/HouseBui
             return superHouse;
         }
         createInvalidHouse() {
-            console.log("Creating house with 0 floors...");
+            console.log("Try to creat house with -10 floors, NaN doors and null wallTypes...");
+            console.log("Create house with default floors...");
             let invalidHouse;
-            try {
-                invalidHouse = this.houseBuilder.setFloors(0).build();
-            }
-            catch (error) {
-                this.houseBuilder.reset();
-                if (error instanceof ValidationError_js_4.default) {
-                    console.log("%cError: " + error.message, "color: red");
-                    console.log("%cBuilder was failed!", "color: red");
-                    this.houseBuilder.reset();
-                }
-                else {
-                    throw error;
-                }
-            }
+            invalidHouse = this.houseBuilder
+                .setFloors(-10)
+                .setFloors(NaN)
+                .setDoors(new HouseComplexPart_js_2.default(HouseComplexTypes_js_2.default.DOOR, NaN))
+                .setDoors(new HouseComplexPart_js_2.default(HouseComplexTypes_js_2.default.DOOR, 2))
+                .setWindows(null)
+                .setWallType(null)
+                .build();
             return invalidHouse;
         }
     }
@@ -499,5 +510,5 @@ define("main", ["require", "exports", "src/classes/HouseDirector"], function (re
     console.log("%cMiddle House: ", "color: green");
     console.log(houseDirector.createMiddleHouse());
     console.log("%cInvalid House: ", "color: green");
-    houseDirector.createInvalidHouse();
+    console.log(houseDirector.createInvalidHouse());
 });

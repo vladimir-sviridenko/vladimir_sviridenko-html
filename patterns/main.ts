@@ -15,4 +15,4 @@ console.log("%cMiddle House: ", "color: green")
 console.log(houseDirector.createMiddleHouse());
 
 console.log("%cInvalid House: ", "color: green")
-houseDirector.createInvalidHouse();
+console.log(houseDirector.createInvalidHouse());

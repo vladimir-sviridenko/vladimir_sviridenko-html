@@ -39,7 +39,7 @@ class HouseDirector {
   public createMiddleHouse(): string {
     let superHouse = this.houseBuilder
       .setRoofType("░")
-      .setFoundationType("M")
+      .setFoundationType("▒")
       .setFloors(4)
       .setEntrances(4)
       .setWindows(new HouseComplexPart(HouseComplexTypes.WINDOW, 44))
@@ -49,20 +49,17 @@ class HouseDirector {
   }
 
   public createInvalidHouse(): string {
-    console.log("Creating house with 0 floors...");
+    console.log("Try to creat house with -10 floors, NaN doors and null wallTypes...");
+    console.log("Create house with default floors...");
     let invalidHouse: string;
-    try {
-      invalidHouse = this.houseBuilder.setFloors(0).build();
-    } catch (error) {
-      this.houseBuilder.reset();
-      if (error instanceof ValidationError) {
-        console.log("%cError: " + error.message, "color: red");
-        console.log("%cBuilder was failed!", "color: red");
-        this.houseBuilder.reset();
-      } else {
-        throw error;
-      }
-    }
+    invalidHouse = this.houseBuilder
+    .setFloors(-10)
+    .setFloors(NaN)
+    .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, NaN))
+    .setDoors(new HouseComplexPart(HouseComplexTypes.DOOR, 2))
+    .setWindows(null)
+    .setWallType(null)
+    .build();
     return invalidHouse;
   }
 }

@@ -11,7 +11,6 @@ let windowType = [
   " ╔═╦═╗ ",
   " ║ ╠═╣ ",
   " ╚═╩═╝ ",
-  "       "
 ]
 
 let HouseComplexTypes =

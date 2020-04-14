@@ -4,10 +4,10 @@ import IValidator from "../../interfaces/IValidator.js";
 
 class QuantityValidator implements IValidator {
   validate(quantity: number) {
-    if(quantity > 0 && this.isInteger(quantity)) {
+    if(quantity > 0 && this.isInteger(quantity) && quantity != NaN) {
       return quantity;
     } else {
-      throw new ValidationError("quantity should be integer and more than 1");
+      return null;
     }
   }
   isInteger(number: number) {
