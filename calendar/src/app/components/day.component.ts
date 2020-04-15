@@ -2,14 +2,14 @@ class Day {
   private date: Date;
   private isInMonth: boolean;
   private isToday: boolean;
-  private shiftMonthEvent: CustomEvent<Date>;
+  private shiftMonthEvent: CustomEvent<{date: Date, isInMonth: boolean}>;
 
   constructor(date: Date, isInMonth: boolean = false, isToday: boolean = false) {
     this.date = date;
     this.isInMonth = isInMonth;
     this.isToday = isToday;
     this.shiftMonthEvent = new CustomEvent("dayClick", {
-      detail: this.date,
+      detail: {date: this.date, isInMonth: this.isInMonth},
       bubbles: true
     });
   }
@@ -19,7 +19,7 @@ class Day {
     dayElement.className = "calendar__day-button";
     dayElement.textContent = this.date.getDate().toString();
 
-    dayElement.onclick = () => {
+    dayElement.onmousedown = () => {
       dayElement.dispatchEvent(this.shiftMonthEvent);
     }
     

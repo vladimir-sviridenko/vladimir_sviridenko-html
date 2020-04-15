@@ -7,7 +7,7 @@ define("app/components/day.component", ["require", "exports"], function (require
             this.isInMonth = isInMonth;
             this.isToday = isToday;
             this.shiftMonthEvent = new CustomEvent("dayClick", {
-                detail: this.date,
+                detail: { date: this.date, isInMonth: this.isInMonth },
                 bubbles: true
             });
         }
@@ -15,7 +15,7 @@ define("app/components/day.component", ["require", "exports"], function (require
             const dayElement = document.createElement("button");
             dayElement.className = "calendar__day-button";
             dayElement.textContent = this.date.getDate().toString();
-            dayElement.onclick = () => {
+            dayElement.onmousedown = () => {
                 dayElement.dispatchEvent(this.shiftMonthEvent);
             };
             if (!this.isInMonth) {
@@ -135,20 +135,60 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
         }
         initializeEvents() {
             this.addEventListener("dayClick", function (event) {
-                const clickedDate = event.detail;
-                const clickedMonth = clickedDate.getMonth();
-                const currentMonth = this.todaysDate.getMonth() + this.monthShift;
-                if (clickedMonth < currentMonth) {
+                const clickedDate = event.detail.date;
+                const doShift = !event.detail.isInMonth;
+                const currentDate = new Date(this.todaysDate.getFullYear(), this.todaysDate.getMonth() + this.monthShift);
+                if (clickedDate < currentDate && doShift) {
                     this.shift(true);
                 }
-                else if (clickedMonth > currentMonth) {
+                else if (clickedDate > currentDate && doShift) {
                     this.shift(false);
                 }
             });
         }
         shift(isShiftingToPrevious) {
-            isShiftingToPrevious ? this.monthShift-- : this.monthShift++;
-            this.update();
+            if (isShiftingToPrevious) {
+                this.monthShift--;
+            }
+            else {
+                this.monthShift++;
+            }
+            const newDateLabel = this.generateTodaysDateLabel();
+            const oldDateLabel = this.querySelector(".calendar__date-label");
+            oldDateLabel.replaceWith(newDateLabel);
+            const monthWrap = this.querySelector(".calendar__month-wrap");
+            const newMonth = this.generateMonth();
+            const currentMonth = monthWrap.querySelector(".calendar__month");
+            if (isShiftingToPrevious) {
+                newMonth.classList.add("calendar__month_shift-left");
+                monthWrap.prepend(newMonth);
+                currentMonth.classList.add("calendar__month_no-animation");
+                currentMonth.classList.add("calendar__month_shift-left");
+                setTimeout(() => {
+                    newMonth.classList.remove("calendar__month_shift-left");
+                    currentMonth.classList.remove("calendar__month_no-animation");
+                    currentMonth.classList.remove("calendar__month_shift-left");
+                }, 0);
+                currentMonth.ontransitionend = (event) => {
+                    const currentMonth = event.currentTarget;
+                    currentMonth.parentNode.removeChild(currentMonth);
+                };
+            }
+            else {
+                currentMonth.classList.add("calendar__month_shift-left");
+                monthWrap.appendChild(newMonth);
+                setTimeout(() => {
+                    newMonth.classList.add("calendar__month_shift-left");
+                }, 0);
+                currentMonth.ontransitionend = (event) => {
+                    const currentMonth = event.currentTarget;
+                    const newMonth = currentMonth.nextSibling;
+                    newMonth.classList.add("calendar__month_no-animation");
+                    newMonth.classList.remove("calendar__month_shift-left");
+                    currentMonth.parentNode.removeChild(currentMonth);
+                    newMonth.classList.remove("calendar__month_no-animation");
+                };
+            }
         }
         initializeDateTimeAttribute() {
             const year = this.todaysDate.getFullYear();
@@ -177,7 +217,10 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
         update() {
             this.innerHTML = "";
             this.appendChild(this.generateTodaysDateLabel());
-            this.appendChild(this.generateMonth());
+            const monthWrap = document.createElement("div");
+            monthWrap.className = "calendar__month-wrap";
+            monthWrap.appendChild(this.generateMonth());
+            this.appendChild(monthWrap);
         }
     }
     exports.default = Calendar;
