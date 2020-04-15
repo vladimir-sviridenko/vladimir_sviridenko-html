@@ -1,4 +1,4 @@
-import Calendar from "./calendar/calendar.component";
+import Calendar from "./components/calendar.component";
 
 const appTag = "app-calendar";
 

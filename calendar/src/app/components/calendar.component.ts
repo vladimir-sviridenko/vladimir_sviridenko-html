@@ -1,4 +1,4 @@
-import Month from "../month/month.component";
+import Month from "./month.component";
 
 class Calendar extends HTMLTimeElement {
   private todaysDate: Date;

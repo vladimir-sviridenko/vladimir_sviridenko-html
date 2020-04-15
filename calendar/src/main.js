@@ -1,17 +1,21 @@
-define("app/day/day.component", ["require", "exports"], function (require, exports) {
+define("app/components/day.component", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class Day {
-        constructor(date, isInMonth = true) {
+        constructor(date, isInMonth = false, isToday = false) {
             this.date = date;
             this.isInMonth = isInMonth;
+            this.isToday = isToday;
         }
         render() {
             const dayElement = document.createElement("button");
             dayElement.textContent = this.date.getDate().toString();
-            dayElement.className = "calendar__day";
+            dayElement.className = "calendar__day-button";
             if (!this.isInMonth) {
-                dayElement.classList.add("calendar__day_out-month");
+                dayElement.classList.add("calendar__day-button_out-month");
+            }
+            if (this.isToday) {
+                dayElement.classList.add("calendar__day-button_today");
             }
             return dayElement;
         }
@@ -28,7 +32,7 @@ define("app/shared/WeekDayNames", ["require", "exports"], function (require, exp
     Object.freeze(WeekDayNames);
     exports.default = WeekDayNames;
 });
-define("app/month/month.component", ["require", "exports", "app/day/day.component", "app/shared/WeekDayNames"], function (require, exports, day_component_1, WeekDayNames_1) {
+define("app/components/month.component", ["require", "exports", "app/components/day.component", "app/shared/WeekDayNames"], function (require, exports, day_component_1, WeekDayNames_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class Month {
@@ -39,7 +43,7 @@ define("app/month/month.component", ["require", "exports", "app/day/day.componen
         generateWeekDayLabels() {
             const weekDayLabels = [];
             for (let i = 0; i <= 6; i++) {
-                const weekDayLabel = document.createElement("span");
+                const weekDayLabel = document.createElement("div");
                 weekDayLabel.textContent = WeekDayNames_1.default.RU[i];
                 weekDayLabel.className = "calendar__weekday-label";
                 weekDayLabels.push(weekDayLabel);
@@ -47,6 +51,14 @@ define("app/month/month.component", ["require", "exports", "app/day/day.componen
             return weekDayLabels;
         }
         generateDays() {
+            const isToday = (date) => {
+                if (date.getFullYear() === this.todaysDate.getFullYear() &&
+                    date.getMonth() === this.todaysDate.getMonth() &&
+                    date.getDate() === this.todaysDate.getDate()) {
+                    return true;
+                }
+                return false;
+            };
             const getWeekDay = (date) => {
                 let weekDay = date.getDay();
                 return weekDay ? weekDay : 7;
@@ -56,14 +68,14 @@ define("app/month/month.component", ["require", "exports", "app/day/day.componen
                 const monthsLastMondayDate = monthsDaysQuantity - getWeekDay(new Date(currentYear, shownMonth, 1)) + 2;
                 for (let i = monthsLastMondayDate; i <= monthsDaysQuantity; i++) {
                     const date = new Date(currentYear, shownMonth - 1, i);
-                    const day = new day_component_1.default(date, false).render();
+                    const day = new day_component_1.default(date).render();
                     dayElements.push(day);
                 }
             };
             const generateCurrentMonthDays = () => {
                 for (let i = 1; i <= daysQuantity; i++) {
                     const date = new Date(currentYear, shownMonth, i);
-                    const day = new day_component_1.default(date).render();
+                    const day = new day_component_1.default(date, true, isToday(date)).render();
                     dayElements.push(day);
                 }
             };
@@ -71,7 +83,7 @@ define("app/month/month.component", ["require", "exports", "app/day/day.componen
                 const lastWeekDay = getWeekDay(new Date(currentYear, shownMonth, daysQuantity));
                 for (let i = 1; i <= 7 - lastWeekDay; i++) {
                     const date = new Date(currentYear, shownMonth + 1, i);
-                    const day = new day_component_1.default(date, false).render();
+                    const day = new day_component_1.default(date).render();
                     dayElements.push(day);
                 }
             };
@@ -102,7 +114,7 @@ define("app/month/month.component", ["require", "exports", "app/day/day.componen
     }
     exports.default = Month;
 });
-define("app/calendar/calendar.component", ["require", "exports", "app/month/month.component"], function (require, exports, month_component_1) {
+define("app/components/calendar.component", ["require", "exports", "app/components/month.component"], function (require, exports, month_component_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class Calendar extends HTMLTimeElement {
@@ -144,7 +156,7 @@ define("app/calendar/calendar.component", ["require", "exports", "app/month/mont
     }
     exports.default = Calendar;
 });
-define("app/app.component", ["require", "exports", "app/calendar/calendar.component"], function (require, exports, calendar_component_1) {
+define("app/app.component", ["require", "exports", "app/components/calendar.component"], function (require, exports, calendar_component_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const appTag = "app-calendar";

@@ -1,4 +1,4 @@
-import Day from "../day/day.component";
+import Day from "./day.component";
 import WeekDayNames from "../shared/WeekDayNames";
 
 class Month {
@@ -10,11 +10,11 @@ class Month {
     this.monthShift = monthShift;
   }
 
-  private generateWeekDayLabels(): HTMLSpanElement[] {
+  private generateWeekDayLabels(): HTMLDivElement[] {
     const weekDayLabels = [];
 
     for (let i = 0; i <= 6; i++) {
-      const weekDayLabel = document.createElement("span");
+      const weekDayLabel = document.createElement("div");
       weekDayLabel.textContent = WeekDayNames.RU[i];
       weekDayLabel.className = "calendar__weekday-label";
       weekDayLabels.push(weekDayLabel);
@@ -23,6 +23,15 @@ class Month {
   }
 
   private generateDays(): HTMLButtonElement[] {
+
+    const isToday = (date: Date) => {
+      if(date.getFullYear() === this.todaysDate.getFullYear() &&
+      date.getMonth() === this.todaysDate.getMonth() &&
+      date.getDate() === this.todaysDate.getDate()) {
+        return true;
+      } 
+      return false;
+    }
 
     const getWeekDay = (date: Date) => {
       let weekDay = date.getDay();
@@ -34,7 +43,7 @@ class Month {
       const monthsLastMondayDate = monthsDaysQuantity - getWeekDay(new Date(currentYear, shownMonth, 1)) + 2;
       for (let i = monthsLastMondayDate; i <= monthsDaysQuantity; i++) {
         const date = new Date(currentYear, shownMonth - 1, i);
-        const day = new Day(date, false).render();
+        const day = new Day(date).render();
         dayElements.push(day);
       }
     }
@@ -42,7 +51,7 @@ class Month {
     const generateCurrentMonthDays = () => {
       for (let i = 1; i <= daysQuantity; i++) {
         const date = new Date(currentYear, shownMonth, i);
-        const day = new Day(date).render();
+        const day = new Day(date, true, isToday(date)).render();
         dayElements.push(day);
       }
     }
@@ -51,7 +60,7 @@ class Month {
       const lastWeekDay = getWeekDay(new Date(currentYear, shownMonth, daysQuantity));
       for (let i = 1; i <= 7 - lastWeekDay; i++) {
         const date = new Date(currentYear, shownMonth + 1, i);
-        const day = new Day(date, false).render();
+        const day = new Day(date).render();
         dayElements.push(day);
       }
     }

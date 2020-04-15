@@ -1,10 +1,100 @@
-$text-color: #5b5b5b;
-$day-color-checked: #3ea1f0;
-$day-text-color-checked: white;
-$today-color: #3ea1f0;
-$bg-color: #f5f5f5;
+$text-color: #525252;
+$bg-color-day-checked: #3ea1f0;
+$color-text-day-checked: white;
+$color-today: #3ea1f0;
+$bg-color-calendar: #f5f5f5;
+$font-weight-primary: 400;
+$font-weight-secondary: 700;
+$font-weight-tertiary: 300;
+$font-family-primary: "Open Sans", sans-serif;
 
-$primary-font-weight: 400;
-$secondary-font-weight: 700;
+@mixin day-cell {
+  display: flex;
+  flex: 1 1 14%;
+  justify-content: center;
+  padding: 0;
+}
 
-$primary-font-family: 'Open Sans', sans-serif; 
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1em;
+}
+
+.calendar {
+  display: block;
+  width: 27rem;
+  padding-top: 1.8rem;
+  padding-bottom: 1.3rem;
+
+  font-weight: $font-weight-primary;
+  font-size: 1.6em;
+  line-height: 1em;
+  font-family: $font-family-primary;
+  color: $text-color;
+
+  background-color: $bg-color-calendar;
+  border: 1px solid lighten($text-color, $amount: 30%);
+  border-radius: 4px;
+
+  &__date-label {
+    margin: 0 1.4rem;
+    font-weight: $font-weight-tertiary;
+    font-size: 1.2em;
+  }
+
+  &__month {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 0.6rem;
+  }
+
+  &__day-button {
+    align-items: center;
+
+    font-weight: $font-weight-primary;
+    font-family: $font-family-primary;
+
+    background-color: $bg-color-calendar;
+    color: $text-color;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+
+    @include day-cell;
+
+    &:before {
+      content: "";
+
+      float: left;
+      padding-top: 100%;
+    }
+
+    &:focus {
+      background-color: $bg-color-day-checked;
+      color: $color-text-day-checked;
+    }
+
+    &_out-month {
+      color: lighten($text-color, 40%);
+    }
+
+    &_today {
+      color: $color-today;
+      font-weight: $font-weight-secondary;
+    }
+  }
+
+  &__weekday-label {
+    margin-top: 1.6rem;
+    margin-bottom: 0.4rem;
+
+    font-weight: $font-weight-secondary;
+    font-size: 0.8em;
+    color: lighten($text-color, $amount: 15%);
+
+    @include day-cell;
+  }
+}
