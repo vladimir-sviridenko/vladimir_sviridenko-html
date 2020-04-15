@@ -9,8 +9,11 @@ define("app/components/day.component", ["require", "exports"], function (require
         }
         render() {
             const dayElement = document.createElement("button");
-            dayElement.textContent = this.date.getDate().toString();
             dayElement.className = "calendar__day-button";
+            dayElement.dataset.day = this.date.getDate().toString();
+            dayElement.dataset.month = (this.date.getMonth() + 1).toString();
+            dayElement.dataset.year = this.date.getFullYear().toString();
+            dayElement.textContent = dayElement.dataset.day;
             if (!this.isInMonth) {
                 dayElement.classList.add("calendar__day-button_out-month");
             }
@@ -123,18 +126,35 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
             this.todaysDate = new Date();
             this.monthShift = 0;
             this.className = "calendar";
+            this.initializeEvents();
+            this.initializeDateTimeAttribute();
         }
-        connectedCallback() {
-            this.render();
-            this.updateDateTime();
+        initializeEvents() {
+            this.onclick = (event) => {
+                if (event.target instanceof HTMLButtonElement) {
+                    const currentMonth = (this.todaysDate.getMonth() + 1) + this.monthShift;
+                    const clickedMonth = Number(event.target.dataset.month);
+                    if (clickedMonth < currentMonth) {
+                        this.monthShift--;
+                        this.update();
+                    }
+                    else if (clickedMonth > currentMonth) {
+                        this.monthShift++;
+                        this.update();
+                    }
+                }
+            };
         }
-        updateDateTime() {
+        initializeDateTimeAttribute() {
             const year = this.todaysDate.getFullYear();
             const month = (this.todaysDate.getMonth() + 1);
             const date = this.todaysDate.getDate();
             const monthFormatted = (month >= 10) ? month : ("0" + month);
             const dateFormatted = (date >= 10) ? date : ("0" + date);
             this.dateTime = `${year}-${monthFormatted}-${dateFormatted}`;
+        }
+        connectedCallback() {
+            this.update();
         }
         generateTodaysDateLabel() {
             const currentDateLabel = document.createElement("div");
@@ -149,7 +169,8 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
             shownMonthElement.className = "calendar__month";
             return shownMonthElement;
         }
-        render() {
+        update() {
+            this.innerHTML = "";
             this.appendChild(this.generateTodaysDateLabel());
             this.appendChild(this.generateMonth());
         }

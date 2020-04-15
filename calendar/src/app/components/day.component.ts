@@ -11,8 +11,12 @@ class Day {
 
   render() {
     const dayElement = document.createElement("button");
-    dayElement.textContent = this.date.getDate().toString();
     dayElement.className = "calendar__day-button";
+    //  TODO remove hide datasets
+    dayElement.dataset.day = this.date.getDate().toString();
+    dayElement.dataset.month = (this.date.getMonth() + 1).toString();
+    dayElement.dataset.year = this.date.getFullYear().toString();
+    dayElement.textContent = dayElement.dataset.day;
 
     if (!this.isInMonth) {
       dayElement.classList.add("calendar__day-button_out-month");

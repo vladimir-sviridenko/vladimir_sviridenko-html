@@ -9,14 +9,28 @@ class Calendar extends HTMLTimeElement {
     this.todaysDate = new Date();
     this.monthShift = 0;
     this.className = "calendar";
+    this.initializeEvents();
+    this.initializeDateTimeAttribute();
   }
 
-  public connectedCallback() {
-    this.render();
-    this.updateDateTime();
+  private initializeEvents() {
+    this.onclick = (event) => {
+      //rewrite, hide data: remove datasets from Day TODO
+      if(event.target instanceof HTMLButtonElement) {
+        const currentMonth = (this.todaysDate.getMonth() + 1) + this.monthShift;
+        const clickedMonth = Number(event.target.dataset.month);
+        if(clickedMonth < currentMonth) {
+          this.monthShift--;
+          this.update();
+        } else if(clickedMonth > currentMonth) {
+          this.monthShift++;
+          this.update();
+        }
+      }
+    }
   }
-
-  private updateDateTime() {
+  
+  private initializeDateTimeAttribute() {
     const year = this.todaysDate.getFullYear();
     const month = (this.todaysDate.getMonth() + 1);
     const date = this.todaysDate.getDate();
@@ -25,6 +39,10 @@ class Calendar extends HTMLTimeElement {
     const dateFormatted = (date >= 10) ? date : ("0" + date);
 
     this.dateTime = `${year}-${monthFormatted}-${dateFormatted}`;
+  }
+
+  public connectedCallback() {
+    this.update();
   }
 
   private generateTodaysDateLabel(): HTMLDivElement {
@@ -42,7 +60,8 @@ class Calendar extends HTMLTimeElement {
     return shownMonthElement;
   }
 
-  private render() {
+  private update() {
+    this.innerHTML = "";
     this.appendChild(this.generateTodaysDateLabel());
     this.appendChild(this.generateMonth());
   }
