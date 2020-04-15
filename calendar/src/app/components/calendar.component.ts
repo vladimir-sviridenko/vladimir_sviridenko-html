@@ -14,20 +14,21 @@ class Calendar extends HTMLTimeElement {
   }
 
   private initializeEvents() {
-    this.onclick = (event) => {
-      //rewrite, hide data: remove datasets from Day TODO
-      if(event.target instanceof HTMLButtonElement) {
-        const currentMonth = (this.todaysDate.getMonth() + 1) + this.monthShift;
-        const clickedMonth = Number(event.target.dataset.month);
-        if(clickedMonth < currentMonth) {
-          this.monthShift--;
-          this.update();
-        } else if(clickedMonth > currentMonth) {
-          this.monthShift++;
-          this.update();
-        }
+    this.addEventListener("dayClick", function(event) {
+      const clickedDate = event.detail;
+      const clickedMonth = clickedDate.getMonth();
+      const currentMonth = this.todaysDate.getMonth() + this.monthShift;
+      if(clickedMonth < currentMonth) {
+        this.shift(true);
+      } else if(clickedMonth > currentMonth) {
+        this.shift(false);
       }
-    }
+    });
+  }
+
+  private shift(isShiftingToPrevious: boolean) {
+    isShiftingToPrevious ? this.monthShift-- : this.monthShift++;
+    this.update();
   }
   
   private initializeDateTimeAttribute() {

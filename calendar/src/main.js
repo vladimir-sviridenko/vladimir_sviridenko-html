@@ -6,14 +6,18 @@ define("app/components/day.component", ["require", "exports"], function (require
             this.date = date;
             this.isInMonth = isInMonth;
             this.isToday = isToday;
+            this.shiftMonthEvent = new CustomEvent("dayClick", {
+                detail: this.date,
+                bubbles: true
+            });
         }
         render() {
             const dayElement = document.createElement("button");
             dayElement.className = "calendar__day-button";
-            dayElement.dataset.day = this.date.getDate().toString();
-            dayElement.dataset.month = (this.date.getMonth() + 1).toString();
-            dayElement.dataset.year = this.date.getFullYear().toString();
-            dayElement.textContent = dayElement.dataset.day;
+            dayElement.textContent = this.date.getDate().toString();
+            dayElement.onclick = () => {
+                dayElement.dispatchEvent(this.shiftMonthEvent);
+            };
             if (!this.isInMonth) {
                 dayElement.classList.add("calendar__day-button_out-month");
             }
@@ -130,20 +134,21 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
             this.initializeDateTimeAttribute();
         }
         initializeEvents() {
-            this.onclick = (event) => {
-                if (event.target instanceof HTMLButtonElement) {
-                    const currentMonth = (this.todaysDate.getMonth() + 1) + this.monthShift;
-                    const clickedMonth = Number(event.target.dataset.month);
-                    if (clickedMonth < currentMonth) {
-                        this.monthShift--;
-                        this.update();
-                    }
-                    else if (clickedMonth > currentMonth) {
-                        this.monthShift++;
-                        this.update();
-                    }
+            this.addEventListener("dayClick", function (event) {
+                const clickedDate = event.detail;
+                const clickedMonth = clickedDate.getMonth();
+                const currentMonth = this.todaysDate.getMonth() + this.monthShift;
+                if (clickedMonth < currentMonth) {
+                    this.shift(true);
                 }
-            };
+                else if (clickedMonth > currentMonth) {
+                    this.shift(false);
+                }
+            });
+        }
+        shift(isShiftingToPrevious) {
+            isShiftingToPrevious ? this.monthShift-- : this.monthShift++;
+            this.update();
         }
         initializeDateTimeAttribute() {
             const year = this.todaysDate.getFullYear();
