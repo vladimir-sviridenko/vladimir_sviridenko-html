@@ -8,7 +8,7 @@ class Day {
     this.date = date;
     this.isInMonth = isInMonth;
     this.isToday = isToday;
-    this.shiftMonthEvent = new CustomEvent("dayClick", {
+    this.shiftMonthEvent = new CustomEvent("onDayClick", {
       detail: {date: this.date, isInMonth: this.isInMonth},
       bubbles: true
     });
@@ -19,8 +19,8 @@ class Day {
     dayElement.className = "calendar__day-button";
     dayElement.textContent = this.date.getDate().toString();
 
-    dayElement.onmousedown = () => {
-      dayElement.dispatchEvent(this.shiftMonthEvent);
+    dayElement.onmousedown = (event) => {
+      event.currentTarget.dispatchEvent(this.shiftMonthEvent);
     }
     
     if (!this.isInMonth) {

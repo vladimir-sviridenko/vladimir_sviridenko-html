@@ -6,7 +6,7 @@ define("app/components/day.component", ["require", "exports"], function (require
             this.date = date;
             this.isInMonth = isInMonth;
             this.isToday = isToday;
-            this.shiftMonthEvent = new CustomEvent("dayClick", {
+            this.shiftMonthEvent = new CustomEvent("onDayClick", {
                 detail: { date: this.date, isInMonth: this.isInMonth },
                 bubbles: true
             });
@@ -15,8 +15,8 @@ define("app/components/day.component", ["require", "exports"], function (require
             const dayElement = document.createElement("button");
             dayElement.className = "calendar__day-button";
             dayElement.textContent = this.date.getDate().toString();
-            dayElement.onmousedown = () => {
-                dayElement.dispatchEvent(this.shiftMonthEvent);
+            dayElement.onmousedown = (event) => {
+                event.currentTarget.dispatchEvent(this.shiftMonthEvent);
             };
             if (!this.isInMonth) {
                 dayElement.classList.add("calendar__day-button_out-month");
@@ -134,7 +134,7 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
             this.initializeDateTimeAttribute();
         }
         initializeEvents() {
-            this.addEventListener("dayClick", function (event) {
+            this.addEventListener("onDayClick", function (event) {
                 const clickedDate = event.detail.date;
                 const doShift = !event.detail.isInMonth;
                 const currentDate = new Date(this.todaysDate.getFullYear(), this.todaysDate.getMonth() + this.monthShift);
@@ -216,10 +216,14 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
         }
         update() {
             this.innerHTML = "";
-            this.appendChild(this.generateTodaysDateLabel());
+            const controlPanelWrap = document.createElement("div");
+            controlPanelWrap.className = "calendar__control-panel-wrap";
+            controlPanelWrap.appendChild(this.generateTodaysDateLabel());
+            controlPanelWrap.appendChild(new ControlPanel().render());
             const monthWrap = document.createElement("div");
             monthWrap.className = "calendar__month-wrap";
             monthWrap.appendChild(this.generateMonth());
+            this.appendChild(controlPanelWrap);
             this.appendChild(monthWrap);
         }
     }
@@ -242,6 +246,40 @@ define("main", ["require", "exports", "app/app.component"], function (require, e
     const app = document.createElement("time", { is: appTag });
     document.body.appendChild(app);
 });
+class ControlPanel {
+    constructor() {
+        this.shiftBackEvent = new CustomEvent("onBackPress", { bubbles: true });
+        this.shiftToNowEvent = new CustomEvent("onNowPress", { bubbles: true });
+        this.shiftNextEvent = new CustomEvent("onNextPress", { bubbles: true });
+    }
+    generateControlPanel() {
+        const controlPanel = document.createElement("div");
+        const backButton = document.createElement("button");
+        const nowButton = document.createElement("button");
+        const nextButton = document.createElement("button");
+        controlPanel.className = "calendar__control-panel";
+        backButton.className = "calendar__control-button calendar__control-button_back";
+        nowButton.className = "calendar__control-button calendar__control-button_now";
+        nextButton.className = "calendar__control-button calendar__control-button_next";
+        controlPanel.appendChild(backButton);
+        controlPanel.appendChild(nowButton);
+        controlPanel.appendChild(nextButton);
+        backButton.onclick = (event) => {
+            event.currentTarget.dispatchEvent(this.shiftBackEvent);
+        };
+        nowButton.onclick = (event) => {
+            event.currentTarget.dispatchEvent(this.shiftToNowEvent);
+        };
+        nextButton.onclick = (event) => {
+            event.currentTarget.dispatchEvent(this.shiftNextEvent);
+        };
+        return controlPanel;
+    }
+    render() {
+        const controlPanel = this.generateControlPanel();
+        return controlPanel;
+    }
+}
 const MonthsNames = {
     RU: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
     EN: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],

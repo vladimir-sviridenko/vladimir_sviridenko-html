@@ -14,7 +14,7 @@ class Calendar extends HTMLTimeElement {
   }
 
   private initializeEvents() {
-    this.addEventListener("dayClick", function(event) {
+    this.addEventListener("onDayClick", function(event) {
       const clickedDate = event.detail.date;
       const doShift = !event.detail.isInMonth;
       const currentDate = new Date(this.todaysDate.getFullYear(), this.todaysDate.getMonth() + this.monthShift);
@@ -24,6 +24,7 @@ class Calendar extends HTMLTimeElement {
         this.shift(false);
       }
     });
+    
   }
 
   private shift(isShiftingToPrevious: boolean) {
@@ -103,11 +104,14 @@ class Calendar extends HTMLTimeElement {
 
   private update() {
     this.innerHTML = "";
-    this.appendChild(this.generateTodaysDateLabel());
-
+    const controlPanelWrap = document.createElement("div");
+    controlPanelWrap.className = "calendar__control-panel-wrap";
+    controlPanelWrap.appendChild(this.generateTodaysDateLabel());
+    controlPanelWrap.appendChild(new ControlPanel().render());
     const monthWrap = document.createElement("div");
     monthWrap.className = "calendar__month-wrap";
     monthWrap.appendChild(this.generateMonth());
+    this.appendChild(controlPanelWrap);
     this.appendChild(monthWrap);
   }
 }

@@ -1,4 +1,4 @@
-$text-color: #525252;
+$text-color: darken(#595959, 8%);
 $bg-color-day-checked: #3ea1f0;
 $color-text-day-checked: white;
 $color-today: #3ea1f0;
@@ -29,6 +29,7 @@ body {
   width: $width-calendar;
   padding-top: 1.8rem;
   padding-bottom: 1.3rem;
+  overflow: hidden;
 
   font-weight: $font-weight-primary;
   font-size: 1.6em;
@@ -40,16 +41,112 @@ body {
   border: 1px solid lighten($text-color, $amount: 30%);
   border-radius: 4px;
 
-  overflow: hidden;
+  &__control-panel-wrap {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 0 1.4rem;
+    padding: 0.1rem;
+  }
 
   &__date-label {
-    margin: 0 1.4rem;
     font-weight: $font-weight-tertiary;
-    font-size: 1.2em;
+    font-size: 1.3em;
+    line-height: 1.2em;
+  }
+
+  &__control-panel {
+    position: relative;
+
+    display: flex;
+
+    border: 0.1rem solid lighten($text-color, 35%);
+    border-radius: 0.2rem;
+
+    @mixin cross-line {
+      content: "";
+      position: absolute;
+      z-index: 1;
+
+      display: block;
+      width: 0.1rem;
+      height: 100%;
+
+      background-color: lighten($text-color, 35%);
+    }
+
+    &:before {
+      left: 33.33%;
+
+      @include cross-line;
+    }
+
+    &:after {
+      right: 33.33%;
+
+      @include cross-line;
+    }
+  }
+
+  &__control-button {
+    z-index: 0;
+
+    width: 2.5rem;
+    height: 100%;
+    padding: 0;
+
+    font-size: 0.9em;
+    font-family: "FontAwesome";
+    color: $text-color;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+    &:focus {
+      box-shadow: 0 0 0.1rem 0.1rem $color-today;
+    }
+
+    &_back {
+      border-radius: 0.2rem;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+
+      &::before {
+        content: "\f0d9";
+      }
+    }
+
+    &_next {
+      border-radius: 0.2rem;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      &::before {
+        content: "\f0da";
+      }
+    }
+
+    &_now {
+      font-size: 0.75em;
+      &::before {
+        content: "\f133";
+      }
+      &:focus {
+        box-shadow: none;;
+      }
+    }
+
+    &:active {
+      background-color: #e9e9e9;
+      box-shadow: 0 0 0.2rem 0 lighten($text-color, 40%) inset;
+      border-radius: 0;
+    }
   }
 
   &__month-wrap {
     display: block;
+
     white-space: nowrap;
   }
 
@@ -59,6 +156,8 @@ body {
     margin: 0 0.6rem;
 
     transition: transform 0.3s;
+
+    will-change: transform;
 
     &_shift-right {
       transform: translateX($width-calendar);
@@ -78,9 +177,9 @@ body {
 
     font-weight: $font-weight-primary;
     font-family: $font-family-primary;
+    color: $text-color;
 
     background-color: $bg-color-calendar;
-    color: $text-color;
     border: none;
     border-radius: 50%;
     outline: none;
@@ -95,8 +194,9 @@ body {
     }
 
     &:focus {
-      background-color: $bg-color-day-checked;
       color: $color-text-day-checked;
+
+      background-color: $bg-color-day-checked;
     }
 
     &_out-month {
@@ -104,8 +204,8 @@ body {
     }
 
     &_today {
-      color: $color-today;
       font-weight: $font-weight-secondary;
+      color: $color-today;
     }
   }
 
