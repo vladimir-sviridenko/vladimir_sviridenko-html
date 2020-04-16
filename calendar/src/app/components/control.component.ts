@@ -1,12 +1,12 @@
 class ControlPanel {
   private backClickEvent: CustomEvent;
-  private toNowClickEvent: CustomEvent; 
+  private toNowClickEvent: CustomEvent;
   private nextClickEvent: CustomEvent;
 
   constructor() {
-    this.backClickEvent = new CustomEvent("backClick", {bubbles: true});
-    this.toNowClickEvent = new CustomEvent("toNowClick", {bubbles: true});
-    this.nextClickEvent = new CustomEvent("nextClick", {bubbles: true});
+    this.backClickEvent = new CustomEvent("backClick", { bubbles: true });
+    this.toNowClickEvent = new CustomEvent("toNowClick", { bubbles: true });
+    this.nextClickEvent = new CustomEvent("nextClick", { bubbles: true });
   }
 
   private generateControlButtons() {
@@ -14,7 +14,7 @@ class ControlPanel {
     const backButton = document.createElement("button");
     const nowButton = document.createElement("button");
     const nextButton = document.createElement("button");
-    
+
     controlPanel.className = "calendar__control-buttons";
     backButton.className = "calendar__control-button calendar__control-button_back";
     nowButton.className = "calendar__control-button calendar__control-button_now";

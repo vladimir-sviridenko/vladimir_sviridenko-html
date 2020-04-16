@@ -15,31 +15,31 @@ class Calendar extends HTMLTimeElement {
   }
 
   private initializeEvents() {
-    this.addEventListener("dayMouseDown", function(event) {
+    this.addEventListener("dayMouseDown", function (event) {
       const clickedDate = event.detail.date;
       const doShift = !event.detail.isInMonth;
       const currentDate = new Date(this.todaysDate.getFullYear(), this.todaysDate.getMonth() + this.monthShift);
-      if(clickedDate < currentDate && doShift) {
+      if (clickedDate < currentDate && doShift) {
         this.shift(true);
-      } else if(clickedDate > currentDate && doShift) {
+      } else if (clickedDate > currentDate && doShift) {
         this.shift(false);
       }
     });
 
-    this.addEventListener("backClick", function() {
+    this.addEventListener("backClick", function () {
       this.shift(true);
     });
-    this.addEventListener("nextClick", function() {
+    this.addEventListener("nextClick", function () {
       this.shift(false);
     });
-    this.addEventListener("toNowClick", function() {
+    this.addEventListener("toNowClick", function () {
       const months = this.querySelectorAll(".calendar__month");
-      if(this.monthShift > 0) {
+      if (this.monthShift > 0) {
         this.monthShift = 0;
         months[0].replaceWith(this.generateMonth());
         this.shift(true, true);
         months[1].replaceWith(this.generateMonth(1));
-      } else if(this.monthShift < 0) {
+      } else if (this.monthShift < 0) {
         this.monthShift = 0;
         months[2].replaceWith(this.generateMonth());
         this.shift(false, true);
@@ -49,15 +49,15 @@ class Calendar extends HTMLTimeElement {
   }
 
   private shift(isShiftingToPrevious: boolean, isShiftToNow: boolean = false) {
-    if(!isShiftToNow) {
-      if(isShiftingToPrevious) {
+    if (!isShiftToNow) {
+      if (isShiftingToPrevious) {
         this.monthShift--;
       } else {
         this.monthShift++;
       }
     } else {
       this.monthShift = 0;
-    } 
+    }
 
     const newDateLabel = this.generateTodaysDateLabel();
     const oldDateLabel = this.querySelector(".calendar__date-label");
@@ -65,7 +65,7 @@ class Calendar extends HTMLTimeElement {
 
     const monthWrap = this.querySelector(".calendar__carousel");
     this.style.pointerEvents = "none";
-    if(isShiftingToPrevious) {
+    if (isShiftingToPrevious) {
       monthWrap.classList.add("calendar__carousel_animated");
       monthWrap.classList.add("calendar__carousel_shift_right");
       monthWrap.ontransitionend = (event: Event) => {

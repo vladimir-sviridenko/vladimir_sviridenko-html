@@ -30,7 +30,6 @@ body {
   padding-top: 1.8rem;
   padding-bottom: 1.3rem;
   overflow: hidden;
-  user-select: none;
 
   font-weight: $font-weight-primary;
   font-size: 1.6em;
@@ -41,6 +40,8 @@ body {
   background-color: $bg-color-calendar;
   border: 1px solid lighten($text-color, $amount: 30%);
   border-radius: 4px;
+
+  user-select: none;
 
   &__control-panel {
     display: flex;
@@ -161,7 +162,7 @@ body {
     }
 
     &_shift {
-      &_right{
+      &_right {
         transform: translateX(0);
       }
       &_left {
@@ -207,7 +208,7 @@ body {
 
     &_out-month {
       color: lighten($text-color, 40%);
-      
+
       &:focus {
         color: $text-color;
 

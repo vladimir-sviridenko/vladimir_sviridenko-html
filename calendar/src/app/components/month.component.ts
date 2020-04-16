@@ -25,11 +25,11 @@ class Month {
   private generateDays(): HTMLButtonElement[] {
 
     const isToday = (date: Date) => {
-      if(date.getFullYear() === this.todaysDate.getFullYear() &&
-      date.getMonth() === this.todaysDate.getMonth() &&
-      date.getDate() === this.todaysDate.getDate()) {
+      if (date.getFullYear() === this.todaysDate.getFullYear() &&
+        date.getMonth() === this.todaysDate.getMonth() &&
+        date.getDate() === this.todaysDate.getDate()) {
         return true;
-      } 
+      }
       return false;
     }
 
@@ -58,9 +58,9 @@ class Month {
 
     const generateNextMonthDays = () => {
       let additionalDays = 0;
-      if(dayElements.length <= 28) {
+      if (dayElements.length <= 28) {
         additionalDays = 14;
-      }else if(dayElements.length <= 35){
+      } else if (dayElements.length <= 35) {
         additionalDays = 7;
       }
       const lastWeekDay = getWeekDay(new Date(currentYear, shownMonth, daysQuantity));

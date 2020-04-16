@@ -2,14 +2,14 @@ class Day {
   private date: Date;
   private isInMonth: boolean;
   private isToday: boolean;
-  private dayMouseDown: CustomEvent<{date: Date, isInMonth: boolean}>;
+  private dayMouseDown: CustomEvent<{ date: Date, isInMonth: boolean }>;
 
   constructor(date: Date, isInMonth: boolean = false, isToday: boolean = false) {
     this.date = date;
     this.isInMonth = isInMonth;
     this.isToday = isToday;
     this.dayMouseDown = new CustomEvent("dayMouseDown", {
-      detail: {date: this.date, isInMonth: this.isInMonth},
+      detail: { date: this.date, isInMonth: this.isInMonth },
       bubbles: true
     });
   }
@@ -22,12 +22,12 @@ class Day {
     dayElement.onmousedown = (event) => {
       event.currentTarget.dispatchEvent(this.dayMouseDown);
     }
-    
+
     if (!this.isInMonth) {
       dayElement.classList.add("calendar__day-button_out-month");
     }
 
-    if(this.isToday) {
+    if (this.isToday) {
       dayElement.classList.add("calendar__day-button_today");
     }
 
