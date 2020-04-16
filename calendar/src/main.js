@@ -6,7 +6,7 @@ define("app/components/day.component", ["require", "exports"], function (require
             this.date = date;
             this.isInMonth = isInMonth;
             this.isToday = isToday;
-            this.shiftMonthEvent = new CustomEvent("onDayClick", {
+            this.dayMouseDown = new CustomEvent("dayMouseDown", {
                 detail: { date: this.date, isInMonth: this.isInMonth },
                 bubbles: true
             });
@@ -16,7 +16,7 @@ define("app/components/day.component", ["require", "exports"], function (require
             dayElement.className = "calendar__day-button";
             dayElement.textContent = this.date.getDate().toString();
             dayElement.onmousedown = (event) => {
-                event.currentTarget.dispatchEvent(this.shiftMonthEvent);
+                event.currentTarget.dispatchEvent(this.dayMouseDown);
             };
             if (!this.isInMonth) {
                 dayElement.classList.add("calendar__day-button_out-month");
@@ -87,8 +87,15 @@ define("app/components/month.component", ["require", "exports", "app/components/
                 }
             };
             const generateNextMonthDays = () => {
+                let additionalDays = 0;
+                if (dayElements.length <= 28) {
+                    additionalDays = 14;
+                }
+                else if (dayElements.length <= 35) {
+                    additionalDays = 7;
+                }
                 const lastWeekDay = getWeekDay(new Date(currentYear, shownMonth, daysQuantity));
-                for (let i = 1; i <= 7 - lastWeekDay; i++) {
+                for (let i = 1; i <= 7 - lastWeekDay + additionalDays; i++) {
                     const date = new Date(currentYear, shownMonth + 1, i);
                     const day = new day_component_1.default(date).render();
                     dayElements.push(day);
@@ -128,13 +135,14 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
         constructor() {
             super();
             this.todaysDate = new Date();
+            this.todaysDate.setHours(0, 0, 0, 0);
             this.monthShift = 0;
             this.className = "calendar";
             this.initializeEvents();
             this.initializeDateTimeAttribute();
         }
         initializeEvents() {
-            this.addEventListener("onDayClick", function (event) {
+            this.addEventListener("dayMouseDown", function (event) {
                 const clickedDate = event.detail.date;
                 const doShift = !event.detail.isInMonth;
                 const currentDate = new Date(this.todaysDate.getFullYear(), this.todaysDate.getMonth() + this.monthShift);
@@ -145,48 +153,65 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
                     this.shift(false);
                 }
             });
+            this.addEventListener("backClick", function () {
+                this.shift(true);
+            });
+            this.addEventListener("nextClick", function () {
+                this.shift(false);
+            });
+            this.addEventListener("toNowClick", function () {
+                const months = this.querySelectorAll(".calendar__month");
+                if (this.monthShift > 0) {
+                    this.monthShift = 0;
+                    months[0].replaceWith(this.generateMonth());
+                    this.shift(true, true);
+                    months[1].replaceWith(this.generateMonth(1));
+                }
+                else if (this.monthShift < 0) {
+                    this.monthShift = 0;
+                    months[2].replaceWith(this.generateMonth());
+                    this.shift(false, true);
+                    months[1].replaceWith(this.generateMonth(-1));
+                }
+            });
         }
-        shift(isShiftingToPrevious) {
-            if (isShiftingToPrevious) {
-                this.monthShift--;
+        shift(isShiftingToPrevious, isShiftToNow = false) {
+            if (!isShiftToNow) {
+                if (isShiftingToPrevious) {
+                    this.monthShift--;
+                }
+                else {
+                    this.monthShift++;
+                }
             }
             else {
-                this.monthShift++;
+                this.monthShift = 0;
             }
             const newDateLabel = this.generateTodaysDateLabel();
             const oldDateLabel = this.querySelector(".calendar__date-label");
             oldDateLabel.replaceWith(newDateLabel);
-            const monthWrap = this.querySelector(".calendar__month-wrap");
-            const newMonth = this.generateMonth();
-            const currentMonth = monthWrap.querySelector(".calendar__month");
+            const monthWrap = this.querySelector(".calendar__carousel");
+            this.style.pointerEvents = "none";
             if (isShiftingToPrevious) {
-                newMonth.classList.add("calendar__month_shift-left");
-                monthWrap.prepend(newMonth);
-                currentMonth.classList.add("calendar__month_no-animation");
-                currentMonth.classList.add("calendar__month_shift-left");
-                setTimeout(() => {
-                    newMonth.classList.remove("calendar__month_shift-left");
-                    currentMonth.classList.remove("calendar__month_no-animation");
-                    currentMonth.classList.remove("calendar__month_shift-left");
-                }, 0);
-                currentMonth.ontransitionend = (event) => {
-                    const currentMonth = event.currentTarget;
-                    currentMonth.parentNode.removeChild(currentMonth);
+                monthWrap.classList.add("calendar__carousel_animated");
+                monthWrap.classList.add("calendar__carousel_shift_right");
+                monthWrap.ontransitionend = (event) => {
+                    monthWrap.classList.remove("calendar__carousel_animated");
+                    monthWrap.removeChild(monthWrap.lastChild);
+                    monthWrap.prepend(this.generateMonth(-1));
+                    monthWrap.classList.remove("calendar__carousel_shift_right");
+                    this.removeAttribute("style");
                 };
             }
             else {
-                currentMonth.classList.add("calendar__month_shift-left");
-                monthWrap.appendChild(newMonth);
-                setTimeout(() => {
-                    newMonth.classList.add("calendar__month_shift-left");
-                }, 0);
-                currentMonth.ontransitionend = (event) => {
-                    const currentMonth = event.currentTarget;
-                    const newMonth = currentMonth.nextSibling;
-                    newMonth.classList.add("calendar__month_no-animation");
-                    newMonth.classList.remove("calendar__month_shift-left");
-                    currentMonth.parentNode.removeChild(currentMonth);
-                    newMonth.classList.remove("calendar__month_no-animation");
+                monthWrap.classList.add("calendar__carousel_animated");
+                monthWrap.classList.add("calendar__carousel_shift_left");
+                monthWrap.ontransitionend = (event) => {
+                    monthWrap.classList.remove("calendar__carousel_animated");
+                    monthWrap.append(this.generateMonth(1));
+                    monthWrap.removeChild(monthWrap.firstChild);
+                    monthWrap.classList.remove("calendar__carousel_shift_left");
+                    this.removeAttribute("style");
                 };
             }
         }
@@ -209,22 +234,33 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
             currentDateLabel.textContent = MonthsNames.RU[shiftedMonth] + ", " + shiftedYear;
             return currentDateLabel;
         }
-        generateMonth() {
-            const shownMonthElement = new month_component_1.default(this.todaysDate, this.monthShift).render();
+        generateMonth(additionalShift = 0) {
+            const shownMonthElement = new month_component_1.default(this.todaysDate, this.monthShift + additionalShift).render();
             shownMonthElement.className = "calendar__month";
             return shownMonthElement;
         }
+        generateMonthCarousel() {
+            const monthWrap = document.createElement("div");
+            monthWrap.className = "calendar__carousel";
+            const previousMonth = this.generateMonth(-1);
+            const currentMonth = this.generateMonth();
+            const nextMonth = this.generateMonth(1);
+            monthWrap.appendChild(previousMonth);
+            monthWrap.appendChild(currentMonth);
+            monthWrap.appendChild(nextMonth);
+            return monthWrap;
+        }
+        generateControlPanel() {
+            const controlPanel = document.createElement("div");
+            controlPanel.className = "calendar__control-panel";
+            controlPanel.appendChild(this.generateTodaysDateLabel());
+            controlPanel.appendChild(new ControlPanel().render());
+            return controlPanel;
+        }
         update() {
             this.innerHTML = "";
-            const controlPanelWrap = document.createElement("div");
-            controlPanelWrap.className = "calendar__control-panel-wrap";
-            controlPanelWrap.appendChild(this.generateTodaysDateLabel());
-            controlPanelWrap.appendChild(new ControlPanel().render());
-            const monthWrap = document.createElement("div");
-            monthWrap.className = "calendar__month-wrap";
-            monthWrap.appendChild(this.generateMonth());
-            this.appendChild(controlPanelWrap);
-            this.appendChild(monthWrap);
+            this.appendChild(this.generateControlPanel());
+            this.appendChild(this.generateMonthCarousel());
         }
     }
     exports.default = Calendar;
@@ -248,16 +284,16 @@ define("main", ["require", "exports", "app/app.component"], function (require, e
 });
 class ControlPanel {
     constructor() {
-        this.shiftBackEvent = new CustomEvent("onBackPress", { bubbles: true });
-        this.shiftToNowEvent = new CustomEvent("onNowPress", { bubbles: true });
-        this.shiftNextEvent = new CustomEvent("onNextPress", { bubbles: true });
+        this.backClickEvent = new CustomEvent("backClick", { bubbles: true });
+        this.toNowClickEvent = new CustomEvent("toNowClick", { bubbles: true });
+        this.nextClickEvent = new CustomEvent("nextClick", { bubbles: true });
     }
-    generateControlPanel() {
+    generateControlButtons() {
         const controlPanel = document.createElement("div");
         const backButton = document.createElement("button");
         const nowButton = document.createElement("button");
         const nextButton = document.createElement("button");
-        controlPanel.className = "calendar__control-panel";
+        controlPanel.className = "calendar__control-buttons";
         backButton.className = "calendar__control-button calendar__control-button_back";
         nowButton.className = "calendar__control-button calendar__control-button_now";
         nextButton.className = "calendar__control-button calendar__control-button_next";
@@ -265,18 +301,18 @@ class ControlPanel {
         controlPanel.appendChild(nowButton);
         controlPanel.appendChild(nextButton);
         backButton.onclick = (event) => {
-            event.currentTarget.dispatchEvent(this.shiftBackEvent);
+            event.currentTarget.dispatchEvent(this.backClickEvent);
         };
         nowButton.onclick = (event) => {
-            event.currentTarget.dispatchEvent(this.shiftToNowEvent);
+            event.currentTarget.dispatchEvent(this.toNowClickEvent);
         };
         nextButton.onclick = (event) => {
-            event.currentTarget.dispatchEvent(this.shiftNextEvent);
+            event.currentTarget.dispatchEvent(this.nextClickEvent);
         };
         return controlPanel;
     }
     render() {
-        const controlPanel = this.generateControlPanel();
+        const controlPanel = this.generateControlButtons();
         return controlPanel;
     }
 }

@@ -1,21 +1,21 @@
 class ControlPanel {
-  private shiftBackEvent: CustomEvent;
-  private shiftToNowEvent: CustomEvent; 
-  private shiftNextEvent: CustomEvent;
+  private backClickEvent: CustomEvent;
+  private toNowClickEvent: CustomEvent; 
+  private nextClickEvent: CustomEvent;
 
   constructor() {
-    this.shiftBackEvent = new CustomEvent("onBackPress", {bubbles: true});
-    this.shiftToNowEvent = new CustomEvent("onNowPress", {bubbles: true});
-    this.shiftNextEvent = new CustomEvent("onNextPress", {bubbles: true});
+    this.backClickEvent = new CustomEvent("backClick", {bubbles: true});
+    this.toNowClickEvent = new CustomEvent("toNowClick", {bubbles: true});
+    this.nextClickEvent = new CustomEvent("nextClick", {bubbles: true});
   }
 
-  private generateControlPanel() {
+  private generateControlButtons() {
     const controlPanel = document.createElement("div");
     const backButton = document.createElement("button");
     const nowButton = document.createElement("button");
     const nextButton = document.createElement("button");
     
-    controlPanel.className = "calendar__control-panel";
+    controlPanel.className = "calendar__control-buttons";
     backButton.className = "calendar__control-button calendar__control-button_back";
     nowButton.className = "calendar__control-button calendar__control-button_now";
     nextButton.className = "calendar__control-button calendar__control-button_next";
@@ -25,20 +25,20 @@ class ControlPanel {
     controlPanel.appendChild(nextButton);
 
     backButton.onclick = (event) => {
-      event.currentTarget.dispatchEvent(this.shiftBackEvent);
+      event.currentTarget.dispatchEvent(this.backClickEvent);
     }
     nowButton.onclick = (event) => {
-      event.currentTarget.dispatchEvent(this.shiftToNowEvent);
+      event.currentTarget.dispatchEvent(this.toNowClickEvent);
     }
     nextButton.onclick = (event) => {
-      event.currentTarget.dispatchEvent(this.shiftNextEvent);
+      event.currentTarget.dispatchEvent(this.nextClickEvent);
     }
 
     return controlPanel;
   }
 
   public render() {
-    const controlPanel = this.generateControlPanel()
+    const controlPanel = this.generateControlButtons()
     return controlPanel;
   }
 }

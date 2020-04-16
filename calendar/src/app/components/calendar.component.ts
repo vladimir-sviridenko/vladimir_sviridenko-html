@@ -7,6 +7,7 @@ class Calendar extends HTMLTimeElement {
   constructor() {
     super();
     this.todaysDate = new Date();
+    this.todaysDate.setHours(0, 0, 0, 0);
     this.monthShift = 0;
     this.className = "calendar";
     this.initializeEvents();
@@ -14,7 +15,7 @@ class Calendar extends HTMLTimeElement {
   }
 
   private initializeEvents() {
-    this.addEventListener("onDayClick", function(event) {
+    this.addEventListener("dayMouseDown", function(event) {
       const clickedDate = event.detail.date;
       const doShift = !event.detail.isInMonth;
       const currentDate = new Date(this.todaysDate.getFullYear(), this.todaysDate.getMonth() + this.monthShift);
@@ -24,51 +25,66 @@ class Calendar extends HTMLTimeElement {
         this.shift(false);
       }
     });
-    
+
+    this.addEventListener("backClick", function() {
+      this.shift(true);
+    });
+    this.addEventListener("nextClick", function() {
+      this.shift(false);
+    });
+    this.addEventListener("toNowClick", function() {
+      const months = this.querySelectorAll(".calendar__month");
+      if(this.monthShift > 0) {
+        this.monthShift = 0;
+        months[0].replaceWith(this.generateMonth());
+        this.shift(true, true);
+        months[1].replaceWith(this.generateMonth(1));
+      } else if(this.monthShift < 0) {
+        this.monthShift = 0;
+        months[2].replaceWith(this.generateMonth());
+        this.shift(false, true);
+        months[1].replaceWith(this.generateMonth(-1));
+      }
+    });
   }
 
-  private shift(isShiftingToPrevious: boolean) {
-    if(isShiftingToPrevious) {
-      this.monthShift--;
+  private shift(isShiftingToPrevious: boolean, isShiftToNow: boolean = false) {
+    if(!isShiftToNow) {
+      if(isShiftingToPrevious) {
+        this.monthShift--;
+      } else {
+        this.monthShift++;
+      }
     } else {
-      this.monthShift++;
-    }
+      this.monthShift = 0;
+    } 
 
     const newDateLabel = this.generateTodaysDateLabel();
     const oldDateLabel = this.querySelector(".calendar__date-label");
     oldDateLabel.replaceWith(newDateLabel);
 
-    const monthWrap = this.querySelector(".calendar__month-wrap");
-    const newMonth = this.generateMonth();
-    const currentMonth = monthWrap.querySelector(".calendar__month");
+    const monthWrap = this.querySelector(".calendar__carousel");
+    this.style.pointerEvents = "none";
     if(isShiftingToPrevious) {
-      newMonth.classList.add("calendar__month_shift-left");
-      monthWrap.prepend(newMonth);
-      currentMonth.classList.add("calendar__month_no-animation");
-      currentMonth.classList.add("calendar__month_shift-left");
-      setTimeout(()=>{
-        newMonth.classList.remove("calendar__month_shift-left");
-        currentMonth.classList.remove("calendar__month_no-animation");
-        currentMonth.classList.remove("calendar__month_shift-left");
-      }, 0);
-      currentMonth.ontransitionend = (event: Event) => {
-        const currentMonth = event.currentTarget;
-        currentMonth.parentNode.removeChild(currentMonth);
-      }
+      monthWrap.classList.add("calendar__carousel_animated");
+      monthWrap.classList.add("calendar__carousel_shift_right");
+      monthWrap.ontransitionend = (event: Event) => {
+        monthWrap.classList.remove("calendar__carousel_animated");
+        monthWrap.removeChild(monthWrap.lastChild);
+        monthWrap.prepend(this.generateMonth(-1));
+        monthWrap.classList.remove("calendar__carousel_shift_right");
+        this.removeAttribute("style");
+      };
     } else {
-      currentMonth.classList.add("calendar__month_shift-left");
-      monthWrap.appendChild(newMonth);
-      setTimeout(()=>{
-        newMonth.classList.add("calendar__month_shift-left");
-      }, 0);
-      currentMonth.ontransitionend = (event: Event) => {
-        const currentMonth = event.currentTarget;
-        const newMonth = currentMonth.nextSibling;
-        newMonth.classList.add("calendar__month_no-animation");
-        newMonth.classList.remove("calendar__month_shift-left");
-        currentMonth.parentNode.removeChild(currentMonth);
-        newMonth.classList.remove("calendar__month_no-animation");
-      }
+      monthWrap.classList.add("calendar__carousel_animated");
+      monthWrap.classList.add("calendar__carousel_shift_left");
+      monthWrap.ontransitionend = (event: Event) => {
+        monthWrap.classList.remove("calendar__carousel_animated");
+        monthWrap.append(this.generateMonth(1));
+        monthWrap.removeChild(monthWrap.firstChild);
+        monthWrap.classList.remove("calendar__carousel_shift_left");
+        this.removeAttribute("style");
+      };
     }
   }
 
@@ -96,23 +112,38 @@ class Calendar extends HTMLTimeElement {
     return currentDateLabel;
   }
 
-  private generateMonth(): HTMLDivElement {
-    const shownMonthElement = new Month(this.todaysDate, this.monthShift).render();
+  private generateMonth(additionalShift: number = 0): HTMLDivElement {
+    const shownMonthElement = new Month(this.todaysDate, this.monthShift + additionalShift).render();
     shownMonthElement.className = "calendar__month";
     return shownMonthElement;
   }
 
+  private generateMonthCarousel(): HTMLDivElement {
+    const monthWrap = document.createElement("div");
+    monthWrap.className = "calendar__carousel";
+
+    const previousMonth = this.generateMonth(-1);
+    const currentMonth = this.generateMonth();
+    const nextMonth = this.generateMonth(1);
+
+    monthWrap.appendChild(previousMonth);
+    monthWrap.appendChild(currentMonth);
+    monthWrap.appendChild(nextMonth);
+    return monthWrap;
+  }
+
+  private generateControlPanel(): HTMLDivElement {
+    const controlPanel = document.createElement("div");
+    controlPanel.className = "calendar__control-panel";
+    controlPanel.appendChild(this.generateTodaysDateLabel());
+    controlPanel.appendChild(new ControlPanel().render());
+    return controlPanel;
+  }
+
   private update() {
     this.innerHTML = "";
-    const controlPanelWrap = document.createElement("div");
-    controlPanelWrap.className = "calendar__control-panel-wrap";
-    controlPanelWrap.appendChild(this.generateTodaysDateLabel());
-    controlPanelWrap.appendChild(new ControlPanel().render());
-    const monthWrap = document.createElement("div");
-    monthWrap.className = "calendar__month-wrap";
-    monthWrap.appendChild(this.generateMonth());
-    this.appendChild(controlPanelWrap);
-    this.appendChild(monthWrap);
+    this.appendChild(this.generateControlPanel());
+    this.appendChild(this.generateMonthCarousel());
   }
 }
 

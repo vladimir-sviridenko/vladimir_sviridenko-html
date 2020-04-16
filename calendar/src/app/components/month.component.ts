@@ -57,8 +57,14 @@ class Month {
     }
 
     const generateNextMonthDays = () => {
+      let additionalDays = 0;
+      if(dayElements.length <= 28) {
+        additionalDays = 14;
+      }else if(dayElements.length <= 35){
+        additionalDays = 7;
+      }
       const lastWeekDay = getWeekDay(new Date(currentYear, shownMonth, daysQuantity));
-      for (let i = 1; i <= 7 - lastWeekDay; i++) {
+      for (let i = 1; i <= 7 - lastWeekDay + additionalDays; i++) {
         const date = new Date(currentYear, shownMonth + 1, i);
         const day = new Day(date).render();
         dayElements.push(day);
