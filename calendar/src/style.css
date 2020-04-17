@@ -87,7 +87,7 @@ body {
         content: "\f133"; }
       .calendar__control-button_now:focus {
         box-shadow: none; }
-      .calendar__control-button_now:hover .calendar__button-tip {
+      .calendar__control-button_now:not(:active):hover .calendar__button-tip {
         opacity: 1;
         transition: opacity 0s 0.7s ease; }
     .calendar__control-button:active {
@@ -96,17 +96,18 @@ body {
       box-shadow: 0 0 0.2rem 0 #ababab inset; }
   .calendar__button-tip {
     position: absolute;
-    top: 122%;
-    left: -150%;
+    top: 120%;
+    left: -3.4rem;
     z-index: 10;
     box-sizing: border-box;
-    width: 10rem;
+    width: 9rem;
     padding: 0.4rem 0;
-    font-size: 1.16em;
+    font-size: 1.1em;
     font-family: "Open Sans", sans-serif;
     color: white;
-    background-color: rgba(0, 0, 0, 0.9);
-    border-radius: 0.3rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0.4rem;
+    box-shadow: 0 0.1rem 0.2rem 0 black;
     opacity: 0;
     pointer-events: none; }
   .calendar__carousel {

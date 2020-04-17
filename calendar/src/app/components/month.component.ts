@@ -25,17 +25,14 @@ class Month {
   private generateDays(): HTMLButtonElement[] {
 
     const isToday = (date: Date) => {
-      if (date.getFullYear() === this.todaysDate.getFullYear() &&
+      return (date.getFullYear() === this.todaysDate.getFullYear() &&
         date.getMonth() === this.todaysDate.getMonth() &&
-        date.getDate() === this.todaysDate.getDate()) {
-        return true;
-      }
-      return false;
+        date.getDate() === this.todaysDate.getDate());
     }
 
     const getWeekDay = (date: Date) => {
       let weekDay = date.getDay();
-      return weekDay ? weekDay : 7;
+      return weekDay || 7;
     }
 
     const generatePreviousMonthDays = () => {

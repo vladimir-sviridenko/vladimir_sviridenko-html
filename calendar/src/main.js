@@ -59,16 +59,13 @@ define("app/components/month.component", ["require", "exports", "app/components/
         }
         generateDays() {
             const isToday = (date) => {
-                if (date.getFullYear() === this.todaysDate.getFullYear() &&
+                return (date.getFullYear() === this.todaysDate.getFullYear() &&
                     date.getMonth() === this.todaysDate.getMonth() &&
-                    date.getDate() === this.todaysDate.getDate()) {
-                    return true;
-                }
-                return false;
+                    date.getDate() === this.todaysDate.getDate());
             };
             const getWeekDay = (date) => {
                 let weekDay = date.getDay();
-                return weekDay ? weekDay : 7;
+                return weekDay || 7;
             };
             const generatePreviousMonthDays = () => {
                 let monthsDaysQuantity = this.getLastDayOfMonth(currentYear, shownMonth - 1);
