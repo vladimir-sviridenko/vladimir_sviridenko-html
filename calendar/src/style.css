@@ -20,6 +20,7 @@ body {
   border-radius: 4px;
   user-select: none; }
   .calendar__control-panel {
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -31,6 +32,7 @@ body {
     line-height: 1.2em; }
   .calendar__control-buttons {
     position: relative;
+    z-index: 1;
     display: flex;
     border: 0.1rem solid #9e9e9e;
     border-radius: 0.2rem; }
@@ -53,6 +55,7 @@ body {
       height: 100%;
       background-color: #9e9e9e; }
   .calendar__control-button {
+    position: relative;
     z-index: 0;
     width: 2.5rem;
     height: 100%;
@@ -84,10 +87,28 @@ body {
         content: "\f133"; }
       .calendar__control-button_now:focus {
         box-shadow: none; }
+      .calendar__control-button_now:hover .calendar__button-tip {
+        opacity: 1;
+        transition: opacity 0s 0.7s ease; }
     .calendar__control-button:active {
       background-color: #e9e9e9;
       border-radius: 0;
       box-shadow: 0 0 0.2rem 0 #ababab inset; }
+  .calendar__button-tip {
+    position: absolute;
+    top: 122%;
+    left: -150%;
+    z-index: 10;
+    box-sizing: border-box;
+    width: 10rem;
+    padding: 0.4rem 0;
+    font-size: 1.16em;
+    font-family: "Open Sans", sans-serif;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 0.3rem;
+    opacity: 0;
+    pointer-events: none; }
   .calendar__carousel {
     width: 81rem;
     white-space: nowrap;

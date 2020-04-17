@@ -44,6 +44,8 @@ body {
   user-select: none;
 
   &__control-panel {
+    position: relative;
+
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -59,6 +61,7 @@ body {
 
   &__control-buttons {
     position: relative;
+    z-index: 1;
 
     display: flex;
 
@@ -91,6 +94,7 @@ body {
   }
 
   &__control-button {
+    position: relative;
     z-index: 0;
 
     width: 2.5rem;
@@ -137,6 +141,12 @@ body {
       &:focus {
         box-shadow: none;;
       }
+
+      &:hover .calendar__button-tip {
+        opacity: 1;
+
+        transition: opacity 0s 0.7s ease;
+      }
     }
 
     &:active {
@@ -144,6 +154,27 @@ body {
       border-radius: 0;
       box-shadow: 0 0 0.2rem 0 lighten($text-color, 40%) inset;
     }
+  }
+
+  &__button-tip {
+    position: absolute;
+    top: 122%;
+    left: -150%;
+    z-index: 10;
+
+    box-sizing: border-box;
+    width: 10rem;
+    padding: 0.4rem 0;
+
+    font-size: 1.16em;
+    font-family: $font-family-primary;
+    color: white;
+
+    background-color: transparentize(black, 0.1);
+    border-radius: 0.3rem;
+    opacity: 0;
+
+    pointer-events: none;
   }
 
   &__carousel {

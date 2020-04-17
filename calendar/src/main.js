@@ -296,10 +296,14 @@ class ControlPanel {
         const controlPanel = document.createElement("div");
         const backButton = document.createElement("button");
         const nowButton = document.createElement("button");
+        const buttonTip = document.createElement("span");
         const nextButton = document.createElement("button");
         controlPanel.className = "calendar__control-buttons";
         backButton.className = "calendar__control-button calendar__control-button_back";
         nowButton.className = "calendar__control-button calendar__control-button_now";
+        buttonTip.className = "calendar__button-tip";
+        buttonTip.textContent = "Go to today";
+        nowButton.appendChild(buttonTip);
         nextButton.className = "calendar__control-button calendar__control-button_next";
         controlPanel.appendChild(backButton);
         controlPanel.appendChild(nowButton);
