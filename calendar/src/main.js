@@ -191,29 +191,33 @@ define("app/components/calendar.component", ["require", "exports", "app/componen
             const oldDateLabel = this.querySelector(".calendar__date-label");
             oldDateLabel.replaceWith(newDateLabel);
             const monthWrap = this.querySelector(".calendar__carousel");
-            this.style.pointerEvents = "none";
+            const animationClass = "calendar__carousel_animated";
+            let shiftClass;
+            let addElementFunction;
+            let shiftNewMonth;
+            let elementToRemove;
             if (isShiftingToPrevious) {
-                monthWrap.classList.add("calendar__carousel_animated");
-                monthWrap.classList.add("calendar__carousel_shift_right");
-                monthWrap.ontransitionend = (event) => {
-                    monthWrap.classList.remove("calendar__carousel_animated");
-                    monthWrap.removeChild(monthWrap.lastChild);
-                    monthWrap.prepend(this.generateMonth(-1));
-                    monthWrap.classList.remove("calendar__carousel_shift_right");
-                    this.removeAttribute("style");
-                };
+                shiftClass = "calendar__carousel_shift_right";
+                elementToRemove = monthWrap.lastChild;
+                addElementFunction = HTMLElement.prototype.prepend.bind(monthWrap);
+                shiftNewMonth = -1;
             }
             else {
-                monthWrap.classList.add("calendar__carousel_animated");
-                monthWrap.classList.add("calendar__carousel_shift_left");
-                monthWrap.ontransitionend = (event) => {
-                    monthWrap.classList.remove("calendar__carousel_animated");
-                    monthWrap.append(this.generateMonth(1));
-                    monthWrap.removeChild(monthWrap.firstChild);
-                    monthWrap.classList.remove("calendar__carousel_shift_left");
-                    this.removeAttribute("style");
-                };
+                shiftClass = "calendar__carousel_shift_left";
+                elementToRemove = monthWrap.firstChild;
+                addElementFunction = HTMLElement.prototype.append.bind(monthWrap);
+                shiftNewMonth = 1;
             }
+            this.style.pointerEvents = "none";
+            monthWrap.classList.add(animationClass);
+            monthWrap.classList.add(shiftClass);
+            monthWrap.ontransitionend = (event) => {
+                monthWrap.classList.remove(animationClass);
+                addElementFunction(this.generateMonth(shiftNewMonth));
+                monthWrap.removeChild(elementToRemove);
+                monthWrap.classList.remove(shiftClass);
+                this.removeAttribute("style");
+            };
         }
         initializeDateTimeAttribute() {
             const year = this.todaysDate.getFullYear();

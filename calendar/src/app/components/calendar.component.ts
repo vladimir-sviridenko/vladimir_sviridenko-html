@@ -69,26 +69,25 @@ class Calendar extends HTMLTimeElement {
     let addElementFunction: Function;
     let shiftNewMonth: number;
     let elementToRemove: Node;
-    this.style.pointerEvents = "none";
-    monthWrap.classList.add(animationClass);
 
     if (isShiftingToPrevious) {
       shiftClass = "calendar__carousel_shift_right";
       elementToRemove = monthWrap.lastChild;
-      addElementFunction = monthWrap.prepend;
+      addElementFunction = HTMLElement.prototype.prepend.bind(monthWrap);
       shiftNewMonth = -1;
     } else {
       shiftClass = "calendar__carousel_shift_left";
       elementToRemove = monthWrap.firstChild;
-      addElementFunction = monthWrap.append;
+      addElementFunction =  HTMLElement.prototype.append.bind(monthWrap);
       shiftNewMonth = 1;
     }
 
+    this.style.pointerEvents = "none";
     monthWrap.classList.add(animationClass);
     monthWrap.classList.add(shiftClass);
     monthWrap.ontransitionend = (event: Event) => {
       monthWrap.classList.remove(animationClass);
-      monthWrap.addElement(this.generateMonth(shiftNewMonth));
+      addElementFunction(this.generateMonth(shiftNewMonth));
       monthWrap.removeChild(elementToRemove);
       monthWrap.classList.remove(shiftClass);
       this.removeAttribute("style");
