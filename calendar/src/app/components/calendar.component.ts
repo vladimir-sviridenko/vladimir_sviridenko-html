@@ -64,28 +64,35 @@ class Calendar extends HTMLTimeElement {
     oldDateLabel.replaceWith(newDateLabel);
 
     const monthWrap = this.querySelector(".calendar__carousel");
+    const animationClass = "calendar__carousel_animated";
+    let shiftClass: string;
+    let addElementFunction: Function;
+    let shiftNewMonth: number;
+    let elementToRemove: Node;
     this.style.pointerEvents = "none";
+    monthWrap.classList.add(animationClass);
+
     if (isShiftingToPrevious) {
-      monthWrap.classList.add("calendar__carousel_animated");
-      monthWrap.classList.add("calendar__carousel_shift_right");
-      monthWrap.ontransitionend = (event: Event) => {
-        monthWrap.classList.remove("calendar__carousel_animated");
-        monthWrap.removeChild(monthWrap.lastChild);
-        monthWrap.prepend(this.generateMonth(-1));
-        monthWrap.classList.remove("calendar__carousel_shift_right");
-        this.removeAttribute("style");
-      };
+      shiftClass = "calendar__carousel_shift_right";
+      elementToRemove = monthWrap.lastChild;
+      addElementFunction = monthWrap.prepend;
+      shiftNewMonth = -1;
     } else {
-      monthWrap.classList.add("calendar__carousel_animated");
-      monthWrap.classList.add("calendar__carousel_shift_left");
-      monthWrap.ontransitionend = (event: Event) => {
-        monthWrap.classList.remove("calendar__carousel_animated");
-        monthWrap.append(this.generateMonth(1));
-        monthWrap.removeChild(monthWrap.firstChild);
-        monthWrap.classList.remove("calendar__carousel_shift_left");
-        this.removeAttribute("style");
-      };
+      shiftClass = "calendar__carousel_shift_left";
+      elementToRemove = monthWrap.firstChild;
+      addElementFunction = monthWrap.append;
+      shiftNewMonth = 1;
     }
+
+    monthWrap.classList.add(animationClass);
+    monthWrap.classList.add(shiftClass);
+    monthWrap.ontransitionend = (event: Event) => {
+      monthWrap.classList.remove(animationClass);
+      monthWrap.addElement(this.generateMonth(shiftNewMonth));
+      monthWrap.removeChild(elementToRemove);
+      monthWrap.classList.remove(shiftClass);
+      this.removeAttribute("style");
+    };
   }
 
   private initializeDateTimeAttribute() {
