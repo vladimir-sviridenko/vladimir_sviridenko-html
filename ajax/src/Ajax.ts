@@ -30,7 +30,7 @@ class Ajax implements IAjax {
     }
 
     let url;
-    if (mergedConfig.url.includes("https://")) {
+    if (mergedConfig.url.includes("://")) {
       url = mergedConfig.url;
     } else {
       url = mergedConfig.baseUrl + mergedConfig.url;
