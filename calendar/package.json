@@ -1,0 +1,19 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "Calendar for FE Training 2020",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladimir Sviridenko",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vladimir-sviridenko/vladimir_sviridenko-html.git"
+  },
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "requirejs": "^2.3.6"
+  }
+}
