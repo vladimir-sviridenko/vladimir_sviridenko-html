@@ -5,7 +5,6 @@ testResponses1();
 testResponses2();
 testResponses3();
 
-
 function log(responses: Promise<IAjaxResponse>[]): void {
   Promise.all(responses).then((responses) => {
     console.log("responses from " + responses[0].config.baseUrl);

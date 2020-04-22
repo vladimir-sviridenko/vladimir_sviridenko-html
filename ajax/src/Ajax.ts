@@ -29,12 +29,8 @@ class Ajax implements IAjax {
       headers.append("Content-Type", ContentTypes["text"]);
     }
 
-    let url;
-    if (mergedConfig.url.includes("://")) {
-      url = mergedConfig.url;
-    } else {
-      url = mergedConfig.baseUrl + mergedConfig.url;
-    }
+    let url = mergedConfig.url.includes("://") ? mergedConfig.url : mergedConfig.baseUrl + mergedConfig.url;
+
     const response = await fetch(url, {
       method: mergedConfig.method,
       headers: headers,
@@ -65,10 +61,10 @@ class Ajax implements IAjax {
     return ajaxResponse;
   }
 
-  async createAjaxResponse(response: Response, config: IAjaxConfig): Promise<IAjaxResponse> {
+  async getData(response: Response, responseType: string): Promise<string | object | FormData> {
     let responseData;
     try {
-      switch (config.responseType) {
+      switch (responseType) {
         case "json":
           responseData = await response.json();
           break;
@@ -85,18 +81,25 @@ class Ajax implements IAjax {
     } catch {
       responseData = null;
     }
+    
+    return responseData;
+  }
 
+  getHeaders(response: Response): object {
     const headers = {};
     for (let header of response.headers.entries()) {
       Object.defineProperty(headers, header[0], {
         value: header[1],
       });
     }
+    return headers;
+  }
 
+  async createAjaxResponse(response: Response, config: IAjaxConfig): Promise<IAjaxResponse> {
     const ajaxResponse: IAjaxResponse = {
-      data: responseData,
+      data: await this.getData(response, config.responseType),
       status: response.status,
-      headers: headers,
+      headers: this.getHeaders(response),
       config: config
     }
 

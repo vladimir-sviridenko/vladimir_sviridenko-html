@@ -53,13 +53,7 @@ define("src/Ajax", ["require", "exports", "src/enums/ContentTypes"], function (r
                 else {
                     headers.append("Content-Type", ContentTypes_1.default["text"]);
                 }
-                let url;
-                if (mergedConfig.url.includes("https://")) {
-                    url = mergedConfig.url;
-                }
-                else {
-                    url = mergedConfig.baseUrl + mergedConfig.url;
-                }
+                let url = mergedConfig.url.includes("://") ? mergedConfig.url : mergedConfig.baseUrl + mergedConfig.url;
                 const response = yield fetch(url, {
                     method: mergedConfig.method,
                     headers: headers,
@@ -85,11 +79,11 @@ define("src/Ajax", ["require", "exports", "src/enums/ContentTypes"], function (r
             const ajaxResponse = this.request({ url: url, method: "DELETE" });
             return ajaxResponse;
         }
-        createAjaxResponse(response, config) {
+        getData(response, responseType) {
             return __awaiter(this, void 0, void 0, function* () {
                 let responseData;
                 try {
-                    switch (config.responseType) {
+                    switch (responseType) {
                         case "json":
                             responseData = yield response.json();
                             break;
@@ -107,16 +101,24 @@ define("src/Ajax", ["require", "exports", "src/enums/ContentTypes"], function (r
                 catch (_a) {
                     responseData = null;
                 }
-                const headers = {};
-                for (let header of response.headers.entries()) {
-                    Object.defineProperty(headers, header[0], {
-                        value: header[1],
-                    });
-                }
+                return responseData;
+            });
+        }
+        getHeaders(response) {
+            const headers = {};
+            for (let header of response.headers.entries()) {
+                Object.defineProperty(headers, header[0], {
+                    value: header[1],
+                });
+            }
+            return headers;
+        }
+        createAjaxResponse(response, config) {
+            return __awaiter(this, void 0, void 0, function* () {
                 const ajaxResponse = {
-                    data: responseData,
+                    data: yield this.getData(response, config.responseType),
                     status: response.status,
-                    headers: headers,
+                    headers: this.getHeaders(response),
                     config: config
                 };
                 return ajaxResponse;

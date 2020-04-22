@@ -8,8 +8,10 @@ interface IAjax {
   get(url: string): Promise<IAjaxResponse>,
   post(url: string, data: object | string | FormData): Promise<IAjaxResponse>,
   put(url: string, data: object | string | FormData): Promise<IAjaxResponse>,
-  delete(url: string): Promise<IAjaxResponse>
+  delete(url: string): Promise<IAjaxResponse>,
   createAjaxResponse(response: Response, config: IAjaxConfig): Promise<IAjaxResponse>
+  getData(response: Response, responseType: string): Promise<object | string | FormData>,
+  getHeaders(response: Response): object
 }
 
 export default IAjax;
