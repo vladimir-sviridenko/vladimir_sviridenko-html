@@ -29,12 +29,18 @@ define("src/enums/ContentTypes", ["require", "exports"], function (require, expo
     Object.freeze(ContentTypes);
     exports.default = ContentTypes;
 });
-define("src/Ajax", ["require", "exports", "src/enums/ContentTypes"], function (require, exports, ContentTypes_1) {
+define("src/ajax", ["require", "exports", "src/enums/ContentTypes"], function (require, exports, ContentTypes_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class Ajax {
         constructor(config) {
             this.config = config;
+        }
+        updateConfig(config) {
+            this.config = Object.assign({}, this.config, config);
+        }
+        getConfig() {
+            return this.config;
         }
         create(config) {
             return new Ajax(config);
@@ -125,9 +131,10 @@ define("src/Ajax", ["require", "exports", "src/enums/ContentTypes"], function (r
             });
         }
     }
-    exports.default = Ajax;
+    const ajax = new Ajax({ AccessControlOrigin: true, responseType: "json" });
+    exports.default = ajax;
 });
-define("main", ["require", "exports", "src/Ajax"], function (require, exports, Ajax_1) {
+define("main", ["require", "exports", "src/ajax"], function (require, exports, ajax_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     testResponses1();
@@ -142,29 +149,29 @@ define("main", ["require", "exports", "src/Ajax"], function (require, exports, A
         });
     }
     function testResponses1() {
-        const ajax = new Ajax_1.default({ baseUrl: "https://reqres.in/api", responseType: "json", AccessControlOrigin: true });
+        ajax_1.default.updateConfig({ baseUrl: "https://reqres.in/api" });
         const responses = [];
-        responses[0] = ajax.request({
+        responses[0] = ajax_1.default.request({
             method: "GET",
             url: "/products/3",
         });
-        responses[1] = ajax.get("/users/2");
-        responses[2] = ajax.post("/register", {
+        responses[1] = ajax_1.default.get("/users/2");
+        responses[2] = ajax_1.default.post("/register", {
             "email": "eve.holt@reqres.in",
             "password": "pistol"
         });
-        responses[3] = ajax.put("/users/2", {
+        responses[3] = ajax_1.default.put("/users/2", {
             "name": "vladimir-sviridenko",
             "job": "frontend developer"
         });
-        responses[4] = ajax.delete("https://reqres.in/api/users/2");
+        responses[4] = ajax_1.default.delete("https://reqres.in/api/users/2");
         log(responses);
     }
     function testResponses2() {
-        const ajax = new Ajax_1.default({ baseUrl: "https://jsonplaceholder.typicode.com", responseType: "json", AccessControlOrigin: true });
+        ajax_1.default.updateConfig({ baseUrl: "https://jsonplaceholder.typicode.com" });
         const responses = [];
-        responses[0] = ajax.get("/posts/1");
-        responses[1] = ajax.request({
+        responses[0] = ajax_1.default.get("/posts/1");
+        responses[1] = ajax_1.default.request({
             method: "POST",
             url: "/posts",
             data: {
@@ -173,20 +180,20 @@ define("main", ["require", "exports", "src/Ajax"], function (require, exports, A
                 userId: 1
             }
         });
-        responses[2] = ajax.put("/posts/1", {
+        responses[2] = ajax_1.default.put("/posts/1", {
             title: "Updated title",
             body: "Updated body",
             userId: 1
         });
-        responses[3] = ajax.delete("/posts/1");
+        responses[3] = ajax_1.default.delete("/posts/1");
         log(responses);
     }
     function testResponses3() {
-        const ajax = new Ajax_1.default({ baseUrl: "https://pokeapi.co/api/v2", responseType: "json", AccessControlOrigin: true });
+        ajax_1.default.updateConfig({ baseUrl: "https://pokeapi.co/api/v2" });
         const responses = [];
-        responses[0] = ajax.get("/pokemon/eevee");
-        responses[1] = ajax.get("/pokemon/braixen");
-        responses[2] = ajax.get("/pokemon/vaporeon");
+        responses[0] = ajax_1.default.get("/pokemon/eevee");
+        responses[1] = ajax_1.default.get("/pokemon/braixen");
+        responses[2] = ajax_1.default.get("/pokemon/vaporeon");
         log(responses);
     }
 });

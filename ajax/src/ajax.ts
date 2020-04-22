@@ -2,12 +2,20 @@ import IAjax from "./interfaces/IAjax";
 import IAjaxConfig from "./interfaces/IAjaxConfig";
 import IAjaxResponse from "./interfaces/IAjaxResponse";
 import ContentTypes from "./enums/ContentTypes";
-
+ 
 class Ajax implements IAjax {
   config: IAjaxConfig;
 
   constructor(config: IAjaxConfig) {
     this.config = config;
+  }
+
+  updateConfig(config: IAjaxConfig) {
+    this.config = { ...this.config, ...config };
+  }
+
+  getConfig() {
+    return this.config;
   }
 
   create(config: IAjaxConfig): IAjax {
@@ -107,4 +115,6 @@ class Ajax implements IAjax {
   }
 }
 
-export default Ajax;
+const ajax = new Ajax({AccessControlOrigin: true, responseType: "json"});
+
+export default ajax;

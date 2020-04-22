@@ -1,4 +1,4 @@
-import Ajax from "./src/Ajax";
+import ajax from "./src/ajax";
 import IAjaxResponse from "./src/interfaces/IAjaxResponse";
 
 testResponses1();
@@ -15,7 +15,7 @@ function log(responses: Promise<IAjaxResponse>[]): void {
 }
 
 function testResponses1() {
-  const ajax = new Ajax({ baseUrl: "https://reqres.in/api", responseType: "json", AccessControlOrigin: true });
+  ajax.updateConfig({ baseUrl: "https://reqres.in/api" });
   const responses: Promise<IAjaxResponse>[] = [];
 
   responses[0] = ajax.request({
@@ -37,7 +37,7 @@ function testResponses1() {
 }
 
 function testResponses2() {
-  const ajax = new Ajax({ baseUrl: "https://jsonplaceholder.typicode.com", responseType: "json", AccessControlOrigin: true });
+  ajax.updateConfig({ baseUrl: "https://jsonplaceholder.typicode.com" });
   const responses: Promise<IAjaxResponse>[] = [];
 
   responses[0] = ajax.get("/posts/1");
@@ -61,7 +61,7 @@ function testResponses2() {
 }
 
 function testResponses3() {
-  const ajax = new Ajax({ baseUrl: "https://pokeapi.co/api/v2", responseType: "json", AccessControlOrigin: true });
+  ajax.updateConfig({ baseUrl: "https://pokeapi.co/api/v2"});
   const responses: Promise<IAjaxResponse>[] = [];
 
   responses[0] = ajax.get("/pokemon/eevee");
