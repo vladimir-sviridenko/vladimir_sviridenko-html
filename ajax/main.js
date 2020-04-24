@@ -1,8 +1,9 @@
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -21,12 +22,12 @@ define("src/interfaces/IAjax", ["require", "exports"], function (require, export
 define("src/enums/ContentTypes", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    const ContentTypes = {
-        "json": "application/json",
-        "text": "text/plain",
-        "form-data": "multipart/form-data",
-    };
-    Object.freeze(ContentTypes);
+    var ContentTypes;
+    (function (ContentTypes) {
+        ContentTypes["json"] = "application/json";
+        ContentTypes["text"] = "text/plain";
+        ContentTypes["form-data"] = "multipart/form-data";
+    })(ContentTypes || (ContentTypes = {}));
     exports.default = ContentTypes;
 });
 define("src/ajax", ["require", "exports", "src/enums/ContentTypes"], function (require, exports, ContentTypes_1) {
@@ -37,7 +38,7 @@ define("src/ajax", ["require", "exports", "src/enums/ContentTypes"], function (r
             this.config = config;
         }
         updateConfig(config) {
-            this.config = Object.assign({}, this.config, config);
+            this.config = Object.assign(Object.assign({}, this.config), config);
         }
         getConfig() {
             return this.config;
@@ -47,7 +48,7 @@ define("src/ajax", ["require", "exports", "src/enums/ContentTypes"], function (r
         }
         request(config) {
             return __awaiter(this, void 0, void 0, function* () {
-                const mergedConfig = Object.assign({}, this.config, config);
+                const mergedConfig = Object.assign(Object.assign({}, this.config), config);
                 const headers = new Headers(mergedConfig.headers);
                 if (mergedConfig.AccessControlOrigin) {
                     headers.append("Access-Control-Allow-Origin", "*");

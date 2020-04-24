@@ -2,7 +2,7 @@ interface IAjaxConfig {
   baseUrl?: string,
   url?: string,
   headers?: {},
-  responseType?: string,
+  responseType?: "json" | "text" | "form-data",
   method?: string,
   data?: any
   AccessControlOrigin?: boolean
