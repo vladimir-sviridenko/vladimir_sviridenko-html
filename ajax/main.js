@@ -7,6 +7,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+define("src/enums/ContentTypes", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var ContentTypes;
+    (function (ContentTypes) {
+        ContentTypes["json"] = "application/json";
+        ContentTypes["text"] = "text/plain";
+        ContentTypes["form-data"] = "multipart/form-data";
+    })(ContentTypes || (ContentTypes = {}));
+    exports.default = ContentTypes;
+});
 define("src/interfaces/IAjaxConfig", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -18,17 +29,6 @@ define("src/interfaces/IAjaxResponse", ["require", "exports"], function (require
 define("src/interfaces/IAjax", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-});
-define("src/enums/ContentTypes", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var ContentTypes;
-    (function (ContentTypes) {
-        ContentTypes["json"] = "application/json";
-        ContentTypes["text"] = "text/plain";
-        ContentTypes["form-data"] = "multipart/form-data";
-    })(ContentTypes || (ContentTypes = {}));
-    exports.default = ContentTypes;
 });
 define("src/ajax", ["require", "exports", "src/enums/ContentTypes"], function (require, exports, ContentTypes_1) {
     "use strict";

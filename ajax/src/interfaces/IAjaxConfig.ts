@@ -1,8 +1,10 @@
+import ContentTypes from "../enums/ContentTypes";
+
 interface IAjaxConfig {
   baseUrl?: string,
   url?: string,
   headers?: {},
-  responseType?: "json" | "text" | "form-data",
+  responseType?: keyof typeof ContentTypes,
   method?: string,
   data?: any
   AccessControlOrigin?: boolean
