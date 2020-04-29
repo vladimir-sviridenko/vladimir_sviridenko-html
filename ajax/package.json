@@ -1,0 +1,14 @@
+{
+  "name": "ajax",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladimir Sviridenko",
+  "license": "ISC",
+  "dependencies": {
+    "requirejs": "^2.3.6"
+  }
+}
