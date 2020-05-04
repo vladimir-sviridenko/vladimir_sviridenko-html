@@ -8,9 +8,7 @@
   },
   "author": "Vladimir Sviridenko",
   "license": "ISC",
-  "dependencies": {
-    "requirejs": "^2.3.6"
-  },
+  "dependencies": {},
   "devDependencies": {
     "tslint": "^6.1.2"
   }
