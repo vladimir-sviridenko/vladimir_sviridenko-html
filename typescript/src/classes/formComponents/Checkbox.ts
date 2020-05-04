@@ -39,7 +39,7 @@ class Checkbox extends FormComponent {
     checkboxElement.checked = this.checked;
     checkboxElement.classList.add("form__checkbox");
     checkboxElement.onclick = () => {
-      const checked = this.check();
+      const checked: boolean = this.check();
       if (!checked) {
         event.preventDefault();
       }

@@ -20,7 +20,7 @@ class Button extends FormComponent {
     buttonElement.innerHTML = this.value;
     buttonElement.classList.add("form__button");
     buttonElement.onclick = (event) => {
-      const clicked = this.click();
+      const clicked: boolean = this.click();
       if (!clicked) {
         event.preventDefault();
       }
