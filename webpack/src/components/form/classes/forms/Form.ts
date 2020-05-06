@@ -1,4 +1,4 @@
-import FormComponent from "classes/formComponents/FormComponent";
+import FormComponent from "../formComponents/FormComponent";
 
 abstract class Form {
   protected _title: string;

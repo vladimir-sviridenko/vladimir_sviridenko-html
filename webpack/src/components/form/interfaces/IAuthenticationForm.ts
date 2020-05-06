@@ -1,8 +1,8 @@
-import AuthenticationFormDomWorker from "classes/AuthenticationFormDomWorker";
-import Input from "classes/formComponents/Input";
-import Button from "classes/formComponents/Button";
-import Checkbox from "classes/formComponents/Checkbox";
-import FormComponent from "classes/formComponents/FormComponent";
+import Checkbox from "../classes/formComponents/Checkbox";
+import AuthenticationFormDomWorker from "../classes/AuthenticationFormDomWorker";
+import Input from "../classes/formComponents/Input";
+import Button from "../classes/formComponents/Button";
+import FormComponent from "../classes/formComponents/FormComponent";
 
 interface IAuthenticationForm {
 

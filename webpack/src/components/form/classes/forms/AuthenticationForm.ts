@@ -1,10 +1,10 @@
-import Form from "classes/forms/Form";
-import Input from "classes/formComponents/Input";
-import Button from "classes/formComponents/Button";
-import Checkbox from "classes/formComponents/Checkbox";
-import FormComponent from "classes/formComponents/FormComponent";
-import AuthenticationFormDomWorker from "classes/AuthenticationFormDomWorker";
-import IAuthenticationForm from "interfaces/IAuthenticationForm";
+import Form from "./Form";
+import Input from "../formComponents/Input";
+import Button from "../formComponents/Button";
+import Checkbox from "../formComponents/Checkbox";
+import FormComponent from "../formComponents/FormComponent";
+import AuthenticationFormDomWorker from "../AuthenticationFormDomWorker";
+import IAuthenticationForm from "../../interfaces/IAuthenticationForm";
 
 class AuthenticationForm extends Form implements IAuthenticationForm {
 

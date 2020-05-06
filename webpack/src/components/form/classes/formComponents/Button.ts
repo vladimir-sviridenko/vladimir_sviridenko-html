@@ -1,6 +1,6 @@
-import FormComponent from "classes/formComponents/FormComponent";
-import ComponentType from "enums/ComponentType";
-import Form from "classes/forms/Form";
+import FormComponent from "./FormComponent";
+import ComponentType from "../../enums/ComponentType";
+import Form from "../forms/Form";
 
 class Button extends FormComponent {
   private _value: string;

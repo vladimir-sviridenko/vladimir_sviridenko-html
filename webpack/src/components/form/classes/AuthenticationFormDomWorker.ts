@@ -1,4 +1,4 @@
-import AuthenticationForm from "classes/forms/AuthenticationForm";
+import AuthenticationForm from "./forms/AuthenticationForm";
 
 class AuthenticationFormDomWorker {
   private _form: AuthenticationForm;

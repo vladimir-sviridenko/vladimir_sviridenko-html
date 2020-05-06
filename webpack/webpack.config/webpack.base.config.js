@@ -39,6 +39,10 @@ module.exports = {
     library: "[name]"
   },
   resolve: {
+    alias: {
+      assets: path.join(PATHS.src, "/assets"),
+      fonts: path.join(PATHS.src, "/assets/fonts")
+    },
     modules: ["node_modules"],
     extensions: ["*", ".ts", ".js"]
   },
@@ -89,16 +93,4 @@ module.exports = {
       filename: isDevelopment ? "styles.css" : "styles.[contenthash:7].css"
     })
   ],
-  resolve: {
-    alias: {
-      interfaces: path.join(PATHS.src, "/components/interfaces"),
-      enums: path.join(PATHS.src, "/components/enums"),
-      classes: path.join(PATHS.src, "/components/classes"),
-      decorators: path.join(PATHS.src, "/components/decorators"),
-      fonts: path.join(PATHS.src, "/assets/fonts"),
-      images: path.join(PATHS.src, "/assets/images"),
-      styles: path.join(PATHS.src, "/styles")
-    },
-    extensions: ['.ts', '.scss', ".html", ".js"],
-  },
 }

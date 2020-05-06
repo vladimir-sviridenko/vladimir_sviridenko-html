@@ -1,5 +1,5 @@
-import Form from "classes/forms/Form";
-import Confirmable from "decorators/Confirmable";
+import Form from "../forms/Form";
+import Confirmable from "../../decorators/Confirmable";
 
 abstract class FormComponent {
   private _form: Form;

@@ -1,6 +1,6 @@
-import FormComponent from "classes/formComponents/FormComponent";
-import ComponentType from "enums/ComponentType";
-import Form from "classes/forms/Form";
+import Form from "../forms/Form";
+import FormComponent from "./FormComponent";
+import ComponentType from "../../enums/ComponentType";
 
 class Input extends FormComponent {
   private _name: string;

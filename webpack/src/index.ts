@@ -1,15 +1,24 @@
 import "./index.html";
-import "./styles/main.scss";
-import logoUrl from "images/webpack-logo.gif";
-import AuthenticationForm from "classes/forms/AuthenticationForm";
+import "./scss/main.scss";
+import logoUrl from "assets/images/webpack-logo.gif";
+import { loadForm } from "./components/form";
 
-const form = new AuthenticationForm();
-const formElement = form.domWorker.create();
 const formContainer = document.querySelector(".app-form");
-formContainer.append(formElement);
+
+const text = document.createElement("span");
+text.innerHTML = "Click image to load AuthenticationForm module";
+text.classList.add("app-form__text");
 
 const formImage = document.createElement("img");
 formImage.classList.add("app-form__image");
 formImage.width = 220;
 formImage.src = logoUrl;
-formContainer.prepend(formImage);
+formImage.onclick = () => {
+  loadForm().then(formElement => {
+    text.replaceWith(formElement);
+    formImage.onclick = null;
+  });
+}
+formContainer.append(formImage);
+formContainer.append(text);
+

@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "baseUrl": "./",
+    "module": "amd",
+    "baseUrl": "./", 
     "paths": {
-      "interfaces/*": ["src/components/interfaces/*"],
-      "enums/*": ["src/components/enums/*"],
-      "classes/*": ["src/components/classes/*"],
-      "decorators/*": ["src/components/decorators/*"]
+      "assets": ["src/assets"],
     },
     "experimentalDecorators": true,
+    "moduleResolution": "node"
   },
   "include": [
       "*.ts", "src/index.ts"
