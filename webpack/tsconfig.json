@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "baseUrl": "./",
+    "paths": {
+      "interfaces/*": ["src/components/interfaces/*"],
+      "enums/*": ["src/components/enums/*"],
+      "classes/*": ["src/components/classes/*"],
+      "decorators/*": ["src/components/decorators/*"]
+    },
+    "experimentalDecorators": true,
+  },
+  "include": [
+      "*.ts", "src/index.ts"
+  ],
+  "exclude": [
+      "node_modules",
+  ],
+}
