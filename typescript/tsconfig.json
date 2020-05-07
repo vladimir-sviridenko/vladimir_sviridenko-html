@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+      "target": "ES6",
+      "module": "amd",
+      "moduleResolution": "classic",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "outFile": "main.js",
+      "sourceMap": false,
+      "experimentalDecorators": true
+  },
+  "include": [
+    "src/main.ts"
+  ],
+  "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
+  ],
+  "paths": {
+      "@interfaces/*": ["src/interfaces/*"],
+      "@enums/*": ["src/enums/*"],
+      "@classes/*": ["src/classes/*"],
+      "@decorators/*": ["src/decorators/*"]
+  }
+}
