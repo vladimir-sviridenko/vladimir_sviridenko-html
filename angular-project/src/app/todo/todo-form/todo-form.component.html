@@ -1,0 +1,11 @@
+<mat-form-field class="todo-form" appearance="outline">
+  <mat-label>What needs to be done?</mat-label>
+  <input matInput type="text" placeholder="Todo..." color="primary" 
+    [(ngModel)]='title' 
+    (keydown.enter)='addTodo()'>
+  <button mat-icon-button matSuffix color="primary" 
+    (click)='addTodo()' 
+    [disabled]='!isValidTodo() || todoService.isLoading'>
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-form-field>

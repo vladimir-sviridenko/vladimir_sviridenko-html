@@ -1,2 +1,5 @@
 calendar/.csscomb.json
 calendar/.sass-cache/
+typescript/node_modules/
+webpack/node_modules/
+webpack/dist/
