@@ -18,10 +18,18 @@ const baseStyleLoaders = [
   isLiveServer ? "style-loader" : MiniCssExtractPlugin.loader,
   {
     loader: "css-loader",
-    options: { sourceMap: isDevelopment }
-  }, {
+    options: {
+      sourceMap: isDevelopment
+    }
+  },
+  {
     loader: "postcss-loader",
-    options: { sourceMap: isDevelopment ? "inline" : false, config: { path: PATHS.root } }
+    options: {
+      sourceMap: isDevelopment ? "inline" : false,
+      config: {
+        path: PATHS.root
+      }
+    }
   }
 ];
 
@@ -56,29 +64,42 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: ["babel-loader", "tslint-loader"]
-      }, {
+      },
+      {
         test: /\.html$/,
         loader: "html-loader"
-      }, {
+      },
+      {
         test: /\.css$/,
         use: [...baseStyleLoaders]
-      }, {
+      },
+      {
         test: /\.scss$/,
         use: [
           ...baseStyleLoaders,
           {
             loader: "sass-loader",
-            options: { sourceMap: isDevelopment }
+            options: {
+              sourceMap: isDevelopment
+            }
           }
         ]
-      }, {
+      }, 
+      {
         test: /\.(woff2?$|ttf$|eot$|otf)$/,
         loader: "file-loader",
-        options: { name: isDevelopment ? "[name].[ext]" : "[name].[contenthash:7].[ext]", outputPath: "assets/fonts" }
-      }, {
+        options: {
+          name: isDevelopment ? "[name].[ext]" : "[name].[contenthash:7].[ext]",
+          outputPath: "assets/fonts"
+        }
+      }, 
+      {
         test: /\.(svg$|png|jpe?g|gif)$/,
         loader: "file-loader",
-        options: { name: isDevelopment ? "[name].[ext]" : "[name].[contenthash:7].[ext]", outputPath: "assets/images" }
+        options: {
+          name: isDevelopment ? "[name].[ext]" : "[name].[contenthash:7].[ext]",
+          outputPath: "assets/images"
+        }
       }
     ]
   },
