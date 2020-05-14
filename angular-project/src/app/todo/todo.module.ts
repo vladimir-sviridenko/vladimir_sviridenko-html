@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoComponent } from './todo.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoItemComponent } from './todo-item/todo-item.component';
 import { AutofocusDirective } from './shared/autofocus.directive';
 import { HelpComponent } from './help/help.component';
 
@@ -44,7 +45,8 @@ const MaterialModules = [
     TodoListComponent,
     AutofocusDirective,
     HelpComponent,
-    TodoComponent
+    TodoComponent,
+    TodoItemComponent
   ],
   imports: [
     CommonModule,

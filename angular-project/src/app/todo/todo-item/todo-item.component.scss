@@ -1,0 +1,67 @@
+.todo-item {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  &_completed {
+    text-decoration: line-through;
+
+    opacity: 0.4;
+  }
+
+  &:hover .todo-item__buttons {
+    visibility: visible;
+  }
+
+
+  &__title {
+    margin: 8px 0;
+
+    white-space: pre-wrap;
+    word-break: break-all;
+
+    justify-self: flex-start;
+  }
+
+  &__checkbox {
+    &_edit {
+      margin-bottom: 4px;
+
+      pointer-events: none;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-flow: nowrap;
+    margin-right: -10px;
+
+    @media screen and (min-width: 813px) {
+      visibility: hidden;
+    }
+  }
+
+  &__edit-field {
+    width: 100%;
+    margin-left: 8px;
+
+    .mat-form-field-infix {
+      width: 100%;
+    }
+  }
+
+  &__edit-input {
+    &_completed {
+      text-decoration: line-through;
+    }
+  }
+
+  &__icon {
+    &_check {
+      color: green;
+    }
+  }
+}

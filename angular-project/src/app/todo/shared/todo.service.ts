@@ -13,7 +13,6 @@ export interface Todo {
 export class TodoService {
 
   public todoList: Todo[] = [];
-  public titleMaxLength: number = 67;
   private todoListSubject: Subject<Todo[]> = new Subject<Todo[]>();
   public isLoading: boolean = false;
 
@@ -28,10 +27,6 @@ export class TodoService {
     ];
 
     return todoList;
-  }
-
-  truncate(title: string, length: number): string {
-    return (title.length > length) ? title.substr(0, length) + '...' : title;
   }
 
   getTodoListObservable(): Observable<Todo[]> {
@@ -60,7 +55,6 @@ export class TodoService {
   addTodo(title: string): void {
     const date: Date = new Date();
     const id: number = +date;
-    title = this.truncate(title, this.titleMaxLength);
     this.todoList.push({ id, title, completed: false, date });
   }
 
@@ -74,6 +68,6 @@ export class TodoService {
   }
 
   isValidTodo(title: string): boolean {
-    return title !== '' && title.length <= this.titleMaxLength;
+    return title !== '';
   }
 }

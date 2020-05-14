@@ -20,5 +20,13 @@
     </nav>
   </mat-toolbar>
   <app-todo-form></app-todo-form>
-  <app-todo-list></app-todo-list>
+  <app-todo-list [loader]='loader' [emptyList]='emptyList'></app-todo-list>
 </div>
+
+<ng-template #loader>
+  <mat-spinner class="todo__loader" [diameter]="40"></mat-spinner>
+</ng-template>
+
+<ng-template #emptyList>
+  <h2 class="todo__empty-list">Todo list is empty.</h2>
+</ng-template>
