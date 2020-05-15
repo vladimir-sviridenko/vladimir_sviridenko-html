@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Todo } from '../shared/todo.service';
 import { openCloseAnimation } from '../shared/open-close.animation';
 
@@ -6,6 +6,7 @@ import { openCloseAnimation } from '../shared/open-close.animation';
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: openCloseAnimation
 })
 export class TodoItemComponent implements OnInit {
