@@ -16,11 +16,11 @@ export class TodoItemComponent implements OnInit {
   public isEditMode: boolean;
 
   @Output()
-  check = new EventEmitter();
+  public check = new EventEmitter();
   @Output()
-  toggleEditMode = new EventEmitter();
+  public toggleEditMode = new EventEmitter();
   @Output()
-  remove = new EventEmitter();
+  public remove = new EventEmitter();
 
   constructor() { }
 

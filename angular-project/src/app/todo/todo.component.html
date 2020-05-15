@@ -2,25 +2,30 @@
   <mat-toolbar class="todo__header">
     <h1>Todo List</h1>
     <nav>
-      <button mat-button color='primary' title="Tips"
-        (click)='openHelp()'>
+      <button mat-button color='primary' title="Tips" (click)='openHelp()'>
         <mat-icon>help_outline</mat-icon>
       </button>
-      <button mat-button color='primary'
-        title="Load last save" 
-        (click)='todoService.load()'>
+      <button mat-button color='primary' appTitle="Load last save" 
+      (click)='todoService.load()'>
         <mat-icon>cloud_download</mat-icon>
       </button>
       <button mat-button color='primary' 
-        [title]='todoService.isSaved() ? "No changes to save" : "Save"'
-        [disabled]='todoService.isSaved()'  
-        (click)='todoService.save()'>
+      [title]='todoService.isSaved() ? "No changes to save" : "Save"'
+      [disabled]='todoService.isSaved()' (click)='todoService.save()'>
         <mat-icon>save</mat-icon>
       </button>
     </nav>
   </mat-toolbar>
-  <app-todo-form></app-todo-form>
-  <app-todo-list [loader]='loader' [emptyList]='emptyList'></app-todo-list>
+  <app-todo-form
+  [(title)]='todoTitle'
+  [canAdd]='canAdd()'
+  (add)='addTodo()'
+  (clear)='clearForm()'>
+  </app-todo-form>
+  <app-todo-list
+  [loader]='todoService.isLoading ? loader : null'
+  [list]='todoList.length ? list : emptyList'>
+  </app-todo-list>
 </div>
 
 <ng-template #loader>
@@ -29,4 +34,18 @@
 
 <ng-template #emptyList>
   <h2 class="todo__empty-list">Todo list is empty.</h2>
+</ng-template>
+
+<ng-template #list>
+  <mat-action-list class="todo__list">
+    <ng-container *ngFor='let todo of todoList; let last = last'>
+      <app-todo-item [todo]='todo' 
+      [isEditMode]='isEditMode(todo.id)' 
+      (check)='checkTodo($event, todo)'
+      (remove)='removeTodo($event, todo)' 
+      (toggleEditMode)='toggleEditMode($event, todo)'>
+      </app-todo-item>
+      <mat-divider *ngIf='!last'></mat-divider>
+    </ng-container>
+  </mat-action-list>
 </ng-template>

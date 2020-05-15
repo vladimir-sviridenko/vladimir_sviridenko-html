@@ -1,5 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { TodoService } from '../shared/todo.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-todo-form',
@@ -8,22 +7,34 @@ import { TodoService } from '../shared/todo.service';
 })
 export class TodoFormComponent {
 
+  @Input()
   public title: string = '';
+  @Input()
+  public canAdd: boolean = false;
 
-  constructor(public todoService: TodoService) { }
+  @Output()
+  public titleChange = new EventEmitter<string>();
+  @Output()
+  public add = new EventEmitter();
+  @Output()
+  public clear = new EventEmitter();
 
-  addTodo(): void {
-    if (this.isValidTodo() && !this.todoService.isLoading) {
-      this.todoService.addTodo(this.title);
-      this.title = '';
-    }
+  constructor() {}
+
+  public onAdd() {
+    this.add.emit();
   }
 
-  clear(): void {
-    this.title = '';
+  public onClear() {
+    this.clear.emit();
   }
 
-  isValidTodo(): boolean {
-    return this.todoService.isValidTodo(this.title);
+  public isEmptyTitle() {
+    return this.title === '';
+  }
+
+  public onTitleChange(model: string) {
+    this.title = model;
+    this.titleChange.emit(model);
   }
 }

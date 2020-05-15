@@ -33,4 +33,25 @@
 
     color: black;
   }
+
+  &__list {
+    display: inline-block;
+    width: $todo-width;
+    max-width: $todo-max-width;
+  
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 5px;;
+  
+    &.mat-list-base {
+      padding-top: 0;
+    }
+    &::ng-deep .mat-list-item {
+      width: $todo-width;
+      max-width: $todo-max-width;
+      height: auto;
+      &:not(:hover) {
+        background-color: transparent;
+      }
+    }
+  }
 }
