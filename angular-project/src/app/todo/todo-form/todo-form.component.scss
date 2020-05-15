@@ -10,4 +10,16 @@
     display: inline-flex;
     align-items: center;
   }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    &_close {
+      font-size: 22px;
+    }
+  }
 }

@@ -19,6 +19,10 @@ export class TodoFormComponent {
     }
   }
 
+  clear(): void {
+    this.title = '';
+  }
+
   isValidTodo(): boolean {
     return this.todoService.isValidTodo(this.title);
   }

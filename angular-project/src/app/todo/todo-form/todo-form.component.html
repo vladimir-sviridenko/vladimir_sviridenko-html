@@ -3,9 +3,16 @@
   <input matInput type="text" placeholder="Todo..." color="primary" 
   [(ngModel)]='title' 
   (keydown.enter)='addTodo()'>
-  <button mat-icon-button matSuffix color="primary" 
-  (click)='addTodo()' 
-  [disabled]='!isValidTodo() || todoService.isLoading'>
-    <mat-icon>add</mat-icon>
-  </button>
+  <div class="todo-form__buttons" matSuffix>
+    <button mat-icon-button color="primary" 
+    (click)='addTodo()' 
+    [disabled]='!isValidTodo() || todoService.isLoading'>
+      <mat-icon class="todo-form__icon todo-form__icon_add">add</mat-icon>
+    </button>
+    <button mat-icon-button color="warn"
+    (click)='clear()' 
+    [disabled]='!isValidTodo() || todoService.isLoading'>
+      <mat-icon class="todo-form__icon todo-form__icon_close">close</mat-icon>
+    </button>
+  </div>
 </mat-form-field>
