@@ -1,20 +1,22 @@
-<button mat-list-item disableRipple @openClose 
+<button mat-list-item disableRipple @openClose
+class='todo-item'
+[class.todo-item_edit]='isEditMode'
 (click)='onCheck($event)' 
 (contextmenu)='onToggleEditMode($event)'>
-  <div class="todo-item" 
+  <div class="todo-item__container" 
   [class.todo-item_completed]='todo.completed'>
     <mat-checkbox class="todo-item__checkbox" disableRipple color='primary'
     [class.todo-item__checkbox_edit]='isEditMode' 
     [checked]='todo.completed'
     (click)='$event.preventDefault()'>
       <div class="todo-item__title" *ngIf='!isEditMode'>{{todo.title}}</div>
+      <mat-form-field class="todo-item__edit-field" *ngIf='isEditMode'>
+        <input type="text" matInput appAutofocus class="todo-item__edit-input"
+        [class.todo-item__edit-input_completed]='todo.completed' 
+        (keydown.enter)='onToggleEditMode($event)'
+        [(ngModel)]='todo.title'>
+      </mat-form-field>
     </mat-checkbox>
-    <mat-form-field class="todo-item__edit-field" *ngIf='isEditMode'>
-      <input type="text" matInput appAutofocus class="todo-item__edit-input"
-      [class.todo-item__edit-input_completed]='todo.completed' 
-      (keydown.enter)='onToggleEditMode($event)'
-      [(ngModel)]='todo.title'>
-    </mat-form-field>
     <div class="todo-item__buttons">
       <button mat-icon-button color="primary" (click)='onToggleEditMode($event)' *ngIf='!isEditMode'>
         <mat-icon>edit</mat-icon>

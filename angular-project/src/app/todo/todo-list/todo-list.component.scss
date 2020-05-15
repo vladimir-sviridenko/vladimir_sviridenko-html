@@ -11,10 +11,10 @@
   &.mat-list-base {
     padding-top: 0;
   }
-  .mat-list-item {
+  &::ng-deep .mat-list-item {
     width: $todo-width;
     max-width: $todo-max-width;
-    height: auto !important;
+    height: auto;
     &:not(:hover) {
       background-color: transparent;
     }

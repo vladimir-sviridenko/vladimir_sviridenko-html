@@ -4,8 +4,7 @@ import { TodoService } from '../shared/todo.service';
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',
-  styleUrls: ['./todo-form.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./todo-form.component.scss']
 })
 export class TodoFormComponent {
 

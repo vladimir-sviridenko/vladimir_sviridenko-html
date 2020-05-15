@@ -1,10 +1,14 @@
 .todo-item {
-  position: relative;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  &_edit.mat-list-item {
+    height: 40px;
+  }
 
   &_completed {
     text-decoration: line-through;
@@ -15,7 +19,6 @@
   &:hover .todo-item__buttons {
     visibility: visible;
   }
-
 
   &__title {
     margin: 8px 0;
@@ -28,9 +31,16 @@
 
   &__checkbox {
     &_edit {
-      margin-bottom: 4px;
+      width: 100%;
+      margin-right: 8px;
 
       pointer-events: none;
+      &::ng-deep .mat-checkbox-layout {
+        width: 100%;
+      }
+      &::ng-deep .mat-checkbox-label {
+        width: 100%;
+      }
     }
   }
 
@@ -48,8 +58,11 @@
     width: 100%;
     margin-left: 8px;
 
-    .mat-form-field-infix {
+    &::ng-deep .mat-form-field-infix {
       width: 100%;
+      margin-top: 0.3em;
+      padding-top: 0.23em;
+      padding-bottom: 0.23em;
     }
   }
 

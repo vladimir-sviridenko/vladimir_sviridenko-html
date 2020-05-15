@@ -1,10 +1,13 @@
 @import "../shared/todo.variables";
 
 .todo-form {
-  display: inline-flex;
-  align-items: center;
   width: $todo-width;
   max-width: $todo-max-width;
 
   font-size: 17px;
+  
+  .mat-form-field {
+    display: inline-flex;
+    align-items: center;
+  }
 }

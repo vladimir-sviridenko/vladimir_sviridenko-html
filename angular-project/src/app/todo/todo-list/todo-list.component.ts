@@ -5,7 +5,6 @@ import { TodoService, Todo } from '../shared/todo.service';
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class TodoListComponent implements OnInit {
 
@@ -49,6 +48,7 @@ export class TodoListComponent implements OnInit {
   toggleEditMode($event: Event, todo: Todo): void {
     $event.preventDefault();
     $event.stopImmediatePropagation();
+    todo.title = this.todoService.isValidTodo(todo.title) ? todo.title : '—';
     this.editModeIndex = !this.isEditMode(todo.id) ? todo.id : null;
   }
 }
