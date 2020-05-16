@@ -3,16 +3,16 @@
     <h1>Todo List</h1>
     <nav>
       <button mat-button color='primary' title="Tips" (click)='openHelp()'>
-        <mat-icon>help_outline</mat-icon>
+        <mat-icon aria-label='help'>help_outline</mat-icon>
       </button>
       <button mat-button color='primary' appTitle="Load last save" 
       (click)='todoService.load()'>
-        <mat-icon>cloud_download</mat-icon>
+        <mat-icon aria-label='load list'>cloud_download</mat-icon>
       </button>
       <button mat-button color='primary' 
       [title]='todoService.isSaved() ? "No changes to save" : "Save"'
       [disabled]='todoService.isSaved()' (click)='todoService.save()'>
-        <mat-icon>save</mat-icon>
+        <mat-icon aria-label='save list'>save</mat-icon>
       </button>
     </nav>
   </mat-toolbar>
@@ -23,8 +23,12 @@
   (clear)='clearForm()'>
   </app-todo-form>
   <app-todo-list
+  [list]='todoList.length ? list : emptyList'
   [loader]='todoService.isLoading ? loader : null'
-  [list]='todoList.length ? list : emptyList'>
+  [isSortedByTitle]='isSortedByTitle'
+  [isSortedByDate]='isSortedByDate'
+  (sort)='sortTodoListBy($event)'
+  (filter)='filterTodoListBy($event)'>
   </app-todo-list>
 </div>
 
@@ -37,9 +41,10 @@
 </ng-template>
 
 <ng-template #list>
-  <mat-action-list class="todo__list">
+  <mat-action-list class="todo-list__list">
     <ng-container *ngFor='let todo of todoList; let last = last'>
-      <app-todo-item [todo]='todo' 
+      <app-todo-item 
+      [todo]='todo' 
       [isEditMode]='isEditMode(todo.id)' 
       (check)='checkTodo($event, todo)'
       (remove)='removeTodo($event, todo)' 

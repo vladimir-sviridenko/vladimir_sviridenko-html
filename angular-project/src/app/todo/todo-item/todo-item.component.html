@@ -18,13 +18,13 @@ class='todo-item'
       </mat-form-field>
     </mat-checkbox>
     <div class="todo-item__buttons">
-      <button mat-icon-button color="primary" (click)='onToggleEditMode($event)' *ngIf='!isEditMode'>
+      <button mat-icon-button color="primary" aria-label='edit todo' (click)='onToggleEditMode($event)' *ngIf='!isEditMode'>
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button (click)='onToggleEditMode($event)' *ngIf='isEditMode'>
+      <button mat-icon-button aria-label='check todo' (click)='onToggleEditMode($event)' *ngIf='isEditMode'>
         <mat-icon class='todo-item__icon todo-item__icon_check'>check</mat-icon>
       </button>
-      <button mat-icon-button disableRipple color="warn" (click)='onRemove($event)'>
+      <button mat-icon-button aria-label='remove todo' disableRipple color="warn" (click)='onRemove($event)'>
         <mat-icon>clear</mat-icon>
       </button>
     </div>

@@ -48,7 +48,7 @@ const MaterialModules = [
     AutofocusDirective,
     HelpComponent,
     TodoComponent,
-    TodoItemComponent
+    TodoItemComponent,
   ],
   imports: [
     CommonModule,

@@ -1,14 +1,21 @@
 @import "../shared/todo.variables";
 
 .todo-form {
-  width: $todo-width;
-  max-width: $todo-max-width;
+  &__field {
+    width: $todo-width;
+    max-width: $todo-max-width;
 
-  font-size: 17px;
+    font-size: 17px;
 
-  .mat-form-field {
-    display: inline-flex;
-    align-items: center;
+    ::ng-deep .mat-form-field-wrapper {
+      padding-bottom: 0.7em;
+    }
+
+    .mat-form-field {
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   &__buttons {

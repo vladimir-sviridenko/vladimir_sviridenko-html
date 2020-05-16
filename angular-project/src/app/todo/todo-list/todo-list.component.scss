@@ -1,0 +1,34 @@
+@import "../shared/todo.variables.scss";
+
+.todo-list {
+  &__radio-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: $todo-width;
+    max-width: $todo-max-width + 2px;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    &::ng-deep .mat-button-toggle-label-content {
+      line-height: 24px;
+    }
+  }
+  &__radio-group {
+    height: 25px;
+    margin-top: 5px;
+  }
+  &__icon {
+    height: 30px;
+
+    user-select: none;
+    &_direction {
+      width: 20px;
+      margin-left: 2px;
+    }
+    &_date {
+      height: 25px;
+
+      font-size: 18px;
+    }
+  }
+}

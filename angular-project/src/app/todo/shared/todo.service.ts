@@ -22,8 +22,10 @@ export class TodoService {
     const todoList: Todo[] = [
       { id: 1, title: 'Learn HTML and CSS', completed: true, date: new Date(2019, 8, 10) },
       { id: 2, title: 'Learn Java Script', completed: true, date: new Date(2019, 10, 2) },
-      { id: 3, title: 'Learn Angular', completed: false, date: new Date(2020, 6, 6) },
-      { id: 4, title: 'Get lots of money', completed: false, date: new Date(2020, 11, 15) }
+      { id: 3, title: 'Learn Angular', completed: true, date: new Date(2020, 4, 6) },
+      { id: 4, title: 'Create online shop of furniture', completed: false, date: new Date(2020, 5, 6) },
+      { id: 5, title: 'Pass interview', completed: false, date: new Date(2020, 6, 6) },
+      { id: 6, title: 'Get lots of money', completed: false, date: new Date(2020, 11, 15) }
     ];
 
     return todoList;

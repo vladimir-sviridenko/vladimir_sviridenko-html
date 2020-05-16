@@ -1,5 +1,37 @@
 <ng-container *ngTemplateOutlet='loader || todoList'></ng-container>
 
 <ng-template #todoList>
-  <ng-container *ngTemplateOutlet='list'></ng-container>
+  <div class="todo-list">
+    <div class="todo-list__radio-buttons">
+      <mat-button-toggle-group class='todo-list__radio-group' name="filter" title='filter by' value='all' 
+      (change)='onFilter($event)'>
+        <mat-icon aria-label='filter list' class="todo-list__icon">filter_list</mat-icon>
+        <mat-divider [vertical]='true'></mat-divider>
+        <mat-button-toggle value='all'>All</mat-button-toggle>
+        <mat-button-toggle value='active'>Active</mat-button-toggle>
+        <mat-button-toggle value='completed'>Completed</mat-button-toggle>
+      </mat-button-toggle-group>
+      <mat-button-toggle-group class='todo-list__radio-group' name="sort" value='date'>
+        <mat-icon aria-label='sort list' class="todo-list__icon">sort</mat-icon>
+        <mat-divider [vertical]='true'></mat-divider>
+        <mat-button-toggle aria-label='sort by date' title='sort by date of addition' value='date' 
+        (click)='onSort("date")'>
+          <mat-icon class="todo-list__icon todo-list__icon_date">calendar_today</mat-icon>
+          <mat-icon *ngIf='!isSortedByDate' aria-label='sort direction' 
+          class="todo-list__icon todo-list__icon_direction">arrow_drop_down</mat-icon>
+          <mat-icon *ngIf='isSortedByDate' aria-label='sort direction' 
+          class="todo-list__icon todo-list__icon_direction">arrow_drop_up</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle aria-label='sort by title' title='sort by title' value='title' 
+        (click)='onSort("title")'>
+          <mat-icon class="todo-list__icon">sort_by_alpha</mat-icon>
+          <mat-icon *ngIf='!isSortedByTitle' aria-label='sort direction' 
+          class="todo-list__icon todo-list__icon_direction">arrow_drop_down</mat-icon>
+          <mat-icon *ngIf='isSortedByTitle' aria-label='sort direction' 
+          class="todo-list__icon todo-list__icon_direction">arrow_drop_up</mat-icon>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <ng-container *ngTemplateOutlet='list'></ng-container>
+  </div>
 </ng-template>
