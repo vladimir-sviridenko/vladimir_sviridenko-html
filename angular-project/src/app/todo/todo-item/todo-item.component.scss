@@ -6,8 +6,16 @@
     width: 100%;
   }
 
-  &_edit.mat-list-item {
-    height: 40px;
+  &_edit {
+    &.mat-list-item {
+      height: 40px;
+    }
+    .todo-item__date {
+      display: none;
+    }
+    .todo-item__buttons {
+      display: flex;
+    }
   }
 
   &_completed {
@@ -16,8 +24,12 @@
     opacity: 0.4;
   }
 
+  &:hover .todo-item__date {
+    display: none;
+  }
+
   &:hover .todo-item__buttons {
-    visibility: visible;
+    display: flex;
   }
 
   &__title {
@@ -44,13 +56,21 @@
     }
   }
 
+  &__date {
+    display: none;
+    @media screen and (min-width: 813px) {
+      display: block;
+      font-size: 12px;
+    }
+  }
+
   &__buttons {
     display: flex;
     flex-flow: nowrap;
     margin-right: -10px;
 
     @media screen and (min-width: 813px) {
-      visibility: hidden;
+      display: none;
     }
   }
 

@@ -17,6 +17,9 @@ class='todo-item'
         [(ngModel)]='todo.title'>
       </mat-form-field>
     </mat-checkbox>
+    <div class="todo-item__date">
+      {{todo.date | date: 'longDate'}}
+    </div>
     <div class="todo-item__buttons">
       <button mat-icon-button color="primary" aria-label='edit todo' (click)='onToggleEditMode($event)' *ngIf='!isEditMode'>
         <mat-icon>edit</mat-icon>

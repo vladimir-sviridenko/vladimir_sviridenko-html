@@ -1,11 +1,11 @@
 <div class="todo">
   <mat-toolbar class="todo__header">
-    <h1>Todo List</h1>
+    <h1>{{appTitle}}</h1>
     <nav>
       <button mat-button color='primary' title="Tips" (click)='openHelp()'>
         <mat-icon aria-label='help'>help_outline</mat-icon>
       </button>
-      <button mat-button color='primary' appTitle="Load last save" 
+      <button mat-button color='primary' title="Load last save" 
       (click)='todoService.load()'>
         <mat-icon aria-label='load list'>cloud_download</mat-icon>
       </button>

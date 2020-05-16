@@ -11,7 +11,7 @@ import { FilterBy, SortBy } from './todo-list/todo-list.component';
 })
 export class TodoComponent implements OnInit {
 
-  public appTitle = 'Todo list';
+  public appTitle = 'Todo List';
   public todoTitle = '';
   public todoList: Todo[] = [];
   public editModeIndex: number = null;
