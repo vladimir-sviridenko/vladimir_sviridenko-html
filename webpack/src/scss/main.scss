@@ -1,0 +1,19 @@
+@import "fonts";
+@import "variables";
+@import "mixins";
+
+@import "form";
+
+body {
+  margin: 0 auto;
+}
+
+.app-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include font-primary;
+
+  user-select: none;
+}

@@ -1,0 +1,13 @@
+@mixin font-primary {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-primary;
+  font-size: $font-size-primary;
+  color: black;
+}
+
+@mixin font-secondary {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-secondary;
+  font-size: $font-size-secondary;
+  color: black;
+}
