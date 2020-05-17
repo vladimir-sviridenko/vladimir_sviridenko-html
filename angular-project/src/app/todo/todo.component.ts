@@ -41,6 +41,9 @@ export class TodoComponent implements OnInit {
   public checkTodo($event: Event, todo: Todo): void {
     if (!this.isEditMode(todo.id)) {
       todo.completed = !todo.completed;
+      if (this.lastFilterParam !== 'all') {
+        this.updateTodoList();
+      }
     } else {
       const fieldToFocus: HTMLInputElement = ($event.currentTarget as HTMLInputElement).querySelector('.todo-item__edit-input');
       fieldToFocus.focus();
