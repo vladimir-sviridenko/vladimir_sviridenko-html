@@ -25,8 +25,8 @@
   <app-todo-list
   [list]='todoList.length ? list : emptyList'
   [loader]='todoService.isLoading ? loader : null'
-  [isSortedByTitle]='isSortedByTitle'
-  [isSortedByDate]='isSortedByDate'
+  [isTitleArrowUp]='isSortedByTitleAscending'
+  [isDateArrowUp]='isSortedByDateAscending'
   (sort)='sortTodoListBy($event)'
   (filter)='filterTodoListBy($event)'>
   </app-todo-list>
@@ -37,7 +37,7 @@
 </ng-template>
 
 <ng-template #emptyList>
-  <h2 class="todo__empty-list">Todo list is empty.</h2>
+  <h2 class="todo-list__empty-list">Todo list is empty.</h2>
 </ng-template>
 
 <ng-template #list>

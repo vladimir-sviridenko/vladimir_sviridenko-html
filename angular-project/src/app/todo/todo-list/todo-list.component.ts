@@ -12,19 +12,23 @@ export type SortBy = 'title' | 'date';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent {
+
   @Input()
-  loader: HTMLElement = null;
+  public loader: HTMLElement = null;
   @Input()
-  list: HTMLElement = null;
+  public list: HTMLElement = null;
   @Input()
-  isSortedByTitle = false;
+  public isTitleArrowUp: boolean = false;
   @Input()
-  isSortedByDate = true;
+  public isDateArrowUp: boolean = true;
 
   @Output()
   public filter = new EventEmitter<FilterBy>();
   @Output()
   public sort = new EventEmitter<SortBy>();
+
+  public filterValue: string = 'all';
+  public sortValue: string = 'date';
 
   public onFilter(model: MatButtonToggleChange) {
     this.filter.emit(model.value);

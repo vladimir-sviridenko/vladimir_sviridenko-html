@@ -16,15 +16,15 @@ export class TodoComponent implements OnInit {
   public todoList: Todo[] = [];
   public editModeIndex: number = null;
 
-  public isSortedByTitle = false;
-  public isSortedByDate = true;
+  public isSortedByTitleAscending = false;
+  public isSortedByDateAscending = true;
+  private lastSortedField: SortBy = 'date';
+  private lastFilterParam = 'all';
 
   constructor(public todoService: TodoService, private bottomSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
-    this.todoService.getTodoListObservable().subscribe((todoList) => {
-      this.todoList = todoList;
-    });
+    this.todoService.getTodoListObservable().subscribe(() => this.updateTodoList());
     this.todoService.load();
   }
 
@@ -76,7 +76,7 @@ export class TodoComponent implements OnInit {
   public filterTodoListBy(param: FilterBy): void {
     switch (param) {
       case 'all':
-        this.todoList = this.todoService.todoList;
+        this.todoList = [...this.todoService.todoList];
         break;
       case 'active':
         this.todoList = this.todoService.todoList.filter((todo) => !todo.completed);
@@ -85,24 +85,44 @@ export class TodoComponent implements OnInit {
         this.todoList = this.todoService.todoList.filter((todo) => todo.completed);
         break;
     }
+    this.lastFilterParam = param;
+    this.applySorting();
   }
 
   public sortTodoListBy(field: SortBy): void {
     const byTitle: boolean = (field === 'title');
-    this.todoList.sort((todo, nextTodo) => {
-      const todoField = byTitle ? todo.title.toString().toLowerCase() : +todo.date;
-      const nextTodoField = byTitle ? nextTodo.title.toString().toLowerCase() : +nextTodo.date;
-      const result: boolean = (byTitle ? this.isSortedByTitle : this.isSortedByDate)
+    this.todoList = this.todoList.concat().sort((todo, nextTodo) => {
+      const todoField = byTitle ? todo.title.toString().toLowerCase() : todo.date;
+      const nextTodoField = byTitle ? nextTodo.title.toString().toLowerCase() : nextTodo.date;
+      const result: boolean = (byTitle ? this.isSortedByTitleAscending : this.isSortedByDateAscending)
         ? todoField < nextTodoField
         : todoField > nextTodoField;
       return result ? 1 : -1;
     });
     if (byTitle) {
-      this.isSortedByTitle = !this.isSortedByTitle;
-      this.isSortedByDate = false;
+      this.isSortedByTitleAscending = !this.isSortedByTitleAscending;
+      this.isSortedByDateAscending = false;
+      this.lastSortedField = 'title';
     } else {
-      this.isSortedByTitle = false;
-      this.isSortedByDate = !this.isSortedByDate;
+      this.isSortedByTitleAscending = false;
+      this.isSortedByDateAscending = !this.isSortedByDateAscending;
+      this.lastSortedField = 'date';
+    }
+  }
+
+  private updateTodoList() {
+    this.todoList = [...this.todoService.todoList];
+    this.filterTodoListBy(this.lastFilterParam as FilterBy);
+    this.applySorting();
+  }
+
+  private applySorting() {
+    if (this.lastSortedField === 'title') {
+      this.isSortedByTitleAscending = !this.isSortedByTitleAscending;
+      this.sortTodoListBy('title');
+    } else if (this.lastSortedField === 'date') {
+      this.isSortedByDateAscending = !this.isSortedByDateAscending;
+      this.sortTodoListBy('date');
     }
   }
 }
