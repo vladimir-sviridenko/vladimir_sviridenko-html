@@ -40,19 +40,30 @@ export class TodoService {
 
   save(): void {
     localStorage.setItem('todo', JSON.stringify(this.todoList));
+    const todoDates: number[] = this.todoList.map((todo) => +todo.date);
+    localStorage.setItem('todoDates', JSON.stringify(todoDates));
   }
 
   load(): void {
     this.isLoading = true;
     setTimeout(() => {
-      let loadedData: Todo[];
+      let todoList: Todo[];
+      let todoDates: number[];
       try {
-        loadedData = JSON.parse(localStorage.getItem('todo'));
+        todoList = JSON.parse(localStorage.getItem('todo'));
+        todoDates = JSON.parse(localStorage.getItem('todoDates'));
       } catch {
-        loadedData = null;
+        todoList = null;
+        todoDates = null;
       }
-      loadedData = !loadedData ? this.getInitialTodoList() : loadedData;
-      this.todoListSubject.next(loadedData);
+      if (todoList && todoDates) {
+        for (let i = 0; i < todoList.length; i++) {
+          todoList[i].date = new Date(todoDates[i]);
+        }
+      } else {
+          todoList = this.getInitialTodoList();
+      }
+      this.todoListSubject.next(todoList);
     }, 400);
   }
 
