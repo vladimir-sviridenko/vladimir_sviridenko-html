@@ -1,0 +1,24 @@
+<div class="todo">
+  <mat-toolbar class="todo__header">
+    <h1>Todo List</h1>
+    <nav>
+      <button mat-button color='primary' title="Tips"
+        (click)='openHelp()'>
+        <mat-icon>help_outline</mat-icon>
+      </button>
+      <button mat-button color='primary'
+        title="Load last save" 
+        (click)='todoService.load()'>
+        <mat-icon>cloud_download</mat-icon>
+      </button>
+      <button mat-button color='primary' 
+        [title]='todoService.isSaved() ? "No changes to save" : "Save"'
+        [disabled]='todoService.isSaved()'  
+        (click)='todoService.save()'>
+        <mat-icon>save</mat-icon>
+      </button>
+    </nav>
+  </mat-toolbar>
+  <app-todo-form></app-todo-form>
+  <app-todo-list></app-todo-list>
+</div>

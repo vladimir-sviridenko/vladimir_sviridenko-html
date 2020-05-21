@@ -1,0 +1,50 @@
+<div *ngIf='!todoService.isLoading; else loader'>
+  <mat-action-list class="todo-list" *ngIf='todoList.length; else emptyList'>
+    <button mat-list-item disableRipple @openClose 
+      (click)='onCheck($event, todo)' 
+      (contextmenu)='startEditing($event, todo)'
+      *ngFor='let todo of todoList; let last=last;'>
+      <div class="todo-list__item" [class.todo-list__item_completed]='todo.completed'>
+        <mat-checkbox class="todo-list__item-checkbox" disableRipple color='primary' 
+          [class.todo-list__item-checkbox_edit]='isEditing(todo.id)' 
+          [checked]='todo.completed'
+          (click)='$event.preventDefault()'>
+          <div class="todo-list__item-title" *ngIf='!isEditing(todo.id)'>{{todo.title}}</div>
+        </mat-checkbox>
+        <mat-form-field class="todo-list__edit-field" 
+          *ngIf='isEditing(todo.id)'>
+          <input type="text" matInput appAutofocus
+            class="todo-list__edit-input"
+            [class.todo-list__edit-input_completed]='todo.completed'
+            (keydown.enter)='stopEditing($event, todo)' 
+            [(ngModel)]='todo.title'>
+        </mat-form-field>
+        <div class="todo-list__item-buttons">
+          <button mat-icon-button color="primary" 
+            (click)='startEditing($event, todo)' 
+            *ngIf='!isEditing(todo.id)'>
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button 
+            (click)='stopEditing($event, todo)' 
+            *ngIf='isEditing(todo.id)'>
+            <mat-icon class='todo-list__icon todo-list__icon_check'>check</mat-icon>
+          </button>
+          <button mat-icon-button disableRipple color="warn" 
+            (click)='onRemove($event, todo)'>
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+      </div>
+      <mat-divider *ngIf='!last'></mat-divider>
+    </button>
+  </mat-action-list>
+</div>
+
+<ng-template #loader>
+  <mat-spinner class="todo-list__loader" [diameter]="40"></mat-spinner>
+</ng-template>
+
+<ng-template #emptyList>
+  <h2 class="todo-list__empty-list">Todo list is empty.</h2>
+</ng-template>
