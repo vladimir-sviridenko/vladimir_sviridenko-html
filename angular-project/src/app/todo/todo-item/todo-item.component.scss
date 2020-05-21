@@ -1,0 +1,101 @@
+.todo-item {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &_edit {
+    &.mat-list-item {
+      height: 40px;
+    }
+    .todo-item__date {
+      display: none;
+    }
+    .todo-item__buttons {
+      display: flex;
+    }
+  }
+
+  &_completed {
+    text-decoration: line-through;
+
+    opacity: 0.4;
+  }
+
+  &:hover .todo-item__date {
+    display: none;
+  }
+
+  &:hover .todo-item__buttons {
+    display: flex;
+  }
+
+  &__title {
+    margin: 8px 0;
+
+    white-space: pre-wrap;
+    word-break: break-all;
+
+    justify-self: flex-start;
+  }
+
+  &__checkbox {
+    &_edit {
+      width: 100%;
+      margin-right: 8px;
+
+      pointer-events: none;
+      &::ng-deep .mat-checkbox-layout {
+        width: 100%;
+      }
+      &::ng-deep .mat-checkbox-label {
+        width: 100%;
+      }
+    }
+  }
+
+  &__date {
+    display: none;
+    @media screen and (min-width: 813px) {
+      display: block;
+
+      font-size: 12px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-flow: nowrap;
+    margin-right: -10px;
+
+    @media screen and (min-width: 813px) {
+      display: none;
+    }
+  }
+
+  &__edit-field {
+    width: 100%;
+    margin-left: 8px;
+
+    &::ng-deep .mat-form-field-infix {
+      width: 100%;
+      margin-top: 0.3em;
+      padding-top: 0.3em;
+      padding-bottom: 0.23em;
+    }
+  }
+
+  &__edit-input {
+    &_completed {
+      text-decoration: line-through;
+    }
+  }
+
+  &__icon {
+    &_check {
+      color: green;
+    }
+  }
+}

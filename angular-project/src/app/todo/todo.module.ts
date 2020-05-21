@@ -13,11 +13,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TodoComponent } from './todo.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoItemComponent } from './todo-item/todo-item.component';
 import { AutofocusDirective } from './shared/autofocus.directive';
 import { HelpComponent } from './help/help.component';
 
@@ -34,7 +36,8 @@ const MaterialModules = [
   MatCheckboxModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
-  MatBottomSheetModule
+  MatBottomSheetModule,
+  MatButtonToggleModule
 ];
 
 @NgModule({
@@ -44,7 +47,8 @@ const MaterialModules = [
     TodoListComponent,
     AutofocusDirective,
     HelpComponent,
-    TodoComponent
+    TodoComponent,
+    TodoItemComponent,
   ],
   imports: [
     CommonModule,

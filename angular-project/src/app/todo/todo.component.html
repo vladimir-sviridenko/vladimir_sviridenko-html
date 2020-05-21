@@ -1,24 +1,56 @@
 <div class="todo">
   <mat-toolbar class="todo__header">
-    <h1>Todo List</h1>
+    <h1>{{appTitle}}</h1>
     <nav>
-      <button mat-button color='primary' title="Tips"
-        (click)='openHelp()'>
-        <mat-icon>help_outline</mat-icon>
+      <button mat-button color='primary' title="Tips" (click)='openHelp()'>
+        <mat-icon aria-label='help'>help_outline</mat-icon>
       </button>
-      <button mat-button color='primary'
-        title="Load last save" 
-        (click)='todoService.load()'>
-        <mat-icon>cloud_download</mat-icon>
+      <button mat-button color='primary' title="Load last save" 
+      (click)='todoService.load()'>
+        <mat-icon aria-label='load list'>cloud_download</mat-icon>
       </button>
       <button mat-button color='primary' 
-        [title]='todoService.isSaved() ? "No changes to save" : "Save"'
-        [disabled]='todoService.isSaved()'  
-        (click)='todoService.save()'>
-        <mat-icon>save</mat-icon>
+      [title]='todoService.isSaved() ? "No changes to save" : "Save"'
+      [disabled]='todoService.isSaved()' (click)='todoService.save()'>
+        <mat-icon aria-label='save list'>save</mat-icon>
       </button>
     </nav>
   </mat-toolbar>
-  <app-todo-form></app-todo-form>
-  <app-todo-list></app-todo-list>
+  <app-todo-form
+  [(title)]='todoTitle'
+  [canAdd]='canAdd()'
+  (add)='addTodo()'
+  (clear)='clearForm()'>
+  </app-todo-form>
+  <app-todo-list
+  [list]='todoList.length ? list : emptyList'
+  [loader]='todoService.isLoading ? loader : null'
+  [isTitleArrowUp]='isSortedByTitleAscending'
+  [isDateArrowUp]='isSortedByDateAscending'
+  (sort)='sortTodoListBy($event)'
+  (filter)='filterTodoListBy($event)'>
+  </app-todo-list>
 </div>
+
+<ng-template #loader>
+  <mat-spinner class="todo__loader" [diameter]="40"></mat-spinner>
+</ng-template>
+
+<ng-template #emptyList>
+  <h2 class="todo-list__empty-list">Todo list is empty.</h2>
+</ng-template>
+
+<ng-template #list>
+  <mat-action-list class="todo-list__list">
+    <ng-container *ngFor='let todo of todoList; let last = last'>
+      <app-todo-item 
+      [todo]='todo' 
+      [isEditMode]='isEditMode(todo.id)' 
+      (check)='checkTodo($event, todo)'
+      (remove)='removeTodo($event, todo)' 
+      (toggleEditMode)='toggleEditMode($event, todo)'>
+      </app-todo-item>
+      <mat-divider *ngIf='!last'></mat-divider>
+    </ng-container>
+  </mat-action-list>
+</ng-template>

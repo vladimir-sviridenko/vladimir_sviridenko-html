@@ -1,60 +1,40 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { openCloseAnimation } from '../shared/open-close.animation';
-import { TodoService, Todo } from '../shared/todo.service';
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
+
+export type FilterBy = 'all' | 'active' | 'completed';
+
+export type SortBy = 'title' | 'date';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  animations: openCloseAnimation
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
 
-  public todoList: Todo[] = [];
-  public todoToEditIndex: number = null;
+  @Input()
+  public loader: HTMLElement = null;
+  @Input()
+  public list: HTMLElement = null;
+  @Input()
+  public isTitleArrowUp: boolean = false;
+  @Input()
+  public isDateArrowUp: boolean = true;
 
-  constructor(public todoService: TodoService) { }
+  @Output()
+  public filter = new EventEmitter<FilterBy>();
+  @Output()
+  public sort = new EventEmitter<SortBy>();
 
-  ngOnInit(): void {
-    this.todoService.getTodoListObservable().subscribe((todoList) => {
-      this.todoList = todoList;
-    });
-    this.todoService.load();
+  public filterValue: string = 'all';
+  public sortValue: string = 'date';
+
+  public onFilter(model: MatButtonToggleChange) {
+    this.filter.emit(model.value);
   }
 
-  onRemove($event: Event, todo: Todo): void {
-    $event.stopImmediatePropagation();
-    this.stopEditing($event, todo);
-    this.todoService.removeTodo(todo.id);
-  }
-
-  onCheck($event: Event, todo: Todo): void {
-    if (!this.isEditing(todo.id)) {
-      todo.completed = !todo.completed;
-    } else {
-      const fieldToFocus: HTMLInputElement = ($event.currentTarget as HTMLInputElement).querySelector('.todo-list__edit-input');
-      fieldToFocus.focus();
-    }
-  }
-
-  isEditing(id: number): boolean {
-    return id === this.todoToEditIndex;
-  }
-
-  startEditing($event: Event, todo: Todo): void {
-    $event.preventDefault();
-    $event.stopImmediatePropagation();
-    if (!this.isEditing(todo.id)) {
-      this.todoToEditIndex = todo.id;
-    } else if ($event.type === 'contextmenu') {
-      this.stopEditing($event, todo);
-    }
-  }
-
-  stopEditing($event: Event, todo: Todo): void {
-    $event.stopImmediatePropagation();
-    this.todoToEditIndex = null;
-    todo.title = this.todoService.truncate(todo.title, this.todoService.titleMaxLength);
+  public onSort(field: SortBy) {
+    this.sort.emit(field);
   }
 }
